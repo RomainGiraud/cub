@@ -1,0 +1,1 @@
+lua glLoadGen\LoadGen.lua -style=pointer_cpp -spec=gl -version=3.3 -profile=core ..\src\gl\core_3_3

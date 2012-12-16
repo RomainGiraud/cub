@@ -1,0 +1,7 @@
+tools:
+- glLoadGen 1.0.3
+
+libs:
+- glm 0.9.4.0
+- glfw 2.7.7
+- json (cajun) 2.0.2
