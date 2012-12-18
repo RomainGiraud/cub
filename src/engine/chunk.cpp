@@ -227,7 +227,6 @@ void cub::Chunk::Load()
     _normalBuffer.Attach(normals, 72 * sizeof(float));
     _tangentBuffer.Attach(tangents, 72 * sizeof(float));
     _bitangentBuffer.Attach(bitangents, 72 * sizeof(float));
-
 }
 
 void cub::Chunk::Render(double time)

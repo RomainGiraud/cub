@@ -16,9 +16,10 @@ cub::Shader::Shader(ShaderType type)
         case Vertex:
             typeSh = gl::VERTEX_SHADER;
             break;
-        case Geometry:
-            typeSh = gl::GEOMETRY_SHADER;
-            break;
+        // No gemetry shader in OpenGL 2.x
+        //case Geometry:
+        //    typeSh = gl::GEOMETRY_SHADER;
+        //    break;
         case Fragment:
             typeSh = gl::FRAGMENT_SHADER;
             break;

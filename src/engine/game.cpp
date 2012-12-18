@@ -1,6 +1,6 @@
 #include <engine/game.h>
 
-#include <GL/gl_core_3_3.hpp>
+#include <GL/gl_core.hpp>
 
 #define GLFW_NO_GLU
 #include <GL/glfw.h>
@@ -35,7 +35,11 @@ static void WindowSizeCallback(int w, int h)
 }
 
 cub::Game::Game()
+#if defined(CUB_SYSTEM_WINDOWS)
     : _content("D:/Projects/cub/resources/")
+#elif defined(CUB_SYSTEM_MACOS)
+    : _content("/Users/romain/Documents/Projets/cub/resources/")
+#endif
 {
     glfwInit();
     glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
@@ -121,7 +125,7 @@ void cub::Game::Load()
 
 void cub::Game::LoadScene(string filename)
 {
-    ifstream file (filename, ios_base::beg);
+    ifstream file (filename.c_str());
 
     Object elemRootFile;
     Reader::Read(elemRootFile, file);
@@ -141,7 +145,7 @@ int cub::Game::Run()
         
         bool isMoving = false;
         glm::vec3 move(0.f);
-        if (glfwGetKey('Z') == GLFW_PRESS)
+        if (glfwGetKey('W') == GLFW_PRESS)
         {
             move.z = -1;
             isMoving = true;
@@ -151,7 +155,7 @@ int cub::Game::Run()
             move.z = +1;
             isMoving = true;
         }
-        if (glfwGetKey('Q') == GLFW_PRESS)
+        if (glfwGetKey('A') == GLFW_PRESS)
         {
             move.x = -1;
             isMoving = true;

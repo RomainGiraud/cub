@@ -1,7 +1,7 @@
 #ifndef CUB_SHADERPROGRAM_H
 #define CUB_SHADERPROGRAM_H
 
-#include <GL/gl_core_3_3.hpp>
+#include <GL/gl_core.hpp>
 
 #include <engine/shader.h>
 

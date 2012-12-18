@@ -1,7 +1,7 @@
 #ifndef CUB_CHUNK_H
 #define CUB_CHUNK_H
 
-#include <GL/gl_core_3_3.hpp>
+#include <GL/gl_core.hpp>
 
 #include <engine/shader_program.h>
 #include <engine/buffer.h>

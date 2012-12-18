@@ -114,6 +114,7 @@ cub::ShaderProgram cub::Content::LoadShaders(string fileVert, string fileFrag)
     return shader;
 }
 
+/*
 cub::ShaderProgram cub::Content::LoadShaders(string fileVert, string fileGeom, string fileFrag)
 {
     fileVert = _path + fileVert;
@@ -139,3 +140,4 @@ cub::ShaderProgram cub::Content::LoadShaders(string fileVert, string fileGeom, s
 
     return shader;
 }
+*/

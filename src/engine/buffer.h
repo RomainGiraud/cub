@@ -1,7 +1,7 @@
 #ifndef CUB_BUFFER_H
 #define CUB_BUFFER_H
 
-#include <GL/gl_core_3_3.hpp>
+#include <GL/gl_core.hpp>
 
 namespace cub
 {

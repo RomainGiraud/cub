@@ -1,7 +1,7 @@
 #ifndef CUB_SHADER_H
 #define CUB_SHADER_H
 
-#include <GL/gl_core_3_3.hpp>
+#include <GL/gl_core.hpp>
 
 #include <string>
 
@@ -14,7 +14,7 @@ public:
     enum ShaderType
     {
         Vertex,
-        Geometry,
+        //Geometry,
         Fragment
     };
 

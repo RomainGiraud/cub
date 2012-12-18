@@ -1,8 +1,8 @@
-#version 130
+#version 120
 
 // From vertex shader
-in vec3 ex_Position;
-in vec3 ex_Normal;
+varying vec3 ex_Position;
+varying vec3 ex_Normal;
 
 // Light
 struct LightInfo
@@ -24,7 +24,7 @@ struct MaterialInfo
 uniform MaterialInfo Material;
 
 // Output color
-out vec4 color;
+//out vec4 color;
 
 vec3 phongModel(vec3 position, vec3 norm)
 {
@@ -62,7 +62,7 @@ void main(void)
 	vec3 n = normalize(ex_Normal);
     
     if (gl_FrontFacing)
-    	color = vec4(phongModel(ex_Position, n), 1.0);
+    	gl_FragColor = vec4(phongModel(ex_Position, n), 1.0);
     else
-    	color = vec4(phongModel(ex_Position, -n), 1.0);
+    	gl_FragColor = vec4(phongModel(ex_Position, -n), 1.0);
 }

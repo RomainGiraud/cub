@@ -5,3 +5,5 @@ libs:
 - glm 0.9.4.0
 - glfw 2.7.7
 - json (cajun) 2.0.2
+
+/!\ Do not use "\u" value in Json file
