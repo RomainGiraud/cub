@@ -17,26 +17,25 @@ cub::Chunk::Chunk(Game *game)
       _textureBuffer(Buffer::Vertex),
       _normalBuffer(Buffer::Vertex),
       _tangentBuffer(Buffer::Vertex),
-      _bitangentBuffer(Buffer::Vertex)
+      _bitangentBuffer(Buffer::Vertex),
+      _textureID(-1)
 {
     _game = game;
 
-    _xLength = 200;
+    _xLength = 20;
     _yLength = 10;
-    _zLength = 200;
+    _zLength = 20;
 
     _data = new int[_xLength * _yLength * _zLength];
 }
 
 // x is the height, y is the width and z is the depth
 // height + width * WIDTH + depth * WIDTH * DEPTH
-//#define get(height,width,depth) _data[height + width * _xLength + depth * _xLength * _zLength]
-inline int val(int y, int x, int z, int _xLength, int _zLength)
+inline int val(int x, int y, int z, int _xLength, int _zLength)
 {
     return y * _xLength * _zLength + x * _zLength + z;
-    //return (x + _xLength * (y + z * _zLength));
 }
-#define get(y,x,z) _data[val(y,x,z,_xLength,_zLength)]
+#define get(x,y,z) _data[val(x,y,z,_xLength,_zLength)]
 
 void cub::Chunk::Display()
 {
@@ -47,7 +46,7 @@ void cub::Chunk::Display()
         {
             for (int x = 0; x < _xLength; ++x)
             {
-                cout << get(y, x, z) << " ";
+                cout << get(x, y, z) << " ";
             }
             cout << endl;
         }
@@ -57,7 +56,7 @@ void cub::Chunk::Display()
 
 void cub::Chunk::Load()
 {
-    _shader = _game->GetContent().LoadShaders("shaders/phong.vert", "shaders/phong.frag");
+    _shader = _game->GetContent().LoadShaders("shaders/phong_tex.vert", "shaders/phong_tex.frag");
 
     for (int i = 0; i < _xLength * _yLength * _zLength; ++i)
     {
@@ -68,14 +67,17 @@ void cub::Chunk::Load()
     {
         for (int x = 0; x < _xLength; ++x)
         {
-            get(0,x,z) = 1;
+            get(x, 0, z) = 1;
         }
     }
     
     for (int z = 0; z < _zLength; ++z)
     {
-        get(1,0,z) = 2;
+        get(0, 1, z) = 2;
     }
+
+    //gl::ActiveTexture(gl::TEXTURE0);
+    _textureID = _game->GetContent().LoadTexture("textures/terrain.png");
 
     Generate();
 }
@@ -181,7 +183,7 @@ bool cub::Chunk::IsFilled(int x, int y, int z)
     if (y < 0 || y >= _yLength) return false;
     if (z < 0 || z >= _zLength) return false;
 
-    return get(y,x,z) != 0;
+    return get(x, y, z) != 0;
 }
 
 
@@ -203,13 +205,18 @@ void cub::Chunk::Render(double time)
     _shader.SetUniformValue("mvpMatrix", mvpMatrix);
     _shader.SetUniformValue("normalMatrix", normalMatrix);
     _shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
-    _shader.SetUniformValue("Light.La", glm::vec3(1, 1, 1));
-    _shader.SetUniformValue("Light.Ld", glm::vec3(1, 1, 1));
-    _shader.SetUniformValue("Light.Ls", glm::vec3(1, 1, 1));
-    _shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
-    _shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
-    _shader.SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
+    _shader.SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
+    //_shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
+    //_shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
+    //_shader.SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
+    _shader.SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
+    _shader.SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
+    _shader.SetUniformValue("Material.Ks", glm::vec3(0.1f, 0.1f, 0.1f));
     _shader.SetUniformValue("Material.Shininess", 27.89743616f);
+
+    gl::ActiveTexture(gl::TEXTURE0);
+    gl::BindTexture(gl::TEXTURE_2D, _textureID);
+    _shader.SetUniformValue("Tex1", 0);
     
     _shader.EnableVertexAttribArray("in_Position");
     _vertexBuffer.Bind();
@@ -234,31 +241,4 @@ void cub::Chunk::Render(double time)
     _indiceBuffer.Bind();
     
     gl::DrawElements(gl::TRIANGLES, _indiceLength, gl::UNSIGNED_INT, 0);
-
-    /*
-    for (int y = 0; y < _yLength; ++y)
-    {
-        for (int z = 0; z < _zLength; ++z)
-        {
-            for (int x = 0; x < _xLength; ++x)
-            {
-                if (get(y,x,z) == 0) continue;
-
-                glm::mat4 modelMatrix = glm::translate(glm::vec3(x-10, -y, z-10));
-
-                glm::mat4 mvMatrix = viewMatrix * modelMatrix;
-                glm::mat4 mvpMatrix = projectionMatrix * mvMatrix;
-                glm::mat3 normalMatrix = glm::inverseTranspose(glm::mat3(mvMatrix));
-
-                _shader.Bind();
-                _shader.SetUniformValue("mvMatrix", mvMatrix);
-                _shader.SetUniformValue("mvpMatrix", mvpMatrix);
-                _shader.SetUniformValue("normalMatrix", normalMatrix);
-                
-                gl::DrawElements(gl::TRIANGLES, 6, gl::UNSIGNED_INT, (void*)(30 * sizeof(unsigned int)));
-                //gl::DrawElements(gl::TRIANGLES, 36, gl::UNSIGNED_INT, 0);
-            }
-        }
-    }
-    */
 }

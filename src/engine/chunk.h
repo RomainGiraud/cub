@@ -26,6 +26,7 @@ private:
     int *_data;
     ShaderProgram _shader;
     int _indiceLength;
+    GLuint _textureID;
 
     Buffer _indiceBuffer;
     Buffer _vertexBuffer;

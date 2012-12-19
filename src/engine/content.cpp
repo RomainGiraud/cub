@@ -1,5 +1,8 @@
 #include <engine/content.h>
 #include <engine/shader.h>
+#include <engine/game.h>
+
+#include <fi/FreeImage.h>
 
 using namespace std;
 
@@ -13,36 +16,68 @@ cub::Content::Content(string path)
     _path = path + "/";
 }
 
+std::string cub::Content::GetPath() const
+{
+    return _path;
+}
+
 int cub::Content::LoadTexture(string filename)
 {
-    /*
-    if (String.IsNullOrEmpty(filename))
-        throw new ArgumentException(filename);
-
     filename = _path + filename;
+	
+	//check the file signature and deduce its format
+    FREE_IMAGE_FORMAT fif = FreeImage_GetFileType(filename.c_str(), 0);
+	//if still unknown, try to guess the file format from the file extension
+	if (fif == FIF_UNKNOWN) 
+		fif = FreeImage_GetFIFFromFilename(filename.c_str());
+	//if still unkown, return failure
+	if (fif == FIF_UNKNOWN)
+		return -1;
 
-    int id = GL.GenTexture();
-    GL.BindTexture(TextureTarget.Texture2D, id);
+	//check that the plugin has reading capabilities and load the file
+    FIBITMAP *dib;
+	if (FreeImage_FIFSupportsReading(fif))
+		dib = FreeImage_Load(fif, filename.c_str());
+	//if the image failed to load, return failure
+	if (!dib)
+		return -1;
 
-    Bitmap bmp = new Bitmap(filename);
-    BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+    FIBITMAP *converted = FreeImage_ConvertTo32Bits(dib);
+    
+	//retrieve the image data
+	BYTE* bits = FreeImage_GetBits(converted);
+	//get the image width and height
+	unsigned int width = FreeImage_GetWidth(converted);
+	unsigned int height = FreeImage_GetHeight(converted);
+	//if this somehow one of these failed (they shouldn't), return failure
+	if ((bits == 0) || (width == 0) || (height == 0))
+		return -1;
+	
+	//if this texture ID is in use, unload the current texture
+	//if(m_texID.find(texID) != m_texID.end())
+	//	glDeleteTextures(1, &(m_texID[texID]));
 
-    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bmp_data.Width, bmp_data.Height, 0,
-        OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+    GLuint gl_texID = -1;
+	//generate an OpenGL texture ID for this texture
+	gl::GenTextures(1, &gl_texID);
+	//store the texture ID mapping
+	//m_texID[texID] = gl_texID;
+	//bind to the new texture ID
+	gl::BindTexture(gl::TEXTURE_2D, gl_texID);
+	//store the texture data for OpenGL use
+	gl::TexImage2D(gl::TEXTURE_2D, 0, gl::RGBA, width, height, 0, gl::RGBA, gl::UNSIGNED_BYTE, bits);
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::NEAREST);
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::NEAREST);
+    //GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+    //GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+    //GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
-    bmp.UnlockBits(bmp_data);
+	//Free FreeImage's copy of the data
+	FreeImage_Unload(dib);
+	FreeImage_Unload(converted);
 
-    // We haven't uploaded mipmaps, so disable mipmapping (otherwise the texture will not appear).
-    // On newer video cards, we can use GL.GenerateMipmaps() or GL.Ext.GenerateMipmaps() to create
-    // mipmaps automatically. In that case, use TextureMinFilter.LinearMipmapLinear to enable them.
-    GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
-    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-
-    return id;
-    */
-
-    return -1;
+	//return success
+	return gl_texID;
 }
 
 void cub::Content::LoadCubeMap(GLenum target, string filename)

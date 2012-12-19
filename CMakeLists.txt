@@ -9,6 +9,14 @@ set(VERSION_PATCH 0)
 # Ouput directories
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
+# Custom commands
+macro(copy_dll DLL_PATH)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/dep/libs/${DLL_PATH}"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
+endmacro(copy_dll)
+
 # Compilation flags
 if (MSVC)
     set(CMAKE_CXX_FLAGS "-WX -EHsc")
@@ -24,6 +32,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/dep/include)
 if (WIN32)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-msvc100)
+    link_directories(${CMAKE_SOURCE_DIR}/dep/libs/fi/lib-msvc100)
 elseif (APPLE)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-cocoa)
 endif()
@@ -45,6 +54,7 @@ endif()
 if (WIN32)
     target_link_libraries(${PROJECT_NAME} "OpenGL32")
     target_link_libraries(${PROJECT_NAME} "GLFW")
+    target_link_libraries(${PROJECT_NAME} "FreeImage")
 elseif (APPLE)
     find_library(OPENGL OpenGL)
     target_link_libraries(${PROJECT_NAME} "${OPENGL}")
@@ -55,9 +65,7 @@ elseif (APPLE)
     target_link_libraries(${PROJECT_NAME} "GLFW")
 endif()
 
-
-# Custom commands
-#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD        # Adds a post-build event to MyTest
-#    COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#        "${CMAKE_SOURCE_DIR}/ext/assimp/bin/assimp_release-dll_win32/Assimp32.dll"      # <--this is in-file
-#        $<TARGET_FILE_DIR:${PROJECT_NAME}>)                 # <--this is out-file path
+# Copy dll to output directory
+if (WIN32)
+    copy_dll("fi/lib-msvc100/FreeImage.dll")
+endif()

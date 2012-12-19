@@ -61,13 +61,14 @@ void cub::Shader::Compile(const char *src)
 
     GLint result;
     gl::GetShaderiv(_id, gl::COMPILE_STATUS, &result);
+
+    char infoLog[1024];
+    gl::GetShaderInfoLog(_id, 1024, NULL, infoLog);
+    cout << "Shader compilation at " << _id << ":" << endl
+         << infoLog << endl;
+
     if (!result)
     {
-        char infoLog[1024];
-        gl::GetShaderInfoLog(_id, 1024, NULL, infoLog);
-        cout << "The shader at " << _id
-                << " failed to compile with the following error:" << endl
-                << infoLog << endl;
         gl::DeleteShader(_id);
         throw Exception("", "compileShader", "glCompileShader");
     }

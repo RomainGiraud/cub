@@ -30,15 +30,28 @@ using namespace cub;
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/euler_angles.hpp>
 
+#include <fi/FreeImage.h>
+
+static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
+{
+    printf("\n*** ");
+    if (fif != FIF_UNKNOWN)
+    {
+        printf("%s Format\n", FreeImage_GetFormatFromFIF(fif));
+    }
+    printf(message);
+    printf(" ***\n");
+}
+
 static void WindowSizeCallback(int w, int h)
 {
 }
 
 cub::Game::Game()
 #if defined(CUB_SYSTEM_WINDOWS)
-    : _content("D:/Projects/cub/resources/")
+    : _content("D:/Projects/cub/resources")
 #elif defined(CUB_SYSTEM_MACOS)
-    : _content("/Users/romain/Documents/Projets/cub/resources/")
+    : _content("/Users/romain/Documents/Projets/cub/resources")
 #endif
 {
     glfwInit();
@@ -50,6 +63,10 @@ cub::Game::Game()
 
     // Init GLLoader
     gl::sys::LoadFunctions();
+
+    // FreeImage loading
+	FreeImage_Initialise();
+    FreeImage_SetOutputMessage(FreeImageErrorHandler);
 
     DisplayGLInfo();
 
