@@ -167,6 +167,22 @@ void cub::Chunk::Generate()
         *(it + 5) = 3 + offset * 4;
     }
 
+    float v = 0.0625f;
+    for (vector<float>::iterator it = texcoords.begin(); it != texcoords.end(); )
+    {
+        if (*it == 1)
+            *it = v * 3;
+        else if (*it == 0)
+            *it = v * 2;
+        ++it;
+        
+        if (*it == 1)
+            *it = v * 16;
+        else if (*it == 0)
+            *it = v * 15;
+        ++it;
+    }
+
     _indiceBuffer.Attach(indices.data(), indices.size() * sizeof(unsigned int));
     _vertexBuffer.Attach(vertices.data(), vertices.size() * sizeof(float));
     _textureBuffer.Attach(texcoords.data(), texcoords.size() * sizeof(float));
@@ -209,10 +225,11 @@ void cub::Chunk::Render(double time)
     //_shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
     //_shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
     //_shader.SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
+    //_shader.SetUniformValue("Material.Shininess", 27.89743616f);
     _shader.SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
     _shader.SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
-    _shader.SetUniformValue("Material.Ks", glm::vec3(0.1f, 0.1f, 0.1f));
-    _shader.SetUniformValue("Material.Shininess", 27.89743616f);
+    _shader.SetUniformValue("Material.Ks", glm::vec3(0.5f, 0.5f, 0.5f));
+    _shader.SetUniformValue("Material.Shininess", 50.0f);
 
     gl::ActiveTexture(gl::TEXTURE0);
     gl::BindTexture(gl::TEXTURE_2D, _textureID);
