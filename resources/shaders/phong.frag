@@ -64,5 +64,5 @@ void main(void)
     if (gl_FrontFacing)
     	gl_FragColor = vec4(phongModel(ex_Position, n), 1.0);
     else
-    	gl_FragColor = vec4(phongModel(ex_Position, -n), 1.0);
+    	gl_FragColor = vec4(1,0,0,1);//vec4(phongModel(ex_Position, -n), 1.0);
 }

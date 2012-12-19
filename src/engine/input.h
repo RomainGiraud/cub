@@ -3,6 +3,8 @@
 
 #include <GL/gl_core.hpp>
 
+#include <string>
+
 namespace cub
 {
 

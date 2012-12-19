@@ -18,12 +18,14 @@ public:
     void Load();
     void Render(double time);
     void Display();
+    bool IsFilled(int x, int y, int z);
     
 private:
     Game *_game;
     int _xLength, _yLength, _zLength;
     int *_data;
     ShaderProgram _shader;
+    int _indiceLength;
 
     Buffer _indiceBuffer;
     Buffer _vertexBuffer;
@@ -31,6 +33,8 @@ private:
     Buffer _normalBuffer;
     Buffer _tangentBuffer;
     Buffer _bitangentBuffer;
+
+    void Generate();
 };
 }
 

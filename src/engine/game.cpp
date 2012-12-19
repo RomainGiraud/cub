@@ -42,11 +42,11 @@ cub::Game::Game()
 #endif
 {
     glfwInit();
-    glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
-    glfwSetWindowTitle("cub");
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
+    glfwSetWindowTitle("cub");
     //glfwSwapInterval(1); // vertical sync ?
     glfwSetWindowSizeCallback(WindowSizeCallback);
+    glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
 
     // Init GLLoader
     gl::sys::LoadFunctions();
@@ -56,7 +56,7 @@ cub::Game::Game()
     _components = list<Chunk*>();
     
     _camera = new RTSCamera(this);
-    _camera->SetPosition(glm::vec3(0, 1, 0));
+    _camera->SetPosition(glm::vec3(0, 10, 10));
 }
 
 cub::Game::~Game()
