@@ -12,13 +12,13 @@
 using namespace std;
 
 cub::Chunk::Chunk(Game *game)
-    : _indiceBuffer(Buffer::Index),
+    : _textureID(-1),
+      _indiceBuffer(Buffer::Index),
       _vertexBuffer(Buffer::Vertex),
       _textureBuffer(Buffer::Vertex),
       _normalBuffer(Buffer::Vertex),
       _tangentBuffer(Buffer::Vertex),
-      _bitangentBuffer(Buffer::Vertex),
-      _textureID(-1)
+      _bitangentBuffer(Buffer::Vertex)
 {
     _game = game;
 
@@ -168,18 +168,19 @@ void cub::Chunk::Generate()
     }
 
     float v = 0.0625f;
+    float m = 0.005f;
     for (vector<float>::iterator it = texcoords.begin(); it != texcoords.end(); )
     {
         if (*it == 1)
-            *it = v * 3;
+            *it = v * 3 - m;
         else if (*it == 0)
-            *it = v * 2;
+            *it = v * 2 + m;
         ++it;
         
         if (*it == 1)
-            *it = v * 16;
+            *it = v * 16 - m;
         else if (*it == 0)
-            *it = v * 15;
+            *it = v * 15 + m;
         ++it;
     }
 

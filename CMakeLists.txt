@@ -34,7 +34,8 @@ if (WIN32)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-msvc100)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/fi/lib-msvc100)
 elseif (APPLE)
-    link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-cocoa)
+    link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-osx)
+    link_directories(${CMAKE_SOURCE_DIR}/dep/libs/fi/lib-osx)
 endif()
 
 # Source files
@@ -63,6 +64,7 @@ elseif (APPLE)
     find_library(IOKIT IOKit)
     target_link_libraries(${PROJECT_NAME} "${IOKIT}")
     target_link_libraries(${PROJECT_NAME} "GLFW")
+    target_link_libraries(${PROJECT_NAME} "freeimage")
 endif()
 
 # Copy dll to output directory

@@ -34,13 +34,8 @@ using namespace cub;
 
 static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
-    printf("\n*** ");
-    if (fif != FIF_UNKNOWN)
-    {
-        printf("%s Format\n", FreeImage_GetFormatFromFIF(fif));
-    }
-    printf(message);
-    printf(" ***\n");
+    cerr << "FreeImage - error: " << FreeImage_GetFormatFromFIF(fif) << endl
+         << "    " << message << endl;
 }
 
 static void WindowSizeCallback(int w, int h)

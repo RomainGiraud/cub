@@ -5,6 +5,7 @@
 
 #if defined(__APPLE__)
 #include <mach-o/dyld.h>
+
 #include <dlfcn.h>
 
 static void* AppleGLGetProcAddress (const char *name)
@@ -89,7 +90,96 @@ namespace gl
 {
 	namespace exts
 	{
+		LoadTest var_ARB_framebuffer_object;
+		
 	} //namespace exts
+	typedef GLboolean (CODEGEN_FUNCPTR *PFNISRENDERBUFFER)(GLuint );
+	PFNISRENDERBUFFER IsRenderbuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNBINDRENDERBUFFER)(GLenum , GLuint );
+	PFNBINDRENDERBUFFER BindRenderbuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNDELETERENDERBUFFERS)(GLsizei , const GLuint *);
+	PFNDELETERENDERBUFFERS DeleteRenderbuffers = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNGENRENDERBUFFERS)(GLsizei , GLuint *);
+	PFNGENRENDERBUFFERS GenRenderbuffers = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNRENDERBUFFERSTORAGE)(GLenum , GLenum , GLsizei , GLsizei );
+	PFNRENDERBUFFERSTORAGE RenderbufferStorage = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNGETRENDERBUFFERPARAMETERIV)(GLenum , GLenum , GLint *);
+	PFNGETRENDERBUFFERPARAMETERIV GetRenderbufferParameteriv = 0;
+	typedef GLboolean (CODEGEN_FUNCPTR *PFNISFRAMEBUFFER)(GLuint );
+	PFNISFRAMEBUFFER IsFramebuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNBINDFRAMEBUFFER)(GLenum , GLuint );
+	PFNBINDFRAMEBUFFER BindFramebuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNDELETEFRAMEBUFFERS)(GLsizei , const GLuint *);
+	PFNDELETEFRAMEBUFFERS DeleteFramebuffers = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNGENFRAMEBUFFERS)(GLsizei , GLuint *);
+	PFNGENFRAMEBUFFERS GenFramebuffers = 0;
+	typedef GLenum (CODEGEN_FUNCPTR *PFNCHECKFRAMEBUFFERSTATUS)(GLenum );
+	PFNCHECKFRAMEBUFFERSTATUS CheckFramebufferStatus = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNFRAMEBUFFERTEXTURE1D)(GLenum , GLenum , GLenum , GLuint , GLint );
+	PFNFRAMEBUFFERTEXTURE1D FramebufferTexture1D = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNFRAMEBUFFERTEXTURE2D)(GLenum , GLenum , GLenum , GLuint , GLint );
+	PFNFRAMEBUFFERTEXTURE2D FramebufferTexture2D = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNFRAMEBUFFERTEXTURE3D)(GLenum , GLenum , GLenum , GLuint , GLint , GLint );
+	PFNFRAMEBUFFERTEXTURE3D FramebufferTexture3D = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNFRAMEBUFFERRENDERBUFFER)(GLenum , GLenum , GLenum , GLuint );
+	PFNFRAMEBUFFERRENDERBUFFER FramebufferRenderbuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNGETFRAMEBUFFERATTACHMENTPARAMETERIV)(GLenum , GLenum , GLenum , GLint *);
+	PFNGETFRAMEBUFFERATTACHMENTPARAMETERIV GetFramebufferAttachmentParameteriv = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNGENERATEMIPMAP)(GLenum );
+	PFNGENERATEMIPMAP GenerateMipmap = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNBLITFRAMEBUFFER)(GLint , GLint , GLint , GLint , GLint , GLint , GLint , GLint , GLbitfield , GLenum );
+	PFNBLITFRAMEBUFFER BlitFramebuffer = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNRENDERBUFFERSTORAGEMULTISAMPLE)(GLenum , GLsizei , GLenum , GLsizei , GLsizei );
+	PFNRENDERBUFFERSTORAGEMULTISAMPLE RenderbufferStorageMultisample = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNFRAMEBUFFERTEXTURELAYER)(GLenum , GLenum , GLuint , GLint , GLint );
+	PFNFRAMEBUFFERTEXTURELAYER FramebufferTextureLayer = 0;
+	
+	static int Load_ARB_framebuffer_object()
+	{
+		int numFailed = 0;
+		IsRenderbuffer = reinterpret_cast<PFNISRENDERBUFFER>(IntGetProcAddress("glIsRenderbuffer"));
+		if(!IsRenderbuffer) ++numFailed;
+		BindRenderbuffer = reinterpret_cast<PFNBINDRENDERBUFFER>(IntGetProcAddress("glBindRenderbuffer"));
+		if(!BindRenderbuffer) ++numFailed;
+		DeleteRenderbuffers = reinterpret_cast<PFNDELETERENDERBUFFERS>(IntGetProcAddress("glDeleteRenderbuffers"));
+		if(!DeleteRenderbuffers) ++numFailed;
+		GenRenderbuffers = reinterpret_cast<PFNGENRENDERBUFFERS>(IntGetProcAddress("glGenRenderbuffers"));
+		if(!GenRenderbuffers) ++numFailed;
+		RenderbufferStorage = reinterpret_cast<PFNRENDERBUFFERSTORAGE>(IntGetProcAddress("glRenderbufferStorage"));
+		if(!RenderbufferStorage) ++numFailed;
+		GetRenderbufferParameteriv = reinterpret_cast<PFNGETRENDERBUFFERPARAMETERIV>(IntGetProcAddress("glGetRenderbufferParameteriv"));
+		if(!GetRenderbufferParameteriv) ++numFailed;
+		IsFramebuffer = reinterpret_cast<PFNISFRAMEBUFFER>(IntGetProcAddress("glIsFramebuffer"));
+		if(!IsFramebuffer) ++numFailed;
+		BindFramebuffer = reinterpret_cast<PFNBINDFRAMEBUFFER>(IntGetProcAddress("glBindFramebuffer"));
+		if(!BindFramebuffer) ++numFailed;
+		DeleteFramebuffers = reinterpret_cast<PFNDELETEFRAMEBUFFERS>(IntGetProcAddress("glDeleteFramebuffers"));
+		if(!DeleteFramebuffers) ++numFailed;
+		GenFramebuffers = reinterpret_cast<PFNGENFRAMEBUFFERS>(IntGetProcAddress("glGenFramebuffers"));
+		if(!GenFramebuffers) ++numFailed;
+		CheckFramebufferStatus = reinterpret_cast<PFNCHECKFRAMEBUFFERSTATUS>(IntGetProcAddress("glCheckFramebufferStatus"));
+		if(!CheckFramebufferStatus) ++numFailed;
+		FramebufferTexture1D = reinterpret_cast<PFNFRAMEBUFFERTEXTURE1D>(IntGetProcAddress("glFramebufferTexture1D"));
+		if(!FramebufferTexture1D) ++numFailed;
+		FramebufferTexture2D = reinterpret_cast<PFNFRAMEBUFFERTEXTURE2D>(IntGetProcAddress("glFramebufferTexture2D"));
+		if(!FramebufferTexture2D) ++numFailed;
+		FramebufferTexture3D = reinterpret_cast<PFNFRAMEBUFFERTEXTURE3D>(IntGetProcAddress("glFramebufferTexture3D"));
+		if(!FramebufferTexture3D) ++numFailed;
+		FramebufferRenderbuffer = reinterpret_cast<PFNFRAMEBUFFERRENDERBUFFER>(IntGetProcAddress("glFramebufferRenderbuffer"));
+		if(!FramebufferRenderbuffer) ++numFailed;
+		GetFramebufferAttachmentParameteriv = reinterpret_cast<PFNGETFRAMEBUFFERATTACHMENTPARAMETERIV>(IntGetProcAddress("glGetFramebufferAttachmentParameteriv"));
+		if(!GetFramebufferAttachmentParameteriv) ++numFailed;
+		GenerateMipmap = reinterpret_cast<PFNGENERATEMIPMAP>(IntGetProcAddress("glGenerateMipmap"));
+		if(!GenerateMipmap) ++numFailed;
+		BlitFramebuffer = reinterpret_cast<PFNBLITFRAMEBUFFER>(IntGetProcAddress("glBlitFramebuffer"));
+		if(!BlitFramebuffer) ++numFailed;
+		RenderbufferStorageMultisample = reinterpret_cast<PFNRENDERBUFFERSTORAGEMULTISAMPLE>(IntGetProcAddress("glRenderbufferStorageMultisample"));
+		if(!RenderbufferStorageMultisample) ++numFailed;
+		FramebufferTextureLayer = reinterpret_cast<PFNFRAMEBUFFERTEXTURELAYER>(IntGetProcAddress("glFramebufferTextureLayer"));
+		if(!FramebufferTextureLayer) ++numFailed;
+		return numFailed;
+	}
+	
 	typedef void (CODEGEN_FUNCPTR *PFNCULLFACE)(GLenum );
 	PFNCULLFACE CullFace = 0;
 	typedef void (CODEGEN_FUNCPTR *PFNFRONTFACE)(GLenum );
@@ -2469,11 +2559,13 @@ namespace gl
 			
 			void InitializeMappingTable(std::vector<MapEntry> &table)
 			{
-				table.reserve(0);
+				table.reserve(1);
+				table.push_back(MapEntry("GL_ARB_framebuffer_object", &exts::var_ARB_framebuffer_object, Load_ARB_framebuffer_object));
 			}
 			
 			void ClearExtensionVars()
 			{
+				exts::var_ARB_framebuffer_object = exts::LoadTest();
 			}
 			
 			void LoadExtByName(std::vector<MapEntry> &table, const char *extensionName)
