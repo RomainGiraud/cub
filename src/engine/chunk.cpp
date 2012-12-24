@@ -67,13 +67,13 @@ void cub::Chunk::Load()
     {
         for (int x = 0; x < _xLength; ++x)
         {
-            get(x, 0, z) = 1;
+            get(x, 0, z) = 2;
         }
     }
-    
+
     for (int z = 0; z < _zLength; ++z)
     {
-        get(0, 1, z) = 2;
+        get(0, 1, z) = 5;
     }
 
     //gl::ActiveTexture(gl::TEXTURE0);
@@ -82,10 +82,20 @@ void cub::Chunk::Load()
     Generate();
 }
 
+struct Voxel
+{
+    vector<unsigned int> indices;
+    int x, y, z;
+    int s, t;
+};
+
 void cub::Chunk::Generate()
 {
-    vector< vector<int> > positions;
-    vector<unsigned int> indices;
+    vector<Voxel> voxels;
+    const int texNum = 16;
+    const float texSizz = 0.0625f; // 1 / texNum
+    const float texOffset = 0.005f;
+    int size = 0;
     for (int y = 0; y < _yLength; ++y)
     {
         for (int z = 0; z < _zLength; ++z)
@@ -101,74 +111,87 @@ void cub::Chunk::Generate()
                 bool zp = !IsFilled(x,y,z+1);
                 bool zn = !IsFilled(x,y,z-1);
 
-                vector<unsigned int> current = CubeBuilder::Build(yp, yn, xp, xn, zp, zn);
-                indices.insert(indices.end(), current.begin(), current.end());
+                Voxel vox;
+                vox.x = x;
+                vox.y = y;
+                vox.z = z;
+                int n = get(x,y,z) - 1;
+                vox.s = n % texNum;
+                vox.t = (texNum - 1) - n / texNum;
 
-                for (int i = 0; i < current.size(); ++i)
-                {
-                    vector<int> tmp;
-                    tmp.push_back(x);
-                    tmp.push_back(y);
-                    tmp.push_back(z);
+                vox.indices = CubeBuilder::Build(yp, yn, xp, xn, zp, zn);
+                size += vox.indices.size();
 
-                    positions.push_back(tmp);
-                }
+                voxels.push_back(vox);
+            }
+        }
+    }
+    
+    vector<unsigned int> indices;
+    indices.reserve(size);
+    vector<float> vertices;
+    vertices.reserve(size * 3 * 4 / 6.f);
+    vector<float> texcoords;
+    texcoords.reserve(size * 2 * 4 / 6.f);
+    vector<float> normals;
+    normals.reserve(size * 3 * 4 / 6.f);
+    vector<float> tangents;
+    tangents.reserve(size * 3 * 4 / 6.f);
+    vector<float> bitangents;
+    bitangents.reserve(size * 3 * 4 / 6.f);
+    
+    for (vector<Voxel>::iterator vox = voxels.begin(); vox != voxels.end(); ++vox)
+    {
+        for (vector<unsigned int>::iterator it = vox->indices.begin(); it != vox->indices.end(); it += 6)
+        {
+            int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
+
+            for (int i = 0; i < 4; ++i)
+            {
+                vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 0]) + vox->x);
+                vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 1]) + vox->y);
+                vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 2]) + vox->z);
+                
+                int s = CubeBuilder::TexCoords[id[i] * 2 + 0];
+                int t = CubeBuilder::TexCoords[id[i] * 2 + 1];
+                float ss = 0, tt = 0;
+                if (s == 1)
+                    ss = texSizz * (vox->s + 1) - texOffset;
+                else if (s == 0)
+                    ss = texSizz * vox->s + texOffset;
+                if (t == 1)
+                    tt = texSizz * (vox->t + 1) - texOffset;
+                else if (t == 0)
+                    tt = texSizz * vox->t + texOffset;
+                texcoords.push_back(ss);
+                texcoords.push_back(tt);
+            
+                normals.push_back(CubeBuilder::Normals[id[i] * 3 + 0]);
+                normals.push_back(CubeBuilder::Normals[id[i] * 3 + 1]);
+                normals.push_back(CubeBuilder::Normals[id[i] * 3 + 2]);
+            
+                tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 0]);
+                tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 1]);
+                tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 2]);
+            
+                bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 0]);
+                bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 1]);
+                bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 2]);
             }
         }
     }
 
-    vector<float> vertices;
-    vertices.reserve(indices.size() * 3 * 4 / 6.f);
-    vector<float> texcoords;
-    texcoords.reserve(indices.size() * 2 * 4 / 6.f);
-    vector<float> normals;
-    normals.reserve(indices.size() * 3 * 4 / 6.f);
-    vector<float> tangents;
-    tangents.reserve(indices.size() * 3 * 4 / 6.f);
-    vector<float> bitangents;
-    bitangents.reserve(indices.size() * 3 * 4 / 6.f);
-
-    unsigned int offset = 0;
-    for (vector<unsigned int>::iterator it = indices.begin(); it != indices.end(); it += 6, offset += 6)
+    for (unsigned int i = 0, offset = 0; i < size; i += 6, ++offset)
     {
-        int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
-
-        for (int i = 0; i < 4; ++i)
-        {
-            vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 0]) + positions[offset][0]);
-            vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 1]) + positions[offset][1]);
-            vertices.push_back((CubeBuilder::Vertices[id[i] * 3 + 2]) + positions[offset][2]);
-
-            texcoords.push_back(CubeBuilder::TexCoords[id[i] * 2 + 0]);
-            texcoords.push_back(CubeBuilder::TexCoords[id[i] * 2 + 1]);
-            
-            normals.push_back(CubeBuilder::Normals[id[i] * 3 + 0]);
-            normals.push_back(CubeBuilder::Normals[id[i] * 3 + 1]);
-            normals.push_back(CubeBuilder::Normals[id[i] * 3 + 2]);
-            
-            tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 0]);
-            tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 1]);
-            tangents.push_back(CubeBuilder::Tangents[id[i] * 3 + 2]);
-            
-            bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 0]);
-            bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 1]);
-            bitangents.push_back(CubeBuilder::Bitangents[id[i] * 3 + 2]);
-        }
+        indices.push_back(0 + offset * 4);
+        indices.push_back(1 + offset * 4);
+        indices.push_back(2 + offset * 4);
+        indices.push_back(0 + offset * 4);
+        indices.push_back(2 + offset * 4);
+        indices.push_back(3 + offset * 4);
     }
 
-    offset = 0;
-    for (vector<unsigned int>::iterator it = indices.begin(); it != indices.end(); it += 6, ++offset)
-    {
-        *(it + 0) = 0 + offset * 4;
-        *(it + 1) = 1 + offset * 4;
-        *(it + 2) = 2 + offset * 4;
-        *(it + 3) = 0 + offset * 4;
-        *(it + 4) = 2 + offset * 4;
-        *(it + 5) = 3 + offset * 4;
-    }
-
-    float v = 0.0625f;
-    float m = 0.005f;
+    /*
     for (vector<float>::iterator it = texcoords.begin(); it != texcoords.end(); )
     {
         if (*it == 1)
@@ -183,6 +206,7 @@ void cub::Chunk::Generate()
             *it = v * 15 + m;
         ++it;
     }
+    */
 
     _indiceBuffer.Attach(indices.data(), indices.size() * sizeof(unsigned int));
     _vertexBuffer.Attach(vertices.data(), vertices.size() * sizeof(float));
