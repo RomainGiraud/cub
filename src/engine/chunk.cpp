@@ -11,6 +11,12 @@
 #include <vector>
 using namespace std;
 
+using namespace noise;
+
+const int cub::Chunk::_xLength = 32;
+const int cub::Chunk::_yLength = 10;
+const int cub::Chunk::_zLength = 32;
+
 cub::Chunk::Chunk(Game *game)
     : _textureID(-1),
       _indiceBuffer(Buffer::Index),
@@ -21,10 +27,6 @@ cub::Chunk::Chunk(Game *game)
       _bitangentBuffer(Buffer::Vertex)
 {
     _game = game;
-
-    _xLength = 20;
-    _yLength = 10;
-    _zLength = 20;
 
     _data = new int[_xLength * _yLength * _zLength];
 }
@@ -54,7 +56,7 @@ void cub::Chunk::Display()
     }
 }
 
-void cub::Chunk::Load()
+void cub::Chunk::Load(utils::NoiseMap heightMap)
 {
     _shader = _game->GetContent().LoadShaders("shaders/phong_tex.vert", "shaders/phong_tex.frag");
 
@@ -67,19 +69,33 @@ void cub::Chunk::Load()
     {
         for (int x = 0; x < _xLength; ++x)
         {
-            get(x, 0, z) = 2;
+            float height = heightMap.GetValue(x,z) + 1;
+            height = clamp(height * _yLength / 2.0f, 0, _yLength - 1);
+            
+            for (int y = 0; y < height; ++y)
+                get(x, y, z) = 2;
         }
-    }
-
-    for (int z = 0; z < _zLength; ++z)
-    {
-        get(0, 1, z) = 5;
     }
 
     //gl::ActiveTexture(gl::TEXTURE0);
     _textureID = _game->GetContent().LoadTexture("textures/terrain.png");
 
     Generate();
+}
+
+int cub::Chunk::GetXLength()
+{
+    return _xLength;
+}
+
+int cub::Chunk::GetYLength()
+{
+    return _yLength;
+}
+
+int cub::Chunk::GetZLength()
+{
+    return _zLength;
 }
 
 struct Voxel
@@ -227,15 +243,22 @@ bool cub::Chunk::IsFilled(int x, int y, int z)
     return get(x, y, z) != 0;
 }
 
+glm::vec3 cub::Chunk::GetPosition() const
+{
+    return _position;
+}
+
+void cub::Chunk::SetPosition(glm::vec3 position)
+{
+    _position = position;
+}
 
 void cub::Chunk::Render(double time)
 {
-    glm::vec2 size = _game->GetSize();
-    float aspectRatio = size.x / (float)(size.y);
     glm::mat4 projectionMatrix = _game->GetCamera().GetProjectionMatrix();
     glm::mat4 viewMatrix = _game->GetCamera().GetViewMatrix();
     //glm::mat4 viewMatrix = glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-    glm::mat4 modelMatrix = glm::mat4(1.0f);
+    glm::mat4 modelMatrix = glm::translate(_position * glm::vec3(_xLength, _yLength, _zLength));
 
     glm::mat4 mvMatrix = viewMatrix * modelMatrix;
     glm::mat4 mvpMatrix = projectionMatrix * mvMatrix;
@@ -245,7 +268,8 @@ void cub::Chunk::Render(double time)
     _shader.SetUniformValue("mvMatrix", mvMatrix);
     _shader.SetUniformValue("mvpMatrix", mvpMatrix);
     _shader.SetUniformValue("normalMatrix", normalMatrix);
-    _shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
+    //_shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
+    _shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0.1f, 1, 0.1f, 0));
     _shader.SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
     //_shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
     //_shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));

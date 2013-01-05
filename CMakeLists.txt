@@ -36,6 +36,7 @@ if (WIN32)
 elseif (APPLE)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/glfw/lib-osx)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/fi/lib-osx)
+    link_directories(${CMAKE_SOURCE_DIR}/dep/libs/noise/lib-osx)
 endif()
 
 # Source files
@@ -65,6 +66,7 @@ elseif (APPLE)
     target_link_libraries(${PROJECT_NAME} "${IOKIT}")
     target_link_libraries(${PROJECT_NAME} "GLFW")
     target_link_libraries(${PROJECT_NAME} "freeimage")
+    target_link_libraries(${PROJECT_NAME} "noise")
 endif()
 
 # Copy dll to output directory

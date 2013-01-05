@@ -4,3 +4,7 @@ cub::AbstractCamera::AbstractCamera(Game *game)
     : _game(game)
 {
 }
+
+cub::AbstractCamera::~AbstractCamera()
+{
+}

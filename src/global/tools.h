@@ -7,6 +7,12 @@
 namespace cub
 {
 
+//template<typename T>
+inline float clamp(const float &val, const float &min, const float &max)
+{
+	return std::min(max, std::max(min, val));
+}
+
 inline std::ostream& operator<<(std::ostream& os, const glm::mat4 &m)
 {
     return os << m[0][0] << " | " << m[1][0] << " | " << m[2][0] << " | " << m[3][0] << std::endl

@@ -34,14 +34,15 @@ void cub::ShaderProgram::Link()
     GLint result;
     gl::GetProgramiv(_id, gl::LINK_STATUS, &result);
 
-    char infoLog[1024];
-    gl::GetProgramInfoLog(_id, 1024, NULL, infoLog);
-    cout << "Program linking at " << _id << ":" << endl
-         << infoLog << endl;
-
     if (!result)
     {
         gl::DeleteProgram(_id);
+
+        char infoLog[1024];
+        gl::GetProgramInfoLog(_id, 1024, NULL, infoLog);
+        cout << "Program linking at " << _id << ":" << endl
+             << infoLog << endl;
+         
         throw Exception("", "createShaders", "glLinkProgram");
     }
 }

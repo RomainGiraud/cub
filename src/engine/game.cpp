@@ -1,10 +1,5 @@
 #include <engine/game.h>
 
-#include <GL/gl_core.hpp>
-
-#define GLFW_NO_GLU
-#include <GL/glfw.h>
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,13 +10,13 @@ using namespace std;
 #include <json/reader.h>
 using namespace json;
 
-#include <global/global.h>
 #include <camera/free_camera.h>
 #include <camera/rts_camera.h>
 #include <global/exception.h>
 #include <global/tools.h>
 #include <engine/shader.h>
 #include <engine/chunk.h>
+#include <engine/terrain.h>
 using namespace cub;
 
 #include <glm/glm.hpp>
@@ -38,9 +33,7 @@ static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
          << "    " << message << endl;
 }
 
-static void WindowSizeCallback(int w, int h)
-{
-}
+cub::Game* cub::Game::MainGame = 0;
 
 cub::Game::Game()
 #if defined(CUB_SYSTEM_WINDOWS)
@@ -49,11 +42,12 @@ cub::Game::Game()
     : _content("/Users/romain/Documents/Projets/cub/resources")
 #endif
 {
+    MainGame = this;
+
     glfwInit();
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
     glfwSetWindowTitle("cub");
     //glfwSwapInterval(1); // vertical sync ?
-    glfwSetWindowSizeCallback(WindowSizeCallback);
     glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
 
     // Init GLLoader
@@ -65,14 +59,30 @@ cub::Game::Game()
 
     DisplayGLInfo();
 
-    _components = list<Chunk*>();
+    // Initialize engine's parts
+    _settings = new Settings(this);
+
+    _input = new Input(this);
     
     _camera = new RTSCamera(this);
     _camera->SetPosition(glm::vec3(0, 10, 10));
+
+    _terrain = new Terrain(this);
+
+
+    // Set callbacks
+    glfwSetWindowSizeCallback(WindowSizeCallback);
 }
 
 cub::Game::~Game()
 {
+    delete _terrain;
+    delete _camera;
+}
+
+void GLFWCALL cub::Game::WindowSizeCallback(int w, int h)
+{
+    MainGame->Resize(w, h);
 }
 
 void cub::Game::DisplayGLInfo() const
@@ -118,6 +128,16 @@ cub::Content& cub::Game::GetContent()
     return _content;
 }
 
+cub::Input& cub::Game::GetInput()
+{
+    return *_input;
+}
+
+cub::Settings& cub::Game::GetSettings()
+{
+    return *_settings;
+}
+
 cub::AbstractCamera& cub::Game::GetCamera()
 {
     return *_camera;
@@ -126,13 +146,7 @@ cub::AbstractCamera& cub::Game::GetCamera()
 void cub::Game::Load()
 {
     //LoadScene("D:/Projects/cub_cpp/resources/scene.json");
-
-    _components.push_back(new Chunk(this));
-
-    for (list<Chunk*>::const_iterator it = _components.begin(); it != _components.end(); ++it)
-    {
-        (*it)->Load();
-    }
+    _terrain->Load();
 }
 
 void cub::Game::LoadScene(string filename)
@@ -155,42 +169,15 @@ int cub::Game::Run()
         running = !glfwGetKey(GLFW_KEY_ESC) &&
                     glfwGetWindowParam(GLFW_OPENED);
         
-        bool isMoving = false;
-        glm::vec3 move(0.f);
-        if (glfwGetKey('W') == GLFW_PRESS)
+        _input->Update();
+        if (_input->IsMoving())
         {
-            move.z = -1;
-            isMoving = true;
-        }
-        else if (glfwGetKey('S') == GLFW_PRESS)
-        {
-            move.z = +1;
-            isMoving = true;
-        }
-        if (glfwGetKey('A') == GLFW_PRESS)
-        {
-            move.x = -1;
-            isMoving = true;
-        }
-        else if (glfwGetKey('D') == GLFW_PRESS)
-        {
-            move.x = +1;
-            isMoving = true;
-        }
-
-        if (isMoving)
-        {
-            _camera->Translate(glm::normalize(move) * (float)(time * 10));
+            _camera->Translate(_input->GetMovingVector() * (float)(time * 10));
         }
 
         
         gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
-
-        for (list<Chunk*>::const_iterator it = _components.begin(); it != _components.end(); ++it)
-        {
-            (*it)->Render(time);
-        }
-
+        _terrain->Render(time);
         glfwSwapBuffers();
 
 
@@ -208,7 +195,6 @@ void cub::Game::InitGL()
     gl::ClearColor(0.39f, 0.58f, 0.93f, 1);
     
     gl::Enable(gl::DEPTH_TEST);
-    gl::Viewport(0, 0, 800, 600);
 
 /*
     glEnable(glCULL_FACE);
@@ -226,4 +212,13 @@ void cub::Game::InitGL()
     glEnable(glPOLYGON_SMOOTH);
     glHint(glPOLYGON_SMOOTH_HINT, glNICEST);
 */
+}
+
+void cub::Game::Resize(int w, int h)
+{
+    gl::Viewport(0, 0, w, h);
+
+    glm::vec2 size = GetSize();
+    float aspectRatio = size.x / (float)(size.y);
+    _camera->SetAspectRatio(aspectRatio);
 }

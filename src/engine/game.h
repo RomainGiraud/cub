@@ -3,15 +3,24 @@
 
 #include <list>
 #include <string>
+
 #include <glm/glm.hpp>
 
+#include <GL/gl_core.hpp>
+
+#define GLFW_NO_GLU
+#include <GL/glfw.h>
+
+#include <global/global.h>
 #include <engine/content.h>
 #include <camera/abstract_camera.h>
+#include <global/settings.h>
+#include <global/input.h>
 
 namespace cub
 {
     
-class Chunk;
+class Terrain;
 
 class Game
 {
@@ -32,13 +41,24 @@ public:
     glm::vec2 GetSize();
 
     Content& GetContent();
+    Input& GetInput();
+    Settings& GetSettings();
     AbstractCamera& GetCamera();
 
 private:
+    static Game *MainGame;
+
     Content _content;
+    Settings *_settings;
+    Input *_input;
     AbstractCamera *_camera;
-    std::list<Chunk*> _components;
+    Terrain *_terrain;
+
     void InitGL();
+    void Resize(int w, int h);
+
+    // Callbacks
+    static void GLFWCALL WindowSizeCallback(int w, int h);
 };
 
 }
