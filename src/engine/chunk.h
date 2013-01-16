@@ -35,7 +35,7 @@ private:
 
     Game *_game;
     int *_data;
-    ShaderProgram _shader;
+    ShaderProgram *_shader;
     int _indiceLength;
     GLuint _textureID;
     glm::vec3 _position;

@@ -264,45 +264,45 @@ void cub::Chunk::Render(double time)
     glm::mat4 mvpMatrix = projectionMatrix * mvMatrix;
     glm::mat3 normalMatrix = glm::inverseTranspose(glm::mat3(mvMatrix));
 
-    _shader.Bind();
-    _shader.SetUniformValue("mvMatrix", mvMatrix);
-    _shader.SetUniformValue("mvpMatrix", mvpMatrix);
-    _shader.SetUniformValue("normalMatrix", normalMatrix);
-    //_shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
-    _shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0.1f, 1, 0.1f, 0));
-    _shader.SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
-    //_shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
-    //_shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
-    //_shader.SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
-    //_shader.SetUniformValue("Material.Shininess", 27.89743616f);
-    _shader.SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
-    _shader.SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
-    _shader.SetUniformValue("Material.Ks", glm::vec3(0.5f, 0.5f, 0.5f));
-    _shader.SetUniformValue("Material.Shininess", 50.0f);
+    _shader->Bind();
+    _shader->SetUniformValue("mvMatrix", mvMatrix);
+    _shader->SetUniformValue("mvpMatrix", mvpMatrix);
+    _shader->SetUniformValue("normalMatrix", normalMatrix);
+    //_shader->SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
+    _shader->SetUniformValue("Light.Position", viewMatrix * glm::vec4(0.1f, 1, 0.1f, 0));
+    _shader->SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
+    //_shader->SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
+    //_shader->SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
+    //_shader->SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
+    //_shader->SetUniformValue("Material.Shininess", 27.89743616f);
+    _shader->SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
+    _shader->SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
+    _shader->SetUniformValue("Material.Ks", glm::vec3(0.5f, 0.5f, 0.5f));
+    _shader->SetUniformValue("Material.Shininess", 50.0f);
 
     gl::ActiveTexture(gl::TEXTURE0);
     gl::BindTexture(gl::TEXTURE_2D, _textureID);
-    _shader.SetUniformValue("Tex1", 0);
+    _shader->SetUniformValue("Tex1", 0);
     
-    _shader.EnableVertexAttribArray("in_Position");
+    _shader->EnableVertexAttribArray("in_Position");
     _vertexBuffer.Bind();
-    _shader.VertexAttribPointer("in_Position", 3, gl::FLOAT, false, 0, 0);
+    _shader->VertexAttribPointer("in_Position", 3, gl::FLOAT, false, 0, 0);
 
-    _shader.EnableVertexAttribArray("in_TexCoord", false);
+    _shader->EnableVertexAttribArray("in_TexCoord", false);
     _textureBuffer.Bind();
-    _shader.VertexAttribPointer("in_TexCoord", 2, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_TexCoord", 2, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Normal", false);
+    _shader->EnableVertexAttribArray("in_Normal", false);
     _normalBuffer.Bind();
-    _shader.VertexAttribPointer("in_Normal", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Normal", 3, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Tangent", false);
+    _shader->EnableVertexAttribArray("in_Tangent", false);
     _tangentBuffer.Bind();
-    _shader.VertexAttribPointer("in_Tangent", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Tangent", 3, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Bitangent", false);
+    _shader->EnableVertexAttribArray("in_Bitangent", false);
     _bitangentBuffer.Bind();
-    _shader.VertexAttribPointer("in_Bitangent", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Bitangent", 3, gl::FLOAT, false, 0, 0, false);
 
     _indiceBuffer.Bind();
     

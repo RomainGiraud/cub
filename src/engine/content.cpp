@@ -16,6 +16,14 @@ cub::Content::Content(string path)
     _path = path + "/";
 }
 
+cub::Content::~Content()
+{
+    for (map<string, ShaderProgram*>::iterator it = _cachedShaders.begin(); it != _cachedShaders.end(); ++it)
+    {
+        delete it->second;
+    }
+}
+
 std::string cub::Content::GetPath() const
 {
     return _path;
@@ -24,6 +32,9 @@ std::string cub::Content::GetPath() const
 int cub::Content::LoadTexture(string filename)
 {
     filename = _path + filename;
+    
+    if (_cachedTextures.find(filename) != _cachedTextures.end())
+        return _cachedTextures[filename];
 	
 	//check the file signature and deduce its format
     FREE_IMAGE_FORMAT fif = FreeImage_GetFileType(filename.c_str(), 0);
@@ -78,6 +89,9 @@ int cub::Content::LoadTexture(string filename)
 	FreeImage_Unload(dib);
 	FreeImage_Unload(converted);
 
+    // cache
+    _cachedTextures[filename] = gl_texID;
+
 	//return success
 	return gl_texID;
 }
@@ -130,11 +144,15 @@ int cub::Content::LoadSkyBox(string filename)
     return -1;
 }
 
-cub::ShaderProgram cub::Content::LoadShaders(string fileVert, string fileFrag)
+cub::ShaderProgram* cub::Content::LoadShaders(string fileVert, string fileFrag)
 {
     fileVert = _path + fileVert;
     fileFrag = _path + fileFrag;
 
+    string id = fileVert + "|" + fileFrag;
+
+    if (_cachedShaders.find(id) != _cachedShaders.end())
+        return _cachedShaders[id];
 
     Shader vertexShader(Shader::Vertex);
     vertexShader.LoadFile(fileVert);
@@ -142,11 +160,13 @@ cub::ShaderProgram cub::Content::LoadShaders(string fileVert, string fileFrag)
     Shader fragmentShader(Shader::Fragment);
     fragmentShader.LoadFile(fileFrag);
 
-    ShaderProgram shader;
-    shader.AttachShader(vertexShader);
-    shader.AttachShader(fragmentShader);
-    shader.Link();
-    shader.Bind();
+    ShaderProgram *shader = new ShaderProgram();
+    shader->AttachShader(vertexShader);
+    shader->AttachShader(fragmentShader);
+    shader->Link();
+    shader->Bind();
+
+    _cachedShaders[id] = shader;
 
     return shader;
 }
