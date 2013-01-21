@@ -8,28 +8,28 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const glm::vec3& point)
 {
     ContainmentType result = ContainmentType::Inside;
 
-	for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 6; ++i)
     {
-		if (_planes[i].Distance(point) < 0)
-			return ContainmentType::Outside;
-	}
-	return result;
+        if (_planes[i].Distance(point) < 0)
+            return ContainmentType::Outside;
+    }
+    return result;
 }
 
 cub::ContainmentType cub::BoundingFrustum::Contains(const Sphere &sphere)
 {
-	ContainmentType result = ContainmentType::Inside;
+    ContainmentType result = ContainmentType::Inside;
 
-	for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 6; ++i)
     {
-		float distance = _planes[i].Distance(sphere.GetCenter());
+        float distance = _planes[i].Distance(sphere.GetCenter());
         if (distance < -sphere.GetRadius())
-			return ContainmentType::Outside;
-		else if (distance < sphere.GetRadius())
-			result = ContainmentType::Intersect;
-	}
+            return ContainmentType::Outside;
+        else if (distance < sphere.GetRadius())
+            result = ContainmentType::Intersect;
+    }
 
-	return result;
+    return result;
 }
 
 cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box)
@@ -120,5 +120,4 @@ void cub::BoundingFrustum::SetMatrix(const glm::mat4 &matrix)
     d = matrix[3][3] - matrix[3][2];
     _planes[5].SetValues(a,b,c,d);
     _planes[5].Normalize();
-    
 }
