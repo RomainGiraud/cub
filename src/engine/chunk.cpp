@@ -160,7 +160,7 @@ void cub::Chunk::Generate()
     {
         for (vector<unsigned int>::iterator it = vox->indices.begin(); it != vox->indices.end(); it += 6)
         {
-            int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
+            unsigned int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
 
             for (int i = 0; i < 4; ++i)
             {

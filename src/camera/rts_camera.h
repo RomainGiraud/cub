@@ -5,6 +5,7 @@
 #include <glm/gtc/quaternion.hpp>
 
 #include <camera/abstract_camera.h>
+#include <camera/bounding_frustum.h>
 
 namespace cub
 {
@@ -33,6 +34,8 @@ public:
 
     float AspectRatio();
     void SetAspectRatio(float v);
+
+    BoundingFrustum& GetBoundingFrustum();
     
 private:
     Game *_game;
@@ -40,10 +43,19 @@ private:
     glm::vec3 _position;
     glm::quat _orientation;
 
+    glm::mat4 _projectionMatrix;
+    glm::mat4 _viewMatrix;
+
+    BoundingFrustum _boundingFrustum;
+
     float _znear;
     float _zfar;
     float _fov;
     float _aspectRatio;
+    
+    void UpdateProjectionMatrix();
+    void UpdateViewMatrix();
+    void UpdateBoundingFrustum();
 };
 
 }
