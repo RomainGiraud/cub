@@ -1,4 +1,4 @@
-#include <camera/box.h>
+#include <geometry/box.h>
 
 cub::Box::Box()
 {

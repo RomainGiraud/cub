@@ -59,6 +59,7 @@ private:
 
     // Callbacks
     static void GLFWCALL WindowSizeCallback(int w, int h);
+    static void GLFWCALL KeyCallback(int key, int action);
 };
 
 }

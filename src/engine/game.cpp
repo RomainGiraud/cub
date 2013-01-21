@@ -72,6 +72,7 @@ cub::Game::Game()
 
     // Set callbacks
     glfwSetWindowSizeCallback(WindowSizeCallback);
+    glfwSetKeyCallback(KeyCallback);
 }
 
 cub::Game::~Game()
@@ -83,6 +84,11 @@ cub::Game::~Game()
 void GLFWCALL cub::Game::WindowSizeCallback(int w, int h)
 {
     MainGame->Resize(w, h);
+}
+
+void GLFWCALL cub::Game::KeyCallback(int key, int action)
+{
+    MainGame->_input->KeyChanged(key, action);
 }
 
 void cub::Game::DisplayGLInfo() const
@@ -173,6 +179,16 @@ int cub::Game::Run()
         if (_input->IsMoving())
         {
             _camera->Translate(_input->GetMovingVector() * (float)(time * 10));
+        }
+
+
+        if (_input->RenderWireframe())
+        {
+            gl::PolygonMode(gl::FRONT_AND_BACK, gl::LINE);
+        }
+        else
+        {
+            gl::PolygonMode(gl::FRONT_AND_BACK, gl::FILL);
         }
 
         

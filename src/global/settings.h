@@ -20,6 +20,8 @@ public:
     char GetBackward() const;
     char GetRightward() const;
     char GetLeftward() const;
+
+    char GetToggleWireframe() const;
     
 private:
 	Game *_game;

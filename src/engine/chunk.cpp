@@ -118,7 +118,7 @@ void cub::Chunk::Generate()
     const int texNum = 16;
     const float texSizz = 0.0625f; // 1 / texNum
     const float texOffset = 0.005f;
-    int size = 0;
+    unsigned int size = 0;
     for (int y = 0; y < _yLength; ++y)
     {
         for (int z = 0; z < _zLength; ++z)

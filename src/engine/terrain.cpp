@@ -53,16 +53,13 @@ void cub::Terrain::Load()
 
 void cub::Terrain::Render(double time)
 {
-	int nb = 0;
     for (list<Chunk*>::const_iterator it = _chunks.begin(); it != _chunks.end(); ++it)
     {
     	if (_game->GetCamera().GetBoundingFrustum().Contains((*it)->GetBox()) != ContainmentType::Outside)
     	{
 	        (*it)->Render(time);
-	        ++nb;
     	}
     }
-    cout << nb << endl;
 }
 
 void cub::Terrain::Generate()

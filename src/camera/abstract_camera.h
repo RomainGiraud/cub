@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-#include <camera/bounding_frustum.h>
+#include <geometry/bounding_frustum.h>
 
 namespace cub
 {

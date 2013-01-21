@@ -5,9 +5,9 @@
 
 #include <glm/glm.hpp>
 
-#include <camera/plane.h>
-#include <camera/box.h>
-#include <camera/sphere.h>
+#include <geometry/plane.h>
+#include <geometry/box.h>
+#include <geometry/sphere.h>
 
 namespace cub
 {

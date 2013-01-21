@@ -25,9 +25,7 @@ if (NOT IS_STDCXX11)
 endif()
 
 # Compilation flags
-set(CMAKE_CXX_FLAGS "-Wall -std=c++0x")
-#set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
-#set(CMAKE_CXX_FLAGS "-Wall -Werror")
+set(CMAKE_CXX_FLAGS "-Wall -std=c++0x -Werror")
 
 # Include and headers
 include_directories(${CMAKE_SOURCE_DIR}/src)

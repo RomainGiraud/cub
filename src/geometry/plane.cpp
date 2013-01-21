@@ -1,4 +1,4 @@
-#include <camera/plane.h>
+#include <geometry/plane.h>
 
 #include <cmath>
 using namespace std;

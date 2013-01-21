@@ -1,4 +1,4 @@
-#include <camera/bounding_frustum.h>
+#include <geometry/bounding_frustum.h>
 
 cub::BoundingFrustum::BoundingFrustum()
 {
@@ -120,4 +120,5 @@ void cub::BoundingFrustum::SetMatrix(const glm::mat4 &matrix)
     d = matrix[3][3] - matrix[3][2];
     _planes[5].SetValues(a,b,c,d);
     _planes[5].Normalize();
+    
 }

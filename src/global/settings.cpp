@@ -48,3 +48,12 @@ char cub::Settings::GetLeftward() const
 	return 'A';
 #endif
 }
+
+char cub::Settings::GetToggleWireframe() const
+{
+#if defined(CUB_SYSTEM_WINDOWS)
+	return 'W';
+#elif defined(CUB_SYSTEM_MACOS)
+	return 'Z';
+#endif
+}

@@ -8,7 +8,7 @@
 
 #include <engine/shader_program.h>
 #include <engine/buffer.h>
-#include <camera/box.h>
+#include <geometry/box.h>
 
 namespace cub
 {
