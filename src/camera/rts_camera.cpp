@@ -113,5 +113,5 @@ cub::BoundingFrustum& cub::RTSCamera::GetBoundingFrustum()
 void cub::RTSCamera::UpdateBoundingFrustum()
 {
     glm::mat4 m = _projectionMatrix * _viewMatrix;
-    //_boundingFrustum.SetMatrix(m);
+    _boundingFrustum.SetMatrix(m);
 }

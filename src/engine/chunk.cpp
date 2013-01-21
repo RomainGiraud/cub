@@ -29,6 +29,8 @@ cub::Chunk::Chunk(Game *game)
     _game = game;
 
     _data = new int[_xLength * _yLength * _zLength];
+
+    _box = Box(glm::vec3(_position.x * _xLength, _position.y * _yLength, _position.z * _zLength), glm::vec3(_xLength, _yLength, _zLength));
 }
 
 // x is the height, y is the width and z is the depth
@@ -54,6 +56,11 @@ void cub::Chunk::Display()
         }
         cout << endl;
     }
+}
+
+const cub::Box& cub::Chunk::GetBox() const
+{
+    return _box;
 }
 
 void cub::Chunk::Load(utils::NoiseMap heightMap)
@@ -251,6 +258,7 @@ glm::vec3 cub::Chunk::GetPosition() const
 void cub::Chunk::SetPosition(glm::vec3 position)
 {
     _position = position;
+    _box = Box(glm::vec3(_position.x * _xLength, _position.y * _yLength, _position.z * _zLength), glm::vec3(_xLength, _yLength, _zLength));
 }
 
 void cub::Chunk::Render(double time)

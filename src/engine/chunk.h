@@ -8,6 +8,7 @@
 
 #include <engine/shader_program.h>
 #include <engine/buffer.h>
+#include <camera/box.h>
 
 namespace cub
 {
@@ -26,12 +27,16 @@ public:
     glm::vec3 GetPosition() const;
     void SetPosition(glm::vec3 position);
 
+    const Box& GetBox() const;
+
     static int GetXLength();
     static int GetYLength();
     static int GetZLength();
     
 private:
     static const int _xLength, _yLength, _zLength;
+
+    Box _box;
 
     Game *_game;
     int *_data;

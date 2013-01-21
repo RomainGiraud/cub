@@ -32,60 +32,145 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const Sphere &sphere)
 	return result;
 }
 
-cub::ContainmentType cub::BoundingFrustum::Contains(const Plane& plane)
+cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box)
 {
-    return ContainmentType::Outside;
+    ContainmentType result = ContainmentType::Inside;
+    int out, in;
+
+    // for each plane do ...
+    for (int i = 0; i < 6; ++i)
+    {
+        // reset counters for corners in and out
+        out = 0;
+        in = 0;
+
+        // for each corner of the box do ...
+        // get out of the cycle as soon as a box as corners
+        // both inside and out of the frustum
+        for (int k = 0; k < 8; ++k)
+        //for (int k = 0; k < 8 && (in == 0 || out == 0); ++k)
+        {
+            // is the corner outside or inside
+            if (_planes[i].Distance(box.GetVertex(k)) < 0)
+                ++out;
+            else
+                ++in;
+        }
+
+        //if all corners are out
+        if (!in)
+            return ContainmentType::Outside;
+        // if some corners are out and others are in
+        else if (out)
+            result = ContainmentType::Intersect;
+    }
+
+    return result;
 }
 
+#include <glm/gtc/type_ptr.hpp>
 void cub::BoundingFrustum::SetMatrix(const glm::mat4 &matrix)
 {
+    const float *aa = glm::value_ptr(matrix);
     float a, b, c, d;
-    
-    // Left clipping plane
-    a = matrix[4][1] + matrix[1][1];
-    b = matrix[4][2] + matrix[1][2];
-    c = matrix[4][3] + matrix[1][3];
-    d = matrix[4][4] + matrix[1][4];
+    /*
+    // Right clipping plane
+    a = aa[ 3] - aa[ 0];
+    b = aa[ 7] - aa[ 4];
+    c = aa[11] - aa[ 8];
+    d = aa[15] - aa[12];
     _planes[0].SetValues(a,b,c,d);
     _planes[0].Normalize();
     
-    // Right clipping plane
-    a = matrix[4][1] - matrix[1][1];
-    b = matrix[4][2] - matrix[1][2];
-    c = matrix[4][3] - matrix[1][3];
-    d = matrix[4][4] - matrix[1][4];
+    // Left clipping plane
+    a = aa[ 3] + aa[ 0];
+    b = aa[ 7] + aa[ 4];
+    c = aa[11] + aa[ 8];
+    d = aa[15] + aa[12];
     _planes[1].SetValues(a,b,c,d);
     _planes[1].Normalize();
     
     // Top clipping plane
-    a = matrix[4][1] - matrix[2][1];
-    b = matrix[4][2] - matrix[2][2];
-    c = matrix[4][3] - matrix[2][3];
-    d = matrix[4][4] - matrix[2][4];
+    a = aa[ 3] - aa[ 1];
+    b = aa[ 7] - aa[ 5];
+    c = aa[11] - aa[ 9];
+    d = aa[15] - aa[13];
     _planes[2].SetValues(a,b,c,d);
     _planes[2].Normalize();
     
     // Bottom clipping plane
-    a = matrix[4][1] + matrix[2][1];
-    b = matrix[4][2] + matrix[2][2];
-    c = matrix[4][3] + matrix[2][3];
-    d = matrix[4][4] + matrix[2][4];
+    a = aa[ 3] + aa[ 1];
+    b = aa[ 7] + aa[ 5];
+    c = aa[11] + aa[ 9];
+    d = aa[15] + aa[13];
     _planes[3].SetValues(a,b,c,d);
     _planes[3].Normalize();
     
     // Near clipping plane
-    a = matrix[4][1] + matrix[3][1];
-    b = matrix[4][2] + matrix[3][2];
-    c = matrix[4][3] + matrix[3][3];
-    d = matrix[4][4] + matrix[3][4];
+    a = aa[ 3] + aa[ 2];
+    b = aa[ 7] + aa[ 6];
+    c = aa[11] + aa[10];
+    d = aa[15] + aa[14];
     _planes[4].SetValues(a,b,c,d);
     _planes[4].Normalize();
     
     // Far clipping plane
-    a = matrix[4][1] - matrix[3][1];
-    b = matrix[4][2] - matrix[3][2];
-    c = matrix[4][3] - matrix[3][3];
-    d = matrix[4][4] - matrix[3][4];
+    a = aa[ 3] - aa[ 2];
+    b = aa[ 7] - aa[ 6];
+    c = aa[11] - aa[10];
+    d = aa[15] - aa[14];
     _planes[5].SetValues(a,b,c,d);
     _planes[5].Normalize();
+*/
+
+    
+    
+    // Left clipping plane
+    a = matrix[0][3] + matrix[0][0];
+    b = matrix[1][3] + matrix[1][0];
+    c = matrix[2][3] + matrix[2][0];
+    d = matrix[3][3] + matrix[3][0];
+    _planes[0].SetValues(a,b,c,d);
+    _planes[0].Normalize();
+    
+    // Right clipping plane
+    a = matrix[0][3] - matrix[0][0];
+    b = matrix[1][3] - matrix[1][0];
+    c = matrix[2][3] - matrix[2][0];
+    d = matrix[3][3] - matrix[3][0];
+    _planes[1].SetValues(a,b,c,d);
+    _planes[1].Normalize();
+    
+    // Top clipping plane
+    a = matrix[0][3] - matrix[0][1];
+    b = matrix[1][3] - matrix[1][1];
+    c = matrix[2][3] - matrix[2][1];
+    d = matrix[3][3] - matrix[3][1];
+    _planes[2].SetValues(a,b,c,d);
+    _planes[2].Normalize();
+    
+    // Bottom clipping plane
+    a = matrix[0][3] + matrix[0][1];
+    b = matrix[1][3] + matrix[1][1];
+    c = matrix[2][3] + matrix[2][1];
+    d = matrix[3][3] + matrix[3][1];
+    _planes[3].SetValues(a,b,c,d);
+    _planes[3].Normalize();
+    
+    // Near clipping plane
+    a = matrix[0][3] + matrix[0][2];
+    b = matrix[1][3] + matrix[1][2];
+    c = matrix[2][3] + matrix[2][2];
+    d = matrix[3][3] + matrix[3][2];
+    _planes[4].SetValues(a,b,c,d);
+    _planes[4].Normalize();
+    
+    // Far clipping plane
+    a = matrix[0][3] - matrix[0][2];
+    b = matrix[1][3] - matrix[1][2];
+    c = matrix[2][3] - matrix[2][2];
+    d = matrix[3][3] - matrix[3][2];
+    _planes[5].SetValues(a,b,c,d);
+    _planes[5].Normalize();
+    
 }

@@ -4,6 +4,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
 
+#include <camera/bounding_frustum.h>
+
 namespace cub
 {
 
@@ -19,6 +21,7 @@ public:
     virtual glm::mat4 GetProjectionMatrix() = 0;
     virtual glm::mat4 GetViewMatrix() = 0;
     virtual void SetAspectRatio(float ratio) = 0;
+    virtual BoundingFrustum& GetBoundingFrustum() = 0;
     
 protected:
     Game *_game;

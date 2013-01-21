@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 
 #include <camera/plane.h>
+#include <camera/box.h>
 #include <camera/sphere.h>
 
 namespace cub
@@ -27,7 +28,7 @@ public:
     
     ContainmentType Contains(const glm::vec3& point);
     ContainmentType Contains(const Sphere& sphere);
-    ContainmentType Contains(const Plane& plane);
+    ContainmentType Contains(const Box& box);
     
 private:
     Plane _planes[6];

@@ -5,7 +5,6 @@
 #include <glm/gtc/quaternion.hpp>
 
 #include <camera/abstract_camera.h>
-#include <camera/bounding_frustum.h>
 
 namespace cub
 {
