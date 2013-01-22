@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <deque>
+#include <vector>
 #include <cmath>
 using namespace std;
 
@@ -17,6 +18,8 @@ using namespace json;
 #include <engine/shader.h>
 #include <engine/chunk.h>
 #include <engine/terrain.h>
+#include <object/cube.h>
+#include <object/line.h>
 using namespace cub;
 
 #include <glm/glm.hpp>
@@ -69,6 +72,9 @@ cub::Game::Game()
 
     _terrain = new Terrain(this);
 
+    _raycasting = false;
+    _cube = new Cube(this, 1.005f);
+    _line = new Line(this);
 
     // Set callbacks
     glfwSetWindowSizeCallback(WindowSizeCallback);
@@ -77,6 +83,8 @@ cub::Game::Game()
 
 cub::Game::~Game()
 {
+    delete _line;
+    delete _cube;
     delete _terrain;
     delete _camera;
 }
@@ -89,6 +97,9 @@ void GLFWCALL cub::Game::WindowSizeCallback(int w, int h)
 void GLFWCALL cub::Game::KeyCallback(int key, int action)
 {
     MainGame->_input->KeyChanged(key, action);
+
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+        MainGame->_raycasting = true;
 }
 
 void cub::Game::DisplayGLInfo() const
@@ -153,16 +164,19 @@ void cub::Game::Load()
 {
     //LoadScene("D:/Projects/cub_cpp/resources/scene.json");
     _terrain->Load();
+    _cube->Load();
+    _line->Load();
 }
 
 void cub::Game::LoadScene(string filename)
 {
-    ifstream file (filename.c_str());
+    //ifstream file (filename.c_str());
 
-    Object elemRootFile;
-    Reader::Read(elemRootFile, file);
+    //Object elemRootFile;
+    //Reader::Read(elemRootFile, file);
 }
 
+vector<glm::vec3> res; // TODO
 int cub::Game::Run()
 {
     InitGL();
@@ -191,9 +205,55 @@ int cub::Game::Run()
             gl::PolygonMode(gl::FRONT_AND_BACK, gl::FILL);
         }
 
+        //if (_raycasting)
+        {
+            /*
+            glm::vec2 size = GetSize();
+
+            glm::vec2 mouse = GetMousePosition();
+            mouse.y = size.y - mouse.y;
+
+            glm::vec4 viewport = glm::vec4(0, 0, size.x, size.y);
+
+            glm::vec3 v1 = glm::unProject(glm::vec3(mouse, 0.0),
+                                         _camera->GetViewMatrix(),
+                                         _camera->GetProjectionMatrix(),
+                                         viewport);
+
+            glm::vec3 v2 = glm::unProject(glm::vec3(mouse, 1.0),
+                                         _camera->GetViewMatrix(),
+                                         _camera->GetProjectionMatrix(),
+                                         viewport);
+            */
+            //Ray ray(v1, v2 - v1);
+            Ray ray(_camera->GetPosition(), _camera->GetDirection());
+            //_line->SetPosition(v1);
+            //_line->SetEnd(v2);
+            _line->SetPosition(_camera->GetPosition());
+            _line->SetDirection(_camera->GetDirection());
+
+            res.clear();
+            if (_terrain->Raycast(ray, res))
+            {
+                //_cube->SetPosition(res);
+            }
+
+            _raycasting = false;
+        }
         
+
         gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
+
         _terrain->Render(time);
+
+        for (vector<glm::vec3>::const_iterator it = res.begin(); it != res.end(); ++it)
+        {
+            _cube->SetPosition(*it);
+            _cube->Render(time);
+        }
+
+        _line->Render(time);
+
         glfwSwapBuffers();
 
 

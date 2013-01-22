@@ -15,7 +15,7 @@ public:
     void SetValues(float a, float b, float c, float d);
     void Normalize();
     
-    float Distance(const glm::vec3 &point);
+    float Distance(const glm::vec3 &point) const;
     
 private:
     float _a, _b, _c, _d;

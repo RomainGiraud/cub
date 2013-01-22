@@ -1,10 +1,12 @@
 #include <geometry/bounding_frustum.h>
 
+#include <glm/gtc/type_ptr.hpp>
+
 cub::BoundingFrustum::BoundingFrustum()
 {
 }
 
-cub::ContainmentType cub::BoundingFrustum::Contains(const glm::vec3& point)
+cub::ContainmentType cub::BoundingFrustum::Contains(const glm::vec3& point) const
 {
     ContainmentType result = ContainmentType::Inside;
 
@@ -16,7 +18,7 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const glm::vec3& point)
     return result;
 }
 
-cub::ContainmentType cub::BoundingFrustum::Contains(const Sphere &sphere)
+cub::ContainmentType cub::BoundingFrustum::Contains(const Sphere &sphere) const
 {
     ContainmentType result = ContainmentType::Inside;
 
@@ -32,7 +34,7 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const Sphere &sphere)
     return result;
 }
 
-cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box)
+cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box) const
 {
     ContainmentType result = ContainmentType::Inside;
     int out, in;
@@ -51,7 +53,7 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box)
         //for (int k = 0; k < 8 && (in == 0 || out == 0); ++k)
         {
             // is the corner outside or inside
-            if (_planes[i].Distance(box.GetVertex(k)) < 0)
+            if (_planes[i].Distance(box.GetCorner(k)) < 0)
                 ++out;
             else
                 ++in;
@@ -68,7 +70,6 @@ cub::ContainmentType cub::BoundingFrustum::Contains(const Box& box)
     return result;
 }
 
-#include <glm/gtc/type_ptr.hpp>
 void cub::BoundingFrustum::SetMatrix(const glm::mat4 &matrix)
 {
     float a, b, c, d;

@@ -2,6 +2,9 @@
 #define CUB_TERRAIN_H
 
 #include <list>
+#include <vector>
+
+#include <geometry/ray.h>
 
 namespace cub
 {
@@ -14,8 +17,11 @@ class Terrain
 public:
     Terrain(Game *game);
     ~Terrain();
+
     void Load();
     void Render(double time);
+
+    bool Raycast(const Ray& ray, std::vector<glm::vec3>& result) const;
     
 private:
     Game *_game;

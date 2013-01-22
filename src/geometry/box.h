@@ -10,12 +10,16 @@ class Box
 {
 public:
     Box();
-    Box(glm::vec3 cornerTopLeftNear, glm::vec3 size);
-    glm::vec3 GetVertex(int i) const;
+    Box(const glm::vec3& cornerMin, const glm::vec3& cornerMax);
+    glm::vec3 GetCorner(int i) const;
+    glm::vec3 GetCenter() const;
+    glm::vec3 GetMin() const;
+    glm::vec3 GetMax() const;
     
 private:
-	glm::vec3 _cornerTopLeftNear;
-	glm::vec3 _size;
+	glm::vec3 _cornerMin;
+	glm::vec3 _cornerMax;
+	glm::vec3 _center;
 };
 }
 

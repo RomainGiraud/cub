@@ -15,26 +15,30 @@ class RTSCamera : public AbstractCamera
 {
 public:
     RTSCamera(Game *game);
-    glm::mat4 GetProjectionMatrix();
-    glm::mat4 GetViewMatrix();
-    void Translate(glm::vec3 v);
 
-    glm::vec3 Position();
+    glm::vec3 GetPosition() const;
     void SetPosition(glm::vec3 p);
 
-    float ZNear();
-    void SetZNear(float v);
-
-    float ZFar();
-    void SetZFar(float v);
-
-    float FieldOfView();
-    void SetFieldOfView(float v);
-
-    float AspectRatio();
+    float GetAspectRatio() const;
     void SetAspectRatio(float v);
 
-    BoundingFrustum& GetBoundingFrustum();
+    glm::vec3 GetDirection() const;
+    glm::vec3 GetTarget() const;
+
+    float GetZNear() const;
+    void SetZNear(float v);
+
+    float GetZFar() const;
+    void SetZFar(float v);
+
+    float GetFieldOfView() const;
+    void SetFieldOfView(float v);
+
+    const BoundingFrustum& GetBoundingFrustum() const;
+    glm::mat4 GetProjectionMatrix() const;
+    glm::mat4 GetViewMatrix() const;
+    
+    void Translate(glm::vec3 v);
     
 private:
     Game *_game;
@@ -44,6 +48,9 @@ private:
 
     glm::mat4 _projectionMatrix;
     glm::mat4 _viewMatrix;
+
+    glm::vec3 _target;
+    glm::vec3 _direction;
 
     BoundingFrustum _boundingFrustum;
 

@@ -26,9 +26,9 @@ public:
     BoundingFrustum();
     void SetMatrix(const glm::mat4 &matrix);
     
-    ContainmentType Contains(const glm::vec3& point);
-    ContainmentType Contains(const Sphere& sphere);
-    ContainmentType Contains(const Box& box);
+    ContainmentType Contains(const glm::vec3& point) const;
+    ContainmentType Contains(const Sphere& sphere) const;
+    ContainmentType Contains(const Box& box) const;
     
 private:
     Plane _planes[6];

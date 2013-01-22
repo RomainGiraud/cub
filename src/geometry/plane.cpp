@@ -30,7 +30,7 @@ void cub::Plane::Normalize()
     _d = _d / mag;
 }
 
-float cub::Plane::Distance(const glm::vec3 &point)
+float cub::Plane::Distance(const glm::vec3 &point) const
 {
     return _d + glm::dot(glm::vec3(_a, _b, _c), point);
 }

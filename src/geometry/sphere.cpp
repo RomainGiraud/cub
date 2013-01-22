@@ -1,7 +1,6 @@
 #include <geometry/sphere.h>
 
 cub::Sphere::Sphere()
-    : _center(0, 0, 0), _radius(1)
 {
 }
 

@@ -3,12 +3,15 @@
 
 #include <GL/gl_core.hpp>
 
+#include <vector>
+
 #include <noise/noise.h>
 #include "noise/noiseutils.h"
 
 #include <engine/shader_program.h>
 #include <engine/buffer.h>
 #include <geometry/box.h>
+#include <geometry/ray.h>
 
 namespace cub
 {
@@ -28,6 +31,8 @@ public:
     void SetPosition(glm::vec3 position);
 
     const Box& GetBox() const;
+
+    bool Raycast(const Ray& ray, std::vector<glm::vec3>& result) const;
 
     static int GetXLength();
     static int GetYLength();

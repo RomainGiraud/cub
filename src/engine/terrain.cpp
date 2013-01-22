@@ -2,8 +2,10 @@
 
 #include <engine/game.h>
 #include <engine/chunk.h>
+#include <global/tools.h>
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #include <noise/noise.h>
@@ -21,6 +23,36 @@ cub::Terrain::~Terrain()
     {
     	delete (*it);
     }
+}
+
+bool cub::Terrain::Raycast(const Ray& ray, vector<glm::vec3>& result) const
+{
+	float maxDistance = 1.0f / 0.0f;
+    vector<const Chunk*> chunkResults;
+    for (list<Chunk*>::const_iterator it = _chunks.begin(); it != _chunks.end(); ++it)
+    {
+    	float v = 0;
+    	if (ray.Intersect((*it)->GetBox(), &v))
+    	{
+    		if (v < maxDistance)
+    		{
+                chunkResults.push_back(*it);
+    			maxDistance = v;	
+    		}
+    	}
+    }
+
+    if (chunkResults.size() > 0)
+    {
+        for (vector<const Chunk*>::const_iterator it = chunkResults.begin(); it != chunkResults.end(); ++it)
+        {
+            (*it)->Raycast(ray, result);
+        }
+        cout << "[pick] nb: " << result.size() << endl;
+        return true;
+    }
+
+    return false;
 }
 
 void cub::Terrain::Load()

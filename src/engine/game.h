@@ -19,7 +19,9 @@
 
 namespace cub
 {
-    
+
+class Cube;
+class Line;
 class Terrain;
 
 class Game
@@ -53,6 +55,10 @@ private:
     Input *_input;
     AbstractCamera *_camera;
     Terrain *_terrain;
+
+    bool _raycasting;
+    Cube *_cube;
+    Line *_line;
 
     void InitGL();
     void Resize(int w, int h);

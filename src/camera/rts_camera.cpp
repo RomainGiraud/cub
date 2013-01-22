@@ -18,12 +18,12 @@ cub::RTSCamera::RTSCamera(Game *game)
     UpdateViewMatrix();
 }
 
-glm::mat4 cub::RTSCamera::GetProjectionMatrix()
+glm::mat4 cub::RTSCamera::GetProjectionMatrix() const
 {
     return _projectionMatrix;
 }
 
-glm::mat4 cub::RTSCamera::GetViewMatrix()
+glm::mat4 cub::RTSCamera::GetViewMatrix() const
 {
     return _viewMatrix;
 }
@@ -34,7 +34,7 @@ void cub::RTSCamera::Translate(glm::vec3 v)
     UpdateViewMatrix();
 }
 
-glm::vec3 cub::RTSCamera::Position()
+glm::vec3 cub::RTSCamera::GetPosition() const
 {
     return _position;
 }
@@ -45,7 +45,7 @@ void cub::RTSCamera::SetPosition(glm::vec3 p)
     UpdateViewMatrix();
 }
 
-float cub::RTSCamera::ZNear()
+float cub::RTSCamera::GetZNear() const
 {
     return _znear;
 }
@@ -56,7 +56,7 @@ void cub::RTSCamera::SetZNear(float v)
     UpdateProjectionMatrix();
 }
 
-float cub::RTSCamera::ZFar()
+float cub::RTSCamera::GetZFar() const
 {
     return _zfar;
 }
@@ -67,7 +67,7 @@ void cub::RTSCamera::SetZFar(float v)
     UpdateProjectionMatrix();
 }
 
-float cub::RTSCamera::FieldOfView()
+float cub::RTSCamera::GetFieldOfView() const
 {
     return _fov;
 }
@@ -78,7 +78,7 @@ void cub::RTSCamera::SetFieldOfView(float v)
     UpdateProjectionMatrix();
 }
 
-float cub::RTSCamera::AspectRatio()
+float cub::RTSCamera::GetAspectRatio() const
 {
     return _aspectRatio;
 }
@@ -99,13 +99,14 @@ void cub::RTSCamera::UpdateProjectionMatrix()
 void cub::RTSCamera::UpdateViewMatrix()
 {
     glm::mat4 rot = glm::rotate(30.0f, glm::vec3(1, 0, 0));
-    glm::vec3 target = _position + glm::vec3(glm::vec4(0, 0, -1, 1) * rot);
-    _viewMatrix = glm::lookAt(_position, target, glm::vec3(0, 1, 0));
+    _direction = glm::vec3(glm::vec4(0, 0, -1, 1) * rot);
+    _target = _position + _direction;
+    _viewMatrix = glm::lookAt(_position, _target, glm::vec3(0, 1, 0));
 
     UpdateBoundingFrustum();
 }
 
-cub::BoundingFrustum& cub::RTSCamera::GetBoundingFrustum()
+const cub::BoundingFrustum& cub::RTSCamera::GetBoundingFrustum() const
 {
     return _boundingFrustum;
 }
@@ -114,4 +115,14 @@ void cub::RTSCamera::UpdateBoundingFrustum()
 {
     glm::mat4 m = _projectionMatrix * _viewMatrix;
     _boundingFrustum.SetMatrix(m);
+}
+
+glm::vec3 cub::RTSCamera::GetDirection() const
+{
+    return _direction;
+}
+
+glm::vec3 cub::RTSCamera::GetTarget() const
+{
+    return _target;
 }
