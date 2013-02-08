@@ -78,6 +78,8 @@ cub::Game::~Game()
 {
     delete _terrain;
     delete _camera;
+    delete _input;
+    delete _settings;
 }
 
 void GLFWCALL cub::Game::WindowSizeCallback(int w, int h)
