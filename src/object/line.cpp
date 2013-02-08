@@ -1,6 +1,7 @@
 #include <object/line.h>
 
 #include <engine/game.h>
+#include <engine/content.h>
 
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -18,17 +19,6 @@ cub::Line::~Line()
 {
 }
 
-float cub::Line::GetSize() const
-{
-	return _size;
-}
-
-void cub::Line::SetSize(float size)
-{
-	_size = size;
-	UpdateSize();
-}
-
 glm::vec3 cub::Line::GetDirection() const
 {
 	return _direction;
@@ -36,22 +26,18 @@ glm::vec3 cub::Line::GetDirection() const
 
 void cub::Line::SetDirection(const glm::vec3& direction)
 {
-	_size = glm::length(direction);
-	_direction = glm::normalize(direction);
+	_direction = direction;
 	UpdateSize();
 }
 
 glm::vec3 cub::Line::GetEnd() const
 {
-	return _position + _direction * _size;
+	return _position + _direction;
 }
 
 void cub::Line::SetEnd(const glm::vec3& end)
 {
-	glm::vec3 dir = end - _position;
-	_direction = glm::normalize(dir);
-	_size = glm::length(dir);
-
+	_direction = end - _position;
 	UpdateSize();
 }
 
@@ -89,12 +75,10 @@ void cub::Line::Render(double time)
 
 void cub::Line::UpdateSize()
 {
-	glm::vec3 end = _direction * _size;
-
 	const unsigned int sizeVert = 3 * 2;
 	float vertices[sizeVert] = {
 		0, 0, 0,
-		end.x, end.y, end.z
+		_direction.x, _direction.y, _direction.z
 	};
 
 	_indiceLength = 2;
@@ -104,4 +88,24 @@ void cub::Line::UpdateSize()
 
     _indiceBuffer.Attach(indices, _indiceLength * sizeof(unsigned int));
     _vertexBuffer.Attach(vertices, sizeVert * sizeof(float));
+}
+
+glm::quat cub::Line::GetRotation() const
+{
+	return Object::GetRotation();
+}
+
+void cub::Line::SetRotation(const glm::quat& rotation)
+{
+	Object::SetRotation(rotation);
+}
+
+glm::vec3 cub::Line::GetScale() const
+{
+	return Object::GetScale();
+}
+
+void cub::Line::SetScale(const glm::vec3& scale)
+{
+	Object::SetScale(scale);
 }

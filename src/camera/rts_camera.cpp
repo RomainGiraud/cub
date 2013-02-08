@@ -6,8 +6,8 @@
 cub::RTSCamera::RTSCamera(Game *game)
     : AbstractCamera(game)
 {
-    _position = glm::vec3(0.0f);
-    _orientation = glm::quat();
+    _position = _targetPosition = glm::vec3(0.0f);
+    _orientation = _targetOrientation = glm::quat();
 
     _aspectRatio = 1.333f;
     _fov = 60;
@@ -16,6 +16,15 @@ cub::RTSCamera::RTSCamera(Game *game)
 
     UpdateProjectionMatrix();
     UpdateViewMatrix();
+}
+
+void cub::RTSCamera::Update(double time)
+{
+    if (_position != _targetPosition)
+    {
+        _position = glm::mix(_position, _targetPosition, time * 5);
+        UpdateViewMatrix();
+    }
 }
 
 glm::mat4 cub::RTSCamera::GetProjectionMatrix() const
@@ -30,7 +39,8 @@ glm::mat4 cub::RTSCamera::GetViewMatrix() const
 
 void cub::RTSCamera::Translate(glm::vec3 v)
 {
-    _position += v;
+    _targetPosition += v;
+    //_position += v;
     UpdateViewMatrix();
 }
 
@@ -41,6 +51,7 @@ glm::vec3 cub::RTSCamera::GetPosition() const
 
 void cub::RTSCamera::SetPosition(glm::vec3 p)
 {
+    //_position = _targetPosition = p;
     _position = p;
     UpdateViewMatrix();
 }
@@ -98,7 +109,7 @@ void cub::RTSCamera::UpdateProjectionMatrix()
 
 void cub::RTSCamera::UpdateViewMatrix()
 {
-    glm::mat4 rot = glm::rotate(30.0f, glm::vec3(1, 0, 0));
+    glm::mat4 rot = glm::rotate(45.0f, glm::vec3(1, 0, 0));
     _direction = glm::vec3(glm::vec4(0, 0, -1, 1) * rot);
     _target = _position + _direction;
     _viewMatrix = glm::lookAt(_position, _target, glm::vec3(0, 1, 0));
@@ -125,4 +136,14 @@ glm::vec3 cub::RTSCamera::GetDirection() const
 glm::vec3 cub::RTSCamera::GetTarget() const
 {
     return _target;
+}
+
+glm::vec3 cub::RTSCamera::GetTargetPosition() const
+{
+    return _targetPosition;
+}
+
+void cub::RTSCamera::SetTargetPosition(glm::vec3 p)
+{
+    _targetPosition = p;
 }

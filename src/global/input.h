@@ -13,6 +13,8 @@ class Input
 public:
     Input(Game *game);
 
+    void Load();
+
     void KeyChanged(int key, int action);
     void Update();
 

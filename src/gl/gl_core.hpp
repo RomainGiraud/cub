@@ -192,6 +192,8 @@ namespace gl
 		};
 		
 		extern LoadTest var_ARB_framebuffer_object;
+		extern LoadTest var_EXT_texture_compression_s3tc;
+		extern LoadTest var_ARB_texture_rectangle;
 		
 	} //namespace exts
 	enum
@@ -276,6 +278,16 @@ namespace gl
 		MAX_SAMPLES                      = 0x8D57,
 		TEXTURE_LUMINANCE_TYPE           = 0x8C14,
 		TEXTURE_INTENSITY_TYPE           = 0x8C15,
+		
+		COMPRESSED_RGB_S3TC_DXT1_EXT     = 0x83F0,
+		COMPRESSED_RGBA_S3TC_DXT1_EXT    = 0x83F1,
+		COMPRESSED_RGBA_S3TC_DXT3_EXT    = 0x83F2,
+		COMPRESSED_RGBA_S3TC_DXT5_EXT    = 0x83F3,
+		
+		TEXTURE_RECTANGLE_ARB            = 0x84F5,
+		TEXTURE_BINDING_RECTANGLE_ARB    = 0x84F6,
+		PROXY_TEXTURE_RECTANGLE_ARB      = 0x84F7,
+		MAX_RECTANGLE_TEXTURE_SIZE_ARB   = 0x84F8,
 		
 		DEPTH_BUFFER_BIT                 = 0x00000100,
 		STENCIL_BUFFER_BIT               = 0x00000400,
@@ -1240,6 +1252,8 @@ namespace gl
 	extern void (CODEGEN_FUNCPTR *BlitFramebuffer)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 	extern void (CODEGEN_FUNCPTR *RenderbufferStorageMultisample)(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 	extern void (CODEGEN_FUNCPTR *FramebufferTextureLayer)(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+	
+	
 	
 	extern void (CODEGEN_FUNCPTR *CullFace)(GLenum mode);
 	extern void (CODEGEN_FUNCPTR *FrontFace)(GLenum mode);

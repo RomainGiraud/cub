@@ -12,7 +12,6 @@
 #include <GL/glfw.h>
 
 #include <global/global.h>
-#include <engine/content.h>
 #include <camera/abstract_camera.h>
 #include <global/settings.h>
 #include <global/input.h>
@@ -23,6 +22,9 @@ namespace cub
 class Cube;
 class Line;
 class Terrain;
+class Content;
+class Font;
+class UI;
 
 class Game
 {
@@ -50,11 +52,13 @@ public:
 private:
     static Game *MainGame;
 
-    Content _content;
+    Content *_content;
     Settings *_settings;
     Input *_input;
     AbstractCamera *_camera;
     Terrain *_terrain;
+    Font *_font;
+    UI *_ui;
 
     bool _raycasting;
     Cube *_cube;

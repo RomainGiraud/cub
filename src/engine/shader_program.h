@@ -21,26 +21,26 @@ public:
     void Bind();
     void Link();
 
-    int UniformLocation(std::string name, bool exceptionOnError);
-    void SetUniformValue(std::string name, int value, bool exceptionOnError = true);
+    int UniformLocation(const std::string& name, bool exceptionOnError);
+    void SetUniformValue(const std::string& name, int value, bool exceptionOnError = true);
     void SetUniformValue(int location, int value);
-    void SetUniformValue(std::string name, float value, bool exceptionOnError = true);
+    void SetUniformValue(const std::string& name, float value, bool exceptionOnError = true);
     void SetUniformValue(int location, float value);
-    void SetUniformValue(std::string name, glm::vec3 value, bool exceptionOnError = true);
-    void SetUniformValue(int location, glm::vec3 value);
-    void SetUniformValue(std::string name, glm::vec4 value, bool exceptionOnError = true);
-    void SetUniformValue(int location, glm::vec4 value);
-    void SetUniformValue(std::string name, glm::mat3 value, bool exceptionOnError = true);
-    void SetUniformValue(int location, glm::mat3 value);
-    void SetUniformValue(std::string name, glm::mat4 value, bool exceptionOnError = true);
-    void SetUniformValue(int location, glm::mat4 value);
+    void SetUniformValue(const std::string& name, const glm::vec3& value, bool exceptionOnError = true);
+    void SetUniformValue(int location, const glm::vec3& value);
+    void SetUniformValue(const std::string& name, const glm::vec4& value, bool exceptionOnError = true);
+    void SetUniformValue(int location, const glm::vec4& value);
+    void SetUniformValue(const std::string& name, const glm::mat3& value, bool exceptionOnError = true);
+    void SetUniformValue(int location, const glm::mat3& value);
+    void SetUniformValue(const std::string& name, const glm::mat4& value, bool exceptionOnError = true);
+    void SetUniformValue(int location, const glm::mat4& value);
     
-    int AttributeLocation(std::string name, bool exceptionOnError);
-    void EnableVertexAttribArray(std::string name, bool exceptionOnError = true);
+    int AttributeLocation(const std::string& name, bool exceptionOnError);
+    void EnableVertexAttribArray(const std::string& name, bool exceptionOnError = true);
     void EnableVertexAttribArray(int location);
-    void DisableVertexAttribArray(std::string name, bool exceptionOnError = true);
+    void DisableVertexAttribArray(const std::string& name, bool exceptionOnError = true);
     void DisableVertexAttribArray(int location);
-    void VertexAttribPointer(std::string name, int size, GLenum type, bool normalized, int stride, int offset, bool exceptionOnError = true);
+    void VertexAttribPointer(const std::string& name, int size, GLenum type, bool normalized, int stride, int offset, bool exceptionOnError = true);
     void VertexAttribPointer(int location, int size, GLenum type, bool normalized, int stride, int offset);
 
 private:

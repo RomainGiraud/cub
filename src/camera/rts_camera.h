@@ -16,8 +16,13 @@ class RTSCamera : public AbstractCamera
 public:
     RTSCamera(Game *game);
 
+    void Update(double time);
+
     glm::vec3 GetPosition() const;
     void SetPosition(glm::vec3 p);
+    
+    glm::vec3 GetTargetPosition() const;
+    void SetTargetPosition(glm::vec3 p);
 
     float GetAspectRatio() const;
     void SetAspectRatio(float v);
@@ -45,6 +50,9 @@ private:
 
     glm::vec3 _position;
     glm::quat _orientation;
+
+    glm::vec3 _targetPosition;
+    glm::quat _targetOrientation;
 
     glm::mat4 _projectionMatrix;
     glm::mat4 _viewMatrix;

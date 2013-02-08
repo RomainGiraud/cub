@@ -13,7 +13,7 @@ using namespace std;
 using namespace noise;
 
 cub::Terrain::Terrain(Game *game)
-	: _game(game)
+	: DrawableComponent(game)
 {
 }
 
@@ -48,7 +48,7 @@ bool cub::Terrain::Raycast(const Ray& ray, vector<glm::vec3>& result) const
         {
             (*it)->Raycast(ray, result);
         }
-        cout << "[pick] nb: " << result.size() << endl;
+        //cout << "[pick] nb: " << result.size() << endl;
         return true;
     }
 
@@ -57,10 +57,16 @@ bool cub::Terrain::Raycast(const Ray& ray, vector<glm::vec3>& result) const
 
 void cub::Terrain::Load()
 {
-	module::Perlin myModule;
+    module::Perlin myModule;
 	utils::NoiseMap heightMap;
 
 	//myModule.SetSeed(XXX);
+
+    //module::Billow baseFlatTerrain;
+    //module::ScaleBias flatTerrain;
+    //flatTerrain.SetSourceModule (0, baseFlatTerrain);
+    //flatTerrain.SetScale (0.125);
+    //flatTerrain.SetBias (-0.75);
 
 	utils::NoiseMapBuilderPlane heightMapBuilder;
 	heightMapBuilder.SetSourceModule(myModule);
@@ -83,13 +89,17 @@ void cub::Terrain::Load()
 	}
 }
 
-void cub::Terrain::Render(double time)
+void cub::Terrain::Update(double timeSec)
+{
+}
+
+void cub::Terrain::Render(double timeSec)
 {
     for (list<Chunk*>::const_iterator it = _chunks.begin(); it != _chunks.end(); ++it)
     {
     	if (_game->GetCamera().GetBoundingFrustum().Contains((*it)->GetBox()) != ContainmentType::Outside)
     	{
-	        (*it)->Render(time);
+	        (*it)->Render(timeSec);
     	}
     }
 }

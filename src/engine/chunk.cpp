@@ -1,5 +1,6 @@
 #include <engine/chunk.h>
 #include <engine/game.h>
+#include <engine/content.h>
 #include <engine/cube_builder.h>
 #include <global/tools.h>
 
@@ -119,12 +120,13 @@ void cub::Chunk::Load(utils::NoiseMap heightMap)
             height = clamp(height * _yLength / 2.0f, 0, _yLength - 1);
             
             for (int y = 0; y < height; ++y)
-                get(x, y, z) = 2;
+                get(x, y, z) = 1;
         }
     }
 
     //gl::ActiveTexture(gl::TEXTURE0);
-    _textureID = _game->GetContent().LoadTexture("textures/terrain.png");
+    //_textureID = _game->GetContent().LoadTexture("textures/terrain_hd.png");
+    _textureID = _game->GetContent().LoadDDSTexture("textures/terrain_minecraft.dds");
 
     Generate();
 }
@@ -155,8 +157,6 @@ void cub::Chunk::Generate()
 {
     vector<Voxel> voxels;
     const int texNum = 16;
-    const float texSizz = 0.0625f; // 1 / texNum
-    const float texOffset = 0.005f;
     unsigned int size = 0;
     for (int y = 0; y < _yLength; ++y)
     {
@@ -202,6 +202,8 @@ void cub::Chunk::Generate()
     vector<float> bitangents;
     bitangents.reserve(size * 3 * 4 / 6.f);
     
+    const float texSizz = 0.0625f; // 1 / texNum
+    const float texOffset = 0.005f;
     for (vector<Voxel>::iterator vox = voxels.begin(); vox != voxels.end(); ++vox)
     {
         for (vector<unsigned int>::iterator it = vox->indices.begin(); it != vox->indices.end(); it += 6)
@@ -332,7 +334,7 @@ void cub::Chunk::Render(double time)
 
     gl::ActiveTexture(gl::TEXTURE0);
     gl::BindTexture(gl::TEXTURE_2D, _textureID);
-    _shader->SetUniformValue("Tex1", 0);
+    _shader->SetUniformValue("DiffuseTexture", 0);
     
     _shader->EnableVertexAttribArray("in_Position");
     _vertexBuffer.Bind();

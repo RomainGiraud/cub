@@ -5,6 +5,7 @@
 #include <glm/gtc/quaternion.hpp>
 
 #include <geometry/bounding_frustum.h>
+#include <engine/component.h>
 
 namespace cub
 {
@@ -17,8 +18,13 @@ public:
     AbstractCamera(Game *game);
     virtual ~AbstractCamera();
 
+    virtual void Update(double time) = 0;
+
     virtual glm::vec3 GetPosition() const = 0;
     virtual void SetPosition(glm::vec3 p) = 0;
+    
+    virtual glm::vec3 GetTargetPosition() const = 0;
+    virtual void SetTargetPosition(glm::vec3 p) = 0;
 
     virtual float GetAspectRatio() const = 0;
     virtual void SetAspectRatio(float ratio) = 0;

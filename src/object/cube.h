@@ -12,11 +12,8 @@ namespace cub
 class Cube : public Object
 {
 public:
-    Cube(Game *game, float size = 1);
+    Cube(Game *game);
     virtual ~Cube();
-
-    float GetSize() const;
-    void SetSize(float size);
 
     void Load();
     void Update(double time);
@@ -24,7 +21,6 @@ public:
     
 private:
 	bool _isWireframe;
-	float _size;
 
 	void UpdateSize();
 	void UpdateSizeWireframe();

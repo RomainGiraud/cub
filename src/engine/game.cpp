@@ -11,15 +11,16 @@ using namespace std;
 #include <json/reader.h>
 using namespace json;
 
-#include <camera/free_camera.h>
 #include <camera/rts_camera.h>
 #include <global/exception.h>
 #include <global/tools.h>
 #include <engine/shader.h>
 #include <engine/chunk.h>
 #include <engine/terrain.h>
+#include <engine/content.h>
 #include <object/cube.h>
 #include <object/line.h>
+#include <ui/ui.h>
 using namespace cub;
 
 #include <glm/glm.hpp>
@@ -28,7 +29,7 @@ using namespace cub;
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/euler_angles.hpp>
 
-#include <fi/FreeImage.h>
+#include <freeimage/FreeImage.h>
 
 static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
@@ -39,16 +40,12 @@ static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 cub::Game* cub::Game::MainGame = 0;
 
 cub::Game::Game()
-#if defined(CUB_SYSTEM_WINDOWS)
-    : _content("D:/Projects/cub/resources")
-#elif defined(CUB_SYSTEM_MACOS)
-    : _content("/Users/romain/Documents/Projets/cub/resources")
-#endif
 {
     MainGame = this;
 
     glfwInit();
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
+    glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, true);
     glfwSetWindowTitle("cub");
     //glfwSwapInterval(1); // vertical sync ?
     glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
@@ -63,17 +60,27 @@ cub::Game::Game()
     DisplayGLInfo();
 
     // Initialize engine's parts
+#if defined(CUB_SYSTEM_WINDOWS)
+    _content = new Content("D:/Projects/cub/resources");
+#elif defined(CUB_SYSTEM_MACOS)
+    _content = new Content("/Users/romain/Documents/Projets/cub/resources");
+#endif
+
     _settings = new Settings(this);
 
     _input = new Input(this);
     
     _camera = new RTSCamera(this);
-    _camera->SetPosition(glm::vec3(0, 10, 10));
+    _camera->SetPosition(glm::vec3(0, 20, 10));
+    _camera->SetTargetPosition(glm::vec3(0, 20, 10));
 
     _terrain = new Terrain(this);
 
+    _ui = new UI(this);
+
     _raycasting = false;
-    _cube = new Cube(this, 1.005f);
+    _cube = new Cube(this);
+    _cube->SetScale(glm::vec3(1.005f));
     _line = new Line(this);
 
     // Set callbacks
@@ -85,8 +92,10 @@ cub::Game::~Game()
 {
     delete _line;
     delete _cube;
+    delete _ui;
     delete _terrain;
     delete _camera;
+    delete _content;
 }
 
 void GLFWCALL cub::Game::WindowSizeCallback(int w, int h)
@@ -142,7 +151,7 @@ glm::vec2 cub::Game::GetSize()
 
 cub::Content& cub::Game::GetContent()
 {
-    return _content;
+    return *_content;
 }
 
 cub::Input& cub::Game::GetInput()
@@ -166,6 +175,7 @@ void cub::Game::Load()
     _terrain->Load();
     _cube->Load();
     _line->Load();
+    _ui->Load();
 }
 
 void cub::Game::LoadScene(string filename)
@@ -189,11 +199,15 @@ int cub::Game::Run()
         running = !glfwGetKey(GLFW_KEY_ESC) &&
                     glfwGetWindowParam(GLFW_OPENED);
         
+
         _input->Update();
         if (_input->IsMoving())
         {
             _camera->Translate(_input->GetMovingVector() * (float)(time * 10));
         }
+        glm::vec3 pos = _camera->GetTargetPosition();
+        pos.y = 20 - glfwGetMouseWheel();
+        _camera->SetTargetPosition(pos);
 
 
         if (_input->RenderWireframe())
@@ -205,7 +219,7 @@ int cub::Game::Run()
             gl::PolygonMode(gl::FRONT_AND_BACK, gl::FILL);
         }
 
-        //if (_raycasting)
+        if (_raycasting)
         {
             /*
             glm::vec2 size = GetSize();
@@ -240,6 +254,8 @@ int cub::Game::Run()
 
             _raycasting = false;
         }
+
+        _camera->Update(time);
         
 
         gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
@@ -254,10 +270,13 @@ int cub::Game::Run()
 
         _line->Render(time);
 
+        // HUD
+        _ui->Render(time);
+
         glfwSwapBuffers();
 
 
-        time = glfwGetTime() - previousTime;
+        time = glfwGetTime() - previousTime; // seconds
         previousTime = glfwGetTime();
     }
 
@@ -271,6 +290,9 @@ void cub::Game::InitGL()
     gl::ClearColor(0.39f, 0.58f, 0.93f, 1);
     
     gl::Enable(gl::DEPTH_TEST);
+
+    gl::Enable(gl::BLEND);
+    gl::BlendFunc(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA);
 
 /*
     glEnable(glCULL_FACE);
@@ -297,4 +319,6 @@ void cub::Game::Resize(int w, int h)
     glm::vec2 size = GetSize();
     float aspectRatio = size.x / (float)(size.y);
     _camera->SetAspectRatio(aspectRatio);
+
+    _ui->Resize(w, h);
 }

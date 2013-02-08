@@ -2,7 +2,10 @@
 #include <engine/shader.h>
 #include <engine/game.h>
 
-#include <fi/FreeImage.h>
+#include <freeimage/FreeImage.h>
+
+#include <nv_dds/nv_dds.h>
+using namespace nv_dds;
 
 using namespace std;
 
@@ -27,6 +30,46 @@ cub::Content::~Content()
 std::string cub::Content::GetPath() const
 {
     return _path;
+}
+
+int cub::Content::LoadDDSTexture(string filename)
+{
+    filename = _path + filename;
+    
+    if (_cachedTextures.find(filename) != _cachedTextures.end())
+        return _cachedTextures[filename];
+
+    CDDSImage image;
+    bool b = image.load(filename);
+    (void)b;
+
+    GLuint gl_texID = -1;
+    gl::GenTextures(1, &gl_texID);
+    gl::BindTexture(gl::TEXTURE_2D, gl_texID);
+
+    gl::CompressedTexImage2D(gl::TEXTURE_2D, 0, image.get_format(), 
+        image.get_width(), image.get_height(), 0, image.get_size(), 
+        image);
+
+    for (unsigned int i = 0; i < image.get_num_mipmaps(); i++)
+    {
+        CSurface mipmap = image.get_mipmap(i);
+
+        gl::CompressedTexImage2D(gl::TEXTURE_2D, i+1, image.get_format(), 
+            mipmap.get_width(), mipmap.get_height(), 0, mipmap.get_size(), 
+            mipmap);
+    }
+
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR_MIPMAP_LINEAR);
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::LINEAR_MIPMAP_LINEAR);
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::CLAMP_TO_EDGE);
+    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_T, gl::CLAMP_TO_EDGE);
+
+    // cache
+    _cachedTextures[filename] = gl_texID;
+
+    //return success
+    return gl_texID;
 }
 
 int cub::Content::LoadTexture(string filename)
@@ -78,6 +121,8 @@ int cub::Content::LoadTexture(string filename)
 	//store the texture data for OpenGL use
 	gl::TexImage2D(gl::TEXTURE_2D, 0, gl::RGBA, width, height, 0, gl::BGRA, gl::UNSIGNED_BYTE, bits); // TODO pixel format
     gl::GenerateMipmap(gl::TEXTURE_2D);
+    //gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::NEAREST);
+    //gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::NEAREST);
     gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR_MIPMAP_LINEAR);
     gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::LINEAR_MIPMAP_LINEAR);
     gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::CLAMP_TO_EDGE);

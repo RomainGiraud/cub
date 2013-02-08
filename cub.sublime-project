@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": "./"
+			//"path": "/D/Projects/cub"
+		}
+	],
+
+	"build_systems":
+    [
+        {
+            "name": "MinGW-make",
+            "cmd": ["mingw32-make"],
+			"working_dir": "${project_path}/build/",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+        }
+    ]
+}

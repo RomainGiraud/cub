@@ -16,6 +16,7 @@ public:
     Content(std::string path);
     ~Content();
     int LoadTexture(std::string filename);
+    int LoadDDSTexture(std::string filename);
     int LoadSkyBox(std::string filename);
     ShaderProgram* LoadShaders(std::string fileVert, std::string fileFrag);
     //ShaderProgram LoadShaders(std::string fileVert, std::string fileGeom, std::string fileFrag);

@@ -15,7 +15,7 @@ public:
         Index
     };
 
-    Buffer(BufferType type);
+    Buffer(BufferType type = BufferType::Vertex);
     void Bind();
     void Attach(const void *data, size_t size);
     
