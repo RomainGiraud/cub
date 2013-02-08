@@ -1,6 +1,8 @@
 #ifndef CUB_FREECAMERA_H
 #define CUB_FREECAMERA_H
 
+#if false
+
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/constants.hpp>
@@ -114,5 +116,7 @@ private:
 };
 
 }
+
+#endif
 
 #endif /*CUB_FREECAMERA_H*/

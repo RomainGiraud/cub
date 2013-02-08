@@ -7,12 +7,22 @@
 using namespace std;
 
 cub::Input::Input(Game *game)
-	: _game(game), _isMoving(false)
+	: _game(game), _isMoving(false), _renderWireframe(false)
 {
     _forw = _game->GetSettings().GetForward();
     _backw = _game->GetSettings().GetBackward();
     _rightw = _game->GetSettings().GetRightward();
     _leftw = _game->GetSettings().GetLeftward();
+
+    _toggleWire = _game->GetSettings().GetToggleWireframe();
+}
+
+void cub::Input::KeyChanged(int key, int action)
+{
+    if (key == _toggleWire && action == GLFW_PRESS)
+    {
+        _renderWireframe = !_renderWireframe;
+    }
 }
 
 void cub::Input::Update()
@@ -53,4 +63,9 @@ bool cub::Input::IsMoving() const
 glm::vec3 cub::Input::GetMovingVector() const
 {
 	return _move;
+}
+
+bool cub::Input::RenderWireframe() const
+{
+    return _renderWireframe;
 }

@@ -3,11 +3,15 @@
 
 #include <GL/gl_core.hpp>
 
+#include <vector>
+
 #include <noise/noise.h>
 #include "noise/noiseutils.h"
 
 #include <engine/shader_program.h>
 #include <engine/buffer.h>
+#include <geometry/box.h>
+#include <geometry/ray.h>
 
 namespace cub
 {
@@ -26,6 +30,10 @@ public:
     glm::vec3 GetPosition() const;
     void SetPosition(glm::vec3 position);
 
+    const Box& GetBox() const;
+
+    bool Raycast(const Ray& ray, std::vector<glm::vec3>& result) const;
+
     static int GetXLength();
     static int GetYLength();
     static int GetZLength();
@@ -33,9 +41,11 @@ public:
 private:
     static const int _xLength, _yLength, _zLength;
 
+    Box _box;
+
     Game *_game;
     int *_data;
-    ShaderProgram _shader;
+    ShaderProgram *_shader;
     int _indiceLength;
     GLuint _textureID;
     glm::vec3 _position;

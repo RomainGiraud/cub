@@ -21,6 +21,11 @@ inline std::ostream& operator<<(std::ostream& os, const glm::mat4 &m)
               << m[0][3] << " | " << m[1][3] << " | " << m[2][3] << " | " << m[3][3] << std::endl;
 }
 
+inline std::ostream& operator<<(std::ostream& os, const glm::vec2 &v)
+{
+    return os << v[0] << ", " << v[1];
+}
+
 inline std::ostream& operator<<(std::ostream& os, const glm::vec3 &v)
 {
     return os << v[0] << ", " << v[1] << ", " << v[2];

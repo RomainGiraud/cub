@@ -1,4 +1,7 @@
 #include <camera/free_camera.h>
+
+#if false
+
 #include <engine/game.h>
 
 cub::FreeCamera::FreeCamera(Game *game)
@@ -349,3 +352,5 @@ void cub::FreeCamera::SetCameraMode(CamMode mode)
 {
     _cameraMode = mode;
 }
+
+#endif

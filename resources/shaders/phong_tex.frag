@@ -13,6 +13,7 @@ struct LightInfo
 };
 uniform LightInfo Light;
 
+// Material
 struct MaterialInfo
 {
     vec3 Ka; // Ambient reflectivity
@@ -22,10 +23,8 @@ struct MaterialInfo
 };
 uniform MaterialInfo Material;
 
-uniform sampler2D Tex1;
-
-// Output color
-//out vec4 color;
+// Texture
+uniform sampler2D DiffuseTexture;
 
 vec4 phongModel(vec3 position, vec3 norm, vec4 texColor)
 {
@@ -47,6 +46,7 @@ vec4 phongModel(vec3 position, vec3 norm, vec4 texColor)
     vec3 diffuse = Light.Intensity * Material.Kd * sDotN;
     vec3 spec = vec3(0.0);
     
+    
     // Without halfway vector
     //if (sDotN > 0.0)
     //    spec = Light.Intensity * Material.Ks * pow(max(dot(r,v), 0.0), Material.Shininess);
@@ -61,10 +61,13 @@ vec4 phongModel(vec3 position, vec3 norm, vec4 texColor)
 void main(void)
 {
 	vec3 n = normalize(ex_Normal);
-    vec4 tex = texture2D(Tex1, ex_TexCoord);
+    vec4 tex = texture2D(DiffuseTexture, ex_TexCoord);
 
+    vec4 color;
     if (gl_FrontFacing)
-    	gl_FragColor = phongModel(ex_Position, n, tex);
+    	color = phongModel(ex_Position, n, tex);
     else
-    	gl_FragColor = phongModel(ex_Position, -n, tex);
+    	color = phongModel(ex_Position, -n, tex);
+
+    gl_FragColor = color;
 }

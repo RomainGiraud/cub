@@ -1,5 +1,6 @@
 #include <engine/chunk.h>
 #include <engine/game.h>
+#include <engine/content.h>
 #include <engine/cube_builder.h>
 #include <global/tools.h>
 
@@ -29,6 +30,11 @@ cub::Chunk::Chunk(Game *game)
     _game = game;
 
     _data = new int[_xLength * _yLength * _zLength];
+
+    _box = Box(glm::vec3(_position.x * _xLength, _position.y * _yLength, _position.z * _zLength),
+               glm::vec3(_position.x * _xLength + _xLength,
+                         _position.y * _yLength + _yLength,
+                         _position.z * _zLength + _zLength));
 }
 
 // x is the height, y is the width and z is the depth
@@ -56,6 +62,47 @@ void cub::Chunk::Display()
     }
 }
 
+const cub::Box& cub::Chunk::GetBox() const
+{
+    return _box;
+}
+
+bool cub::Chunk::Raycast(const Ray& ray, std::vector<glm::vec3>& result) const
+{
+    float maxDistance = 1.0f / 0.0f;
+    bool ret = false;
+    for (int y = 0; y < _yLength; ++y)
+    {
+        for (int z = 0; z < _zLength; ++z)
+        {
+            for (int x = 0; x < _xLength; ++x)
+            {
+                if (get(x, y, z) == 0)
+                    continue;
+
+                glm::vec3 pos(_position.x * _xLength + x,
+                              _position.y * _yLength + y,
+                              _position.z * _zLength + z);
+
+                Box b(pos, pos + glm::vec3(1, 1, 1));
+                float v = 0;
+                if (ray.Intersect(b, &v))
+                {
+                    if (v < maxDistance)
+                    {
+                        result.push_back(pos);
+
+                        maxDistance = v;
+                        ret = true;
+                    }
+                }
+            }
+        }
+    }
+
+    return ret;
+}
+
 void cub::Chunk::Load(utils::NoiseMap heightMap)
 {
     _shader = _game->GetContent().LoadShaders("shaders/phong_tex.vert", "shaders/phong_tex.frag");
@@ -73,12 +120,13 @@ void cub::Chunk::Load(utils::NoiseMap heightMap)
             height = clamp(height * _yLength / 2.0f, 0, _yLength - 1);
             
             for (int y = 0; y < height; ++y)
-                get(x, y, z) = 2;
+                get(x, y, z) = 1;
         }
     }
 
     //gl::ActiveTexture(gl::TEXTURE0);
-    _textureID = _game->GetContent().LoadTexture("textures/terrain.png");
+    //_textureID = _game->GetContent().LoadTexture("textures/terrain_hd.png");
+    _textureID = _game->GetContent().LoadDDSTexture("textures/terrain_minecraft.dds");
 
     Generate();
 }
@@ -109,9 +157,7 @@ void cub::Chunk::Generate()
 {
     vector<Voxel> voxels;
     const int texNum = 16;
-    const float texSizz = 0.0625f; // 1 / texNum
-    const float texOffset = 0.005f;
-    int size = 0;
+    unsigned int size = 0;
     for (int y = 0; y < _yLength; ++y)
     {
         for (int z = 0; z < _zLength; ++z)
@@ -156,11 +202,13 @@ void cub::Chunk::Generate()
     vector<float> bitangents;
     bitangents.reserve(size * 3 * 4 / 6.f);
     
+    const float texSizz = 0.0625f; // 1 / texNum
+    const float texOffset = 0.005f;
     for (vector<Voxel>::iterator vox = voxels.begin(); vox != voxels.end(); ++vox)
     {
         for (vector<unsigned int>::iterator it = vox->indices.begin(); it != vox->indices.end(); it += 6)
         {
-            int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
+            unsigned int id[4] = { *(it+0), *(it+1), *(it+2), *(it+5) };
 
             for (int i = 0; i < 4; ++i)
             {
@@ -251,6 +299,10 @@ glm::vec3 cub::Chunk::GetPosition() const
 void cub::Chunk::SetPosition(glm::vec3 position)
 {
     _position = position;
+    _box = Box(glm::vec3(_position.x * _xLength, _position.y * _yLength, _position.z * _zLength),
+               glm::vec3(_position.x * _xLength + _xLength,
+                         _position.y * _yLength + _yLength,
+                         _position.z * _zLength + _zLength));
 }
 
 void cub::Chunk::Render(double time)
@@ -264,45 +316,45 @@ void cub::Chunk::Render(double time)
     glm::mat4 mvpMatrix = projectionMatrix * mvMatrix;
     glm::mat3 normalMatrix = glm::inverseTranspose(glm::mat3(mvMatrix));
 
-    _shader.Bind();
-    _shader.SetUniformValue("mvMatrix", mvMatrix);
-    _shader.SetUniformValue("mvpMatrix", mvpMatrix);
-    _shader.SetUniformValue("normalMatrix", normalMatrix);
-    //_shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
-    _shader.SetUniformValue("Light.Position", viewMatrix * glm::vec4(0.1f, 1, 0.1f, 0));
-    _shader.SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
-    //_shader.SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
-    //_shader.SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
-    //_shader.SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
-    //_shader.SetUniformValue("Material.Shininess", 27.89743616f);
-    _shader.SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
-    _shader.SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
-    _shader.SetUniformValue("Material.Ks", glm::vec3(0.5f, 0.5f, 0.5f));
-    _shader.SetUniformValue("Material.Shininess", 50.0f);
+    _shader->Bind();
+    _shader->SetUniformValue("mvMatrix", mvMatrix);
+    _shader->SetUniformValue("mvpMatrix", mvpMatrix);
+    _shader->SetUniformValue("normalMatrix", normalMatrix);
+    //_shader->SetUniformValue("Light.Position", viewMatrix * glm::vec4(0, 3, 0, 1));
+    _shader->SetUniformValue("Light.Position", viewMatrix * glm::vec4(0.1f, 1, 0.1f, 0));
+    _shader->SetUniformValue("Light.Intensity", glm::vec3(1, 1, 1));
+    //_shader->SetUniformValue("Material.Ka", glm::vec3(0.329412f, 0.223529f, 0.027451f));
+    //_shader->SetUniformValue("Material.Kd", glm::vec3(0.780392f, 0.568627f, 0.113725f));
+    //_shader->SetUniformValue("Material.Ks", glm::vec3(0.992157f, 0.941176f, 0.807843f));
+    //_shader->SetUniformValue("Material.Shininess", 27.89743616f);
+    _shader->SetUniformValue("Material.Ka", glm::vec3(0.2f, 0.2f, 0.2f));
+    _shader->SetUniformValue("Material.Kd", glm::vec3(0.8f, 0.8f, 0.8f));
+    _shader->SetUniformValue("Material.Ks", glm::vec3(0.5f, 0.5f, 0.5f));
+    _shader->SetUniformValue("Material.Shininess", 50.0f);
 
     gl::ActiveTexture(gl::TEXTURE0);
     gl::BindTexture(gl::TEXTURE_2D, _textureID);
-    _shader.SetUniformValue("Tex1", 0);
+    _shader->SetUniformValue("DiffuseTexture", 0);
     
-    _shader.EnableVertexAttribArray("in_Position");
+    _shader->EnableVertexAttribArray("in_Position");
     _vertexBuffer.Bind();
-    _shader.VertexAttribPointer("in_Position", 3, gl::FLOAT, false, 0, 0);
+    _shader->VertexAttribPointer("in_Position", 3, gl::FLOAT, false, 0, 0);
 
-    _shader.EnableVertexAttribArray("in_TexCoord", false);
+    _shader->EnableVertexAttribArray("in_TexCoord", false);
     _textureBuffer.Bind();
-    _shader.VertexAttribPointer("in_TexCoord", 2, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_TexCoord", 2, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Normal", false);
+    _shader->EnableVertexAttribArray("in_Normal", false);
     _normalBuffer.Bind();
-    _shader.VertexAttribPointer("in_Normal", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Normal", 3, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Tangent", false);
+    _shader->EnableVertexAttribArray("in_Tangent", false);
     _tangentBuffer.Bind();
-    _shader.VertexAttribPointer("in_Tangent", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Tangent", 3, gl::FLOAT, false, 0, 0, false);
 
-    _shader.EnableVertexAttribArray("in_Bitangent", false);
+    _shader->EnableVertexAttribArray("in_Bitangent", false);
     _bitangentBuffer.Bind();
-    _shader.VertexAttribPointer("in_Bitangent", 3, gl::FLOAT, false, 0, 0, false);
+    _shader->VertexAttribPointer("in_Bitangent", 3, gl::FLOAT, false, 0, 0, false);
 
     _indiceBuffer.Bind();
     

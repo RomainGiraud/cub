@@ -91,6 +91,8 @@ namespace gl
 	namespace exts
 	{
 		LoadTest var_ARB_framebuffer_object;
+		LoadTest var_EXT_texture_compression_s3tc;
+		LoadTest var_ARB_texture_rectangle;
 		
 	} //namespace exts
 	typedef GLboolean (CODEGEN_FUNCPTR *PFNISRENDERBUFFER)(GLuint );
@@ -2559,13 +2561,17 @@ namespace gl
 			
 			void InitializeMappingTable(std::vector<MapEntry> &table)
 			{
-				table.reserve(1);
+				table.reserve(3);
 				table.push_back(MapEntry("GL_ARB_framebuffer_object", &exts::var_ARB_framebuffer_object, Load_ARB_framebuffer_object));
+				table.push_back(MapEntry("GL_EXT_texture_compression_s3tc", &exts::var_EXT_texture_compression_s3tc));
+				table.push_back(MapEntry("GL_ARB_texture_rectangle", &exts::var_ARB_texture_rectangle));
 			}
 			
 			void ClearExtensionVars()
 			{
 				exts::var_ARB_framebuffer_object = exts::LoadTest();
+				exts::var_EXT_texture_compression_s3tc = exts::LoadTest();
+				exts::var_ARB_texture_rectangle = exts::LoadTest();
 			}
 			
 			void LoadExtByName(std::vector<MapEntry> &table, const char *extensionName)

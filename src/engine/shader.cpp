@@ -64,12 +64,12 @@ void cub::Shader::Compile(const char *src)
 
     if (!result)
     {
-        gl::DeleteShader(_id);
-
         char infoLog[1024];
-        gl::GetShaderInfoLog(_id, 1024, NULL, infoLog);
+        gl::GetShaderInfoLog(_id, 1024, 0, infoLog);
         cout << "Shader compilation at " << _id << ":" << endl
              << infoLog << endl;
+             
+        gl::DeleteShader(_id);
          
         throw Exception("", "compileShader", "glCompileShader");
     }

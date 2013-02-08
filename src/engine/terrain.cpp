@@ -2,8 +2,10 @@
 
 #include <engine/game.h>
 #include <engine/chunk.h>
+#include <global/tools.h>
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #include <noise/noise.h>
@@ -11,7 +13,7 @@ using namespace std;
 using namespace noise;
 
 cub::Terrain::Terrain(Game *game)
-	: _game(game)
+	: DrawableComponent(game)
 {
 }
 
@@ -23,12 +25,48 @@ cub::Terrain::~Terrain()
     }
 }
 
+bool cub::Terrain::Raycast(const Ray& ray, vector<glm::vec3>& result) const
+{
+	float maxDistance = 1.0f / 0.0f;
+    vector<const Chunk*> chunkResults;
+    for (list<Chunk*>::const_iterator it = _chunks.begin(); it != _chunks.end(); ++it)
+    {
+    	float v = 0;
+    	if (ray.Intersect((*it)->GetBox(), &v))
+    	{
+    		if (v < maxDistance)
+    		{
+                chunkResults.push_back(*it);
+    			maxDistance = v;	
+    		}
+    	}
+    }
+
+    if (chunkResults.size() > 0)
+    {
+        for (vector<const Chunk*>::const_iterator it = chunkResults.begin(); it != chunkResults.end(); ++it)
+        {
+            (*it)->Raycast(ray, result);
+        }
+        //cout << "[pick] nb: " << result.size() << endl;
+        return true;
+    }
+
+    return false;
+}
+
 void cub::Terrain::Load()
 {
-	module::Perlin myModule;
+    module::Perlin myModule;
 	utils::NoiseMap heightMap;
 
 	//myModule.SetSeed(XXX);
+
+    //module::Billow baseFlatTerrain;
+    //module::ScaleBias flatTerrain;
+    //flatTerrain.SetSourceModule (0, baseFlatTerrain);
+    //flatTerrain.SetScale (0.125);
+    //flatTerrain.SetBias (-0.75);
 
 	utils::NoiseMapBuilderPlane heightMapBuilder;
 	heightMapBuilder.SetSourceModule(myModule);
@@ -51,11 +89,18 @@ void cub::Terrain::Load()
 	}
 }
 
-void cub::Terrain::Render(double time)
+void cub::Terrain::Update(double timeSec)
+{
+}
+
+void cub::Terrain::Render(double timeSec)
 {
     for (list<Chunk*>::const_iterator it = _chunks.begin(); it != _chunks.end(); ++it)
     {
-        (*it)->Render(time);
+    	if (_game->GetCamera().GetBoundingFrustum().Contains((*it)->GetBox()) != ContainmentType::Outside)
+    	{
+	        (*it)->Render(timeSec);
+    	}
     }
 }
 
