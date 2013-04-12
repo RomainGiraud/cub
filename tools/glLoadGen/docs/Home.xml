@@ -25,24 +25,93 @@
                 xlink:href="http://www.luarocks.org/">LuaRocks</link> to install it on any platform
             as well.</para>
         <para>The scripts in this package are licensed under the terms of the MIT License.</para>
-        <para>To use the code generator, with Lua in your path (assuming that <literal>lua</literal>
-            is the name of your Lua executable), type this:</para>
-        <programlisting>lua LoadGen.lua -style=pointer_c -spec=gl -version=3.3 -profile=core core_3_3</programlisting>
-        <para>This tells the system to generate a header/source pair for OpenGL
-                (<literal>-spec=gl</literal>, as opposed to WGL or GLX), for version 3.3, the core
-            profile. It will generate it in the <literal>pointer_c</literal> style, which means that
-            it will use function pointer-style, with C linkage and source. Such code is usable from
-            C and C++, or other languages that can interface with C.</para>
-        <para>The option <filename>core_3_3</filename> is the basic component of the filename that
-            will be used for the generation. Since it is generating OpenGL loaders (again, as
-            opposed to WGL or GLX), it will generate files named <filename>gl_core_3_3.*</filename>,
-            where * is the extension used by the particular style.</para>
-        <para>The above command line will generate <filename>gl_core_3_3.h</filename> and
-                <filename>gl_core_3_3.c</filename> files. Simply include them in your project; there
-            is no library to build, no unresolved extenals to filter through. They just work.</para>
-        <para>The <link xlink:href="Command_Line_Options">full command-line syntax
-                documentation</link> is available. The <literal>-style</literal> parameter's <link
-                xlink:href="Styles">meaning is defined here</link>.</para>
+        <section>
+            <title>Basic Usage</title>
+            <para>To use the code generator, with Lua in your path (assuming that
+                    <literal>lua</literal> is the name of your Lua executable), type this:</para>
+            <programlisting>lua LoadGen.lua -style=pointer_c -spec=gl -version=3.3 -profile=core core_3_3</programlisting>
+            <para>This tells the system to generate a header/source pair for OpenGL
+                    (<literal>-spec=gl</literal>, as opposed to WGL or GLX), for version 3.3, the
+                core profile. It will generate it in the <literal>pointer_c</literal> style, which
+                means that it will use function pointer-style, with C linkage and source. Such code
+                is usable from C and C++, or other languages that can interface with C.</para>
+            <para>The option <filename>core_3_3</filename> is the basic component of the filename
+                that will be used for the generation. Since it is generating OpenGL loaders (again,
+                as opposed to WGL or GLX), it will generate files named
+                    <filename>gl_core_3_3.*</filename>, where * is the extension used by the
+                particular style.</para>
+            <para>The above command line will generate <filename>gl_core_3_3.h</filename> and
+                    <filename>gl_core_3_3.c</filename> files. Simply include them in your project;
+                there is no library to build, no unresolved extenals to filter through.</para>
+            <para>You will need to call <literal>ogl_LoadFunctions</literal> to initialize the
+                library if you use the <literal>pointer_c</literal> style. And you must call it
+                    <emphasis>after</emphasis> OpenGL context creation. For example, if you are
+                using FreeGLUT, your code looks like this:</para>
+            <programlisting>//Pre-window creation.
+int windowID = glutCreateWindow("Name");
+
+if(ogl_LoadFunctions() == ogl_LOAD_FAILED)
+{
+  glutDestroyWindow(windowID);
+}
+//Call functions here.</programlisting>
+            <para>Replace the "Pre-window creation" and <literal>glutCreateWindow</literal> call with
+                your usual OpenGL context creation code.</para>
+            <para>The <link xlink:href="Command_Line_Options">full command-line syntax
+                    documentation</link> is available. Of particular note is the
+                    <literal>-style</literal> parameter, which defines how the loader is generated.
+                Different styles will have different initialization needs and so forth (you don't
+                even need to initialize some styles at all). The available styles are:</para>
+            <itemizedlist>
+                <listitem>
+                    <para><link xlink:href="Style_Pointer_C"><literal>pointer_c</literal></link>:
+                        Function-pointer-based style for C. It is the most widely compatible,
+                        comparable to GLEW. It has variables to test whether an extension was loaded
+                        (and how many of its functions were loaded). Like GLEW, it requires calling
+                        an initialization function to set it up. This is best used for C or C++
+                        users who need to be able to share the headers with other tools (note:
+                        usually, you don't need to do this).</para>
+                </listitem>
+                <listitem>
+                    <para><link xlink:href="Style_Pointer_CPP"
+                        ><literal>pointer_cpp</literal></link>: Function-pointer-based style for
+                        C++. It wraps all function pointers, extension variables, and enumerators in
+                        a namespace (not the typedefs). It requires calling an initialization
+                        function to set it up. This is best used for C++ users who don't need
+                        compatibility, but would like OpenGL stuff to not pollute the global
+                        namespace so much.</para>
+                </listitem>
+                <listitem>
+                    <para><link xlink:href="Style_Function_CPP"><literal>func_cpp</literal></link>:
+                        Inline-function-based style for C++. This means that the header contains
+                        actual inline functions, which forward their parameters to the actual
+                        function pointers internally. Like <literal>pointer_cpp</literal>, most of
+                        OpenGL is in a namespace. This is best used for C++ users who want the best
+                        possible autocompletion from their IDE or coding tool of choice.</para>
+                </listitem>
+                <listitem>
+                    <para><link xlink:href="Style_No_Load_C"><literal>noload_c</literal></link>:
+                        Automatic loading style for C. This is similar to the old loading tool GLee.
+                        Unlike the other styles, it does not require an initialization function; you
+                        simply call whatever function you want to use. The first time a call is
+                        encountered, it will load that function. This is best used for C or C++
+                        users who don't want to do explicit initialization, and also want header
+                        compatibility like <literal>pointer_c</literal>.</para>
+                </listitem>
+                <listitem>
+                    <para><link xlink:href="Style_No_Load_CPP"><literal>noload_cpp</literal></link>:
+                        Automatic loading style for C++. This is similar to the old loading tool
+                        GLee. Unlike the other styles, it does not require an initialization
+                        function; you simply call whatever function you want to use. The first time
+                        a call is encountered, it will load that function. It will wrap most of
+                        OpenGL in a namespace. This is best used for C++ users who don't want to do
+                        explicit initialization.</para>
+                </listitem>
+            </itemizedlist>
+            <para>Each linked page has instructions on how to use the generated interface.</para>
+            <para>More about styles can be found on the <link xlink:href="Styles">style
+                page</link>.</para>
+        </section>
         <section>
             <title>Extensions</title>
             <para>Note that the above command line will <emphasis>only</emphasis> generate

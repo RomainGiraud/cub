@@ -1,22 +1,32 @@
 #include <algorithm>
 #include <vector>
 #include <string.h>
+#include <stddef.h>
 #include "gl_core.hpp"
 
 #if defined(__APPLE__)
 #include <mach-o/dyld.h>
 
-#include <dlfcn.h>
-
-static void* AppleGLGetProcAddress (const char *name)
+static void* AppleGLGetProcAddress (const GLubyte *name)
 {
-	static void* image = NULL;
-	if (NULL == image)
-    	image = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
-
-    return (image ? dlsym(image, (const char *)name) : NULL);
+  static const struct mach_header* image = NULL;
+  NSSymbol symbol;
+  char* symbolName;
+  if (NULL == image)
+  {
+    image = NSAddImage("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", NSADDIMAGE_OPTION_RETURN_ON_ERROR);
+  }
+  /* prepend a '_' for the Unix C symbol mangling convention */
+  symbolName = malloc(strlen((const char*)name) + 2);
+  strcpy(symbolName+1, (const char*)name);
+  symbolName[0] = '_';
+  symbol = NULL;
+  /* if (NSIsSymbolNameDefined(symbolName))
+	 symbol = NSLookupAndBindSymbol(symbolName); */
+  symbol = image ? NSLookupSymbolInImage(image, symbolName, NSLOOKUPSYMBOLINIMAGE_OPTION_BIND | NSLOOKUPSYMBOLINIMAGE_OPTION_RETURN_ON_ERROR) : NULL;
+  free(symbolName);
+  return symbol ? NSAddressOfSymbol(symbol) : NULL;
 }
-
 #endif /* __APPLE__ */
 
 #if defined(__sgi) || defined (__sun)
@@ -93,6 +103,7 @@ namespace gl
 		LoadTest var_ARB_framebuffer_object;
 		LoadTest var_EXT_texture_compression_s3tc;
 		LoadTest var_ARB_texture_rectangle;
+		LoadTest var_ARB_debug_output;
 		
 	} //namespace exts
 	typedef GLboolean (CODEGEN_FUNCPTR *PFNISRENDERBUFFER)(GLuint );
@@ -179,6 +190,29 @@ namespace gl
 		if(!RenderbufferStorageMultisample) ++numFailed;
 		FramebufferTextureLayer = reinterpret_cast<PFNFRAMEBUFFERTEXTURELAYER>(IntGetProcAddress("glFramebufferTextureLayer"));
 		if(!FramebufferTextureLayer) ++numFailed;
+		return numFailed;
+	}
+	
+	typedef void (CODEGEN_FUNCPTR *PFNDEBUGMESSAGECONTROLARB)(GLenum , GLenum , GLenum , GLsizei , const GLuint *, GLboolean );
+	PFNDEBUGMESSAGECONTROLARB DebugMessageControlARB = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNDEBUGMESSAGEINSERTARB)(GLenum , GLenum , GLuint , GLenum , GLsizei , const GLchar *);
+	PFNDEBUGMESSAGEINSERTARB DebugMessageInsertARB = 0;
+	typedef void (CODEGEN_FUNCPTR *PFNDEBUGMESSAGECALLBACKARB)(GLDEBUGPROCARB , const GLvoid *);
+	PFNDEBUGMESSAGECALLBACKARB DebugMessageCallbackARB = 0;
+	typedef GLuint (CODEGEN_FUNCPTR *PFNGETDEBUGMESSAGELOGARB)(GLuint , GLsizei , GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *);
+	PFNGETDEBUGMESSAGELOGARB GetDebugMessageLogARB = 0;
+	
+	static int Load_ARB_debug_output()
+	{
+		int numFailed = 0;
+		DebugMessageControlARB = reinterpret_cast<PFNDEBUGMESSAGECONTROLARB>(IntGetProcAddress("glDebugMessageControlARB"));
+		if(!DebugMessageControlARB) ++numFailed;
+		DebugMessageInsertARB = reinterpret_cast<PFNDEBUGMESSAGEINSERTARB>(IntGetProcAddress("glDebugMessageInsertARB"));
+		if(!DebugMessageInsertARB) ++numFailed;
+		DebugMessageCallbackARB = reinterpret_cast<PFNDEBUGMESSAGECALLBACKARB>(IntGetProcAddress("glDebugMessageCallbackARB"));
+		if(!DebugMessageCallbackARB) ++numFailed;
+		GetDebugMessageLogARB = reinterpret_cast<PFNGETDEBUGMESSAGELOGARB>(IntGetProcAddress("glGetDebugMessageLogARB"));
+		if(!GetDebugMessageLogARB) ++numFailed;
 		return numFailed;
 	}
 	
@@ -2561,10 +2595,11 @@ namespace gl
 			
 			void InitializeMappingTable(std::vector<MapEntry> &table)
 			{
-				table.reserve(3);
+				table.reserve(4);
 				table.push_back(MapEntry("GL_ARB_framebuffer_object", &exts::var_ARB_framebuffer_object, Load_ARB_framebuffer_object));
 				table.push_back(MapEntry("GL_EXT_texture_compression_s3tc", &exts::var_EXT_texture_compression_s3tc));
 				table.push_back(MapEntry("GL_ARB_texture_rectangle", &exts::var_ARB_texture_rectangle));
+				table.push_back(MapEntry("GL_ARB_debug_output", &exts::var_ARB_debug_output, Load_ARB_debug_output));
 			}
 			
 			void ClearExtensionVars()
@@ -2572,6 +2607,7 @@ namespace gl
 				exts::var_ARB_framebuffer_object = exts::LoadTest();
 				exts::var_EXT_texture_compression_s3tc = exts::LoadTest();
 				exts::var_ARB_texture_rectangle = exts::LoadTest();
+				exts::var_ARB_debug_output = exts::LoadTest();
 			}
 			
 			void LoadExtByName(std::vector<MapEntry> &table, const char *extensionName)
@@ -2686,14 +2722,14 @@ namespace gl
 			ParseVersionFromString(&g_major_version, &g_minor_version, temp);
 		}
 		
-		int GetMinorVersion()
+		int GetMajorVersion()
 		{
 			if(g_major_version == 0)
 				GetGLVersion();
 			return g_major_version;
 		}
 		
-		int GetMajorVersion()
+		int GetMinorVersion()
 		{
 			if(g_major_version == 0) //Yes, check the major version to get the minor one.
 				GetGLVersion();

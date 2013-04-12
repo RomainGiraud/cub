@@ -9916,7 +9916,6 @@ return {
 			{
 				["offset"] = [==[371]==],
 				["return"] = [==[void]==],
-				["deprecated"] = [==[3.1]==],
 				["glxropcode"] = [==[4114]==],
 				["version"] = [==[1.2]==],
 				["name"] = [==[TexImage3D]==],
@@ -78821,10 +78820,9 @@ return {
 				["offset"] = [==[?]==],
 				["return"] = [==[UInt64]==],
 				["glxflags"] = [==[ignore]==],
-				["glxsingle"] = [==[?]==],
 				["name"] = [==[GetTextureHandleNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["version"] = [==[4.0]==],
+				["glxsingle"] = [==[?]==],
 				["param"] = [==[texture]==],
 				["dlflags"] = [==[notlistable]==],
 				["params"] = {
@@ -78840,10 +78838,9 @@ return {
 				["offset"] = [==[?]==],
 				["return"] = [==[UInt64]==],
 				["glxflags"] = [==[ignore]==],
-				["glxsingle"] = [==[?]==],
 				["name"] = [==[GetTextureSamplerHandleNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["version"] = [==[4.0]==],
+				["glxsingle"] = [==[?]==],
 				["param"] = [==[sampler]==],
 				["dlflags"] = [==[notlistable]==],
 				["params"] = {
@@ -78863,12 +78860,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[handle]==],
+				["name"] = [==[MakeTextureHandleResidentNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[MakeTextureHandleResidentNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[handle]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -78881,12 +78877,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[handle]==],
+				["name"] = [==[MakeTextureHandleNonResidentNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[MakeTextureHandleNonResidentNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[handle]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -78901,10 +78896,9 @@ return {
 				["offset"] = [==[?]==],
 				["return"] = [==[UInt64]==],
 				["glxflags"] = [==[ignore]==],
-				["glxsingle"] = [==[?]==],
 				["name"] = [==[GetImageHandleNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["version"] = [==[4.0]==],
+				["glxsingle"] = [==[?]==],
 				["param"] = [==[format]==],
 				["dlflags"] = [==[notlistable]==],
 				["params"] = {
@@ -78942,12 +78936,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[access]==],
+				["name"] = [==[MakeImageHandleResidentNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[MakeImageHandleResidentNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[access]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -78966,12 +78959,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[handle]==],
+				["name"] = [==[MakeImageHandleNonResidentNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[MakeImageHandleNonResidentNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[handle]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -78984,12 +78976,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[value]==],
+				["name"] = [==[UniformHandleui64NV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[UniformHandleui64NV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[value]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79008,12 +78999,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[value]==],
+				["name"] = [==[UniformHandleui64vNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[UniformHandleui64vNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[value]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79039,12 +79029,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[value]==],
+				["name"] = [==[ProgramUniformHandleui64NV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[ProgramUniformHandleui64NV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[value]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79069,12 +79058,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[values]==],
+				["name"] = [==[ProgramUniformHandleui64vNV]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[ProgramUniformHandleui64vNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[values]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79106,30 +79094,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
-				["return"] = [==[Boolean]==],
-				["glxropcode"] = [==[?]==],
+				["param"] = [==[handle]==],
 				["name"] = [==[IsTextureHandleResidentNV]==],
-				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[handle]==],
-				["version"] = [==[4.0]==],
-				["glxflags"] = [==[ignore]==],
-				["params"] = {
-					{
-						["input"] = true,
-						["type"] = [==[UInt64]==],
-						["name"] = [==[handle]==],
-						["kind"] = [==[value]==],
-					},
-				},
-			},
-			{
-				["offset"] = [==[?]==],
 				["return"] = [==[Boolean]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[IsImageHandleResidentNV]==],
 				["category"] = [==[NV_bindless_texture]==],
-				["param"] = [==[handle]==],
-				["version"] = [==[4.0]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79142,12 +79111,28 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[handle]==],
+				["name"] = [==[IsImageHandleResidentNV]==],
+				["return"] = [==[Boolean]==],
+				["glxropcode"] = [==[?]==],
+				["category"] = [==[NV_bindless_texture]==],
+				["glxflags"] = [==[ignore]==],
+				["params"] = {
+					{
+						["input"] = true,
+						["type"] = [==[UInt64]==],
+						["name"] = [==[handle]==],
+						["kind"] = [==[value]==],
+					},
+				},
+			},
+			{
+				["offset"] = [==[?]==],
+				["param"] = [==[flags]==],
+				["name"] = [==[TexStorageSparseAMD]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[TexStorageSparseAMD]==],
 				["category"] = [==[AMD_sparse_texture]==],
-				["param"] = [==[flags]==],
-				["version"] = [==[4.3]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -79196,12 +79181,11 @@ return {
 			},
 			{
 				["offset"] = [==[?]==],
+				["param"] = [==[flags]==],
+				["name"] = [==[TextureStorageSparseAMD]==],
 				["return"] = [==[void]==],
 				["glxropcode"] = [==[?]==],
-				["name"] = [==[TextureStorageSparseAMD]==],
 				["category"] = [==[AMD_sparse_texture]==],
-				["param"] = [==[flags]==],
-				["version"] = [==[4.3]==],
 				["glxflags"] = [==[ignore]==],
 				["params"] = {
 					{
@@ -80973,6 +80957,7 @@ return {
 			["name"] = [==[CURRENT_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000001]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -80981,6 +80966,7 @@ return {
 			["name"] = [==[POINT_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000002]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -80989,6 +80975,7 @@ return {
 			["name"] = [==[LINE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000004]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -80997,6 +80984,7 @@ return {
 			["name"] = [==[POLYGON_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000008]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81005,6 +80993,7 @@ return {
 			["name"] = [==[POLYGON_STIPPLE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000010]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81013,6 +81002,7 @@ return {
 			["name"] = [==[PIXEL_MODE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000020]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81021,6 +81011,7 @@ return {
 			["name"] = [==[LIGHTING_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000040]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81029,6 +81020,7 @@ return {
 			["name"] = [==[FOG_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000080]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81037,6 +81029,7 @@ return {
 			["name"] = [==[ACCUM_BUFFER_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000200]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81045,6 +81038,7 @@ return {
 			["name"] = [==[VIEWPORT_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000800]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81053,6 +81047,7 @@ return {
 			["name"] = [==[TRANSFORM_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00001000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81061,6 +81056,7 @@ return {
 			["name"] = [==[ENABLE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00002000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81069,6 +81065,7 @@ return {
 			["name"] = [==[HINT_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00008000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81077,6 +81074,7 @@ return {
 			["name"] = [==[EVAL_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00010000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81085,6 +81083,7 @@ return {
 			["name"] = [==[LIST_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00020000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81093,6 +81092,7 @@ return {
 			["name"] = [==[TEXTURE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00040000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81101,6 +81101,7 @@ return {
 			["name"] = [==[SCISSOR_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00080000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81109,6 +81110,7 @@ return {
 			["name"] = [==[ALL_ATTRIB_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0xFFFFFFFF]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81117,6 +81119,7 @@ return {
 			["name"] = [==[CLIENT_PIXEL_STORE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000001]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81125,6 +81128,7 @@ return {
 			["name"] = [==[CLIENT_VERTEX_ARRAY_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x00000002]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81133,6 +81137,7 @@ return {
 			["name"] = [==[CLIENT_ALL_ATTRIB_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0xFFFFFFFF]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81141,6 +81146,7 @@ return {
 			["name"] = [==[QUAD_STRIP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0008]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81149,6 +81155,7 @@ return {
 			["name"] = [==[POLYGON]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0009]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81157,6 +81164,7 @@ return {
 			["name"] = [==[ACCUM]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0100]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81165,6 +81173,7 @@ return {
 			["name"] = [==[LOAD]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0101]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81173,6 +81182,7 @@ return {
 			["name"] = [==[RETURN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0102]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81181,6 +81191,7 @@ return {
 			["name"] = [==[MULT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0103]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81189,6 +81200,7 @@ return {
 			["name"] = [==[ADD]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0104]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81197,6 +81209,7 @@ return {
 			["name"] = [==[AUX0]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0409]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81205,6 +81218,7 @@ return {
 			["name"] = [==[AUX1]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x040A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81213,6 +81227,7 @@ return {
 			["name"] = [==[AUX2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x040B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81221,6 +81236,7 @@ return {
 			["name"] = [==[AUX3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x040C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81229,6 +81245,7 @@ return {
 			["name"] = [==[2D]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0600]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81237,6 +81254,7 @@ return {
 			["name"] = [==[3D]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0601]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81245,6 +81263,7 @@ return {
 			["name"] = [==[3D_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0602]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81253,6 +81272,7 @@ return {
 			["name"] = [==[3D_COLOR_TEXTURE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0603]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81261,6 +81281,7 @@ return {
 			["name"] = [==[4D_COLOR_TEXTURE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0604]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81269,6 +81290,7 @@ return {
 			["name"] = [==[PASS_THROUGH_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0700]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81277,6 +81299,7 @@ return {
 			["name"] = [==[POINT_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0701]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81285,6 +81308,7 @@ return {
 			["name"] = [==[LINE_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0702]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81293,6 +81317,7 @@ return {
 			["name"] = [==[POLYGON_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0703]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81301,6 +81326,7 @@ return {
 			["name"] = [==[BITMAP_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0704]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81309,6 +81335,7 @@ return {
 			["name"] = [==[DRAW_PIXEL_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0705]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81317,6 +81344,7 @@ return {
 			["name"] = [==[COPY_PIXEL_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0706]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81325,6 +81353,7 @@ return {
 			["name"] = [==[LINE_RESET_TOKEN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0707]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81333,6 +81362,7 @@ return {
 			["name"] = [==[EXP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0800]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81341,6 +81371,7 @@ return {
 			["name"] = [==[EXP2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0801]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81349,6 +81380,7 @@ return {
 			["name"] = [==[COEFF]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0A00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81357,6 +81389,7 @@ return {
 			["name"] = [==[ORDER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0A01]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81365,6 +81398,7 @@ return {
 			["name"] = [==[DOMAIN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0A02]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81373,6 +81407,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_I]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C70]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81381,6 +81416,7 @@ return {
 			["name"] = [==[PIXEL_MAP_S_TO_S]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C71]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81389,6 +81425,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_R]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C72]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81397,6 +81434,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_G]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C73]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81405,6 +81443,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_B]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C74]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81413,6 +81452,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_A]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C75]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81421,6 +81461,7 @@ return {
 			["name"] = [==[PIXEL_MAP_R_TO_R]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C76]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81429,6 +81470,7 @@ return {
 			["name"] = [==[PIXEL_MAP_G_TO_G]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C77]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81437,6 +81479,7 @@ return {
 			["name"] = [==[PIXEL_MAP_B_TO_B]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C78]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81445,6 +81488,7 @@ return {
 			["name"] = [==[PIXEL_MAP_A_TO_A]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C79]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81453,6 +81497,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x808E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81461,6 +81506,7 @@ return {
 			["name"] = [==[NORMAL_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x808F]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81469,6 +81515,7 @@ return {
 			["name"] = [==[COLOR_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8090]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81477,6 +81524,7 @@ return {
 			["name"] = [==[INDEX_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8091]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81485,6 +81533,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8092]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81493,6 +81542,7 @@ return {
 			["name"] = [==[EDGE_FLAG_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8093]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81501,6 +81551,7 @@ return {
 			["name"] = [==[FEEDBACK_BUFFER_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DF0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81509,6 +81560,7 @@ return {
 			["name"] = [==[SELECTION_BUFFER_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DF3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81517,6 +81569,7 @@ return {
 			["name"] = [==[CURRENT_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81525,6 +81578,7 @@ return {
 			["name"] = [==[CURRENT_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B01]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81533,6 +81587,7 @@ return {
 			["name"] = [==[CURRENT_NORMAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B02]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81541,6 +81596,7 @@ return {
 			["name"] = [==[CURRENT_TEXTURE_COORDS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B03]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81549,6 +81605,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B04]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81557,6 +81614,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B05]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81565,6 +81623,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_TEXTURE_COORDS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B06]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81573,6 +81632,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_POSITION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B07]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81581,6 +81641,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_POSITION_VALID]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B08]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81589,6 +81650,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_DISTANCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B09]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81597,6 +81659,7 @@ return {
 			["name"] = [==[POINT_SMOOTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B10]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81605,6 +81668,7 @@ return {
 			["name"] = [==[LINE_STIPPLE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B24]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81613,6 +81677,7 @@ return {
 			["name"] = [==[LINE_STIPPLE_PATTERN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B25]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81621,6 +81686,7 @@ return {
 			["name"] = [==[LINE_STIPPLE_REPEAT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B26]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81629,6 +81695,7 @@ return {
 			["name"] = [==[LIST_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B30]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81637,6 +81704,7 @@ return {
 			["name"] = [==[MAX_LIST_NESTING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B31]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81645,6 +81713,7 @@ return {
 			["name"] = [==[LIST_BASE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B32]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81653,6 +81722,7 @@ return {
 			["name"] = [==[LIST_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B33]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81661,6 +81731,7 @@ return {
 			["name"] = [==[POLYGON_STIPPLE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B42]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81669,6 +81740,7 @@ return {
 			["name"] = [==[EDGE_FLAG]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B43]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81677,6 +81749,7 @@ return {
 			["name"] = [==[LIGHTING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B50]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81685,6 +81758,7 @@ return {
 			["name"] = [==[LIGHT_MODEL_LOCAL_VIEWER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B51]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81693,6 +81767,7 @@ return {
 			["name"] = [==[LIGHT_MODEL_TWO_SIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B52]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81701,6 +81776,7 @@ return {
 			["name"] = [==[LIGHT_MODEL_AMBIENT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B53]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81709,6 +81785,7 @@ return {
 			["name"] = [==[SHADE_MODEL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B54]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81717,6 +81794,7 @@ return {
 			["name"] = [==[COLOR_MATERIAL_FACE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B55]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81725,6 +81803,7 @@ return {
 			["name"] = [==[COLOR_MATERIAL_PARAMETER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B56]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81733,12 +81812,14 @@ return {
 			["name"] = [==[COLOR_MATERIAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B57]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[FOG]==],
+			["profile"] = [==[compatibility]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B60]==],
 			["extensions"] = {
@@ -81752,6 +81833,7 @@ return {
 			["name"] = [==[FOG_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B61]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81760,6 +81842,7 @@ return {
 			["name"] = [==[FOG_DENSITY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B62]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81768,6 +81851,7 @@ return {
 			["name"] = [==[FOG_START]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B63]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81776,6 +81860,7 @@ return {
 			["name"] = [==[FOG_END]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B64]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81784,6 +81869,7 @@ return {
 			["name"] = [==[FOG_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B65]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81792,6 +81878,7 @@ return {
 			["name"] = [==[FOG_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B66]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81800,6 +81887,7 @@ return {
 			["name"] = [==[ACCUM_CLEAR_VALUE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0B80]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81808,6 +81896,7 @@ return {
 			["name"] = [==[MATRIX_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81816,6 +81905,7 @@ return {
 			["name"] = [==[NORMALIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81824,6 +81914,7 @@ return {
 			["name"] = [==[MODELVIEW_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81832,6 +81923,7 @@ return {
 			["name"] = [==[PROJECTION_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA4]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81840,6 +81932,7 @@ return {
 			["name"] = [==[TEXTURE_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA5]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81848,6 +81941,7 @@ return {
 			["name"] = [==[MODELVIEW_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA6]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81856,6 +81950,7 @@ return {
 			["name"] = [==[PROJECTION_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA7]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81864,6 +81959,7 @@ return {
 			["name"] = [==[TEXTURE_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BA8]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81872,6 +81968,7 @@ return {
 			["name"] = [==[ATTRIB_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BB0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81880,6 +81977,7 @@ return {
 			["name"] = [==[CLIENT_ATTRIB_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BB1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81888,6 +81986,7 @@ return {
 			["name"] = [==[ALPHA_TEST]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BC0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81896,6 +81995,7 @@ return {
 			["name"] = [==[ALPHA_TEST_FUNC]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BC1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81904,6 +82004,7 @@ return {
 			["name"] = [==[ALPHA_TEST_REF]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BC2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81912,6 +82013,7 @@ return {
 			["name"] = [==[INDEX_LOGIC_OP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BF1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81920,6 +82022,7 @@ return {
 			["name"] = [==[LOGIC_OP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0BF1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81928,6 +82031,7 @@ return {
 			["name"] = [==[AUX_BUFFERS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81936,6 +82040,7 @@ return {
 			["name"] = [==[INDEX_CLEAR_VALUE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C20]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81944,6 +82049,7 @@ return {
 			["name"] = [==[INDEX_WRITEMASK]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C21]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81952,6 +82058,7 @@ return {
 			["name"] = [==[INDEX_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C30]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81960,6 +82067,7 @@ return {
 			["name"] = [==[RGBA_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C31]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81968,6 +82076,7 @@ return {
 			["name"] = [==[RENDER_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C40]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81976,6 +82085,7 @@ return {
 			["name"] = [==[PERSPECTIVE_CORRECTION_HINT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C50]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81984,6 +82094,7 @@ return {
 			["name"] = [==[POINT_SMOOTH_HINT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C51]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -81992,6 +82103,7 @@ return {
 			["name"] = [==[FOG_HINT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C54]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82000,6 +82112,7 @@ return {
 			["name"] = [==[TEXTURE_GEN_S]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C60]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82008,6 +82121,7 @@ return {
 			["name"] = [==[TEXTURE_GEN_T]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C61]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82016,6 +82130,7 @@ return {
 			["name"] = [==[TEXTURE_GEN_R]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C62]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82024,6 +82139,7 @@ return {
 			["name"] = [==[TEXTURE_GEN_Q]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0C63]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82032,6 +82148,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_I_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82040,6 +82157,7 @@ return {
 			["name"] = [==[PIXEL_MAP_S_TO_S_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82048,6 +82166,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_R_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82056,6 +82175,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_G_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82064,6 +82184,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_B_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB4]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82072,6 +82193,7 @@ return {
 			["name"] = [==[PIXEL_MAP_I_TO_A_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB5]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82080,6 +82202,7 @@ return {
 			["name"] = [==[PIXEL_MAP_R_TO_R_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB6]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82088,6 +82211,7 @@ return {
 			["name"] = [==[PIXEL_MAP_G_TO_G_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB7]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82096,6 +82220,7 @@ return {
 			["name"] = [==[PIXEL_MAP_B_TO_B_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB8]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82104,6 +82229,7 @@ return {
 			["name"] = [==[PIXEL_MAP_A_TO_A_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0CB9]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82112,6 +82238,7 @@ return {
 			["name"] = [==[MAP_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D10]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82120,6 +82247,7 @@ return {
 			["name"] = [==[MAP_STENCIL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D11]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82128,6 +82256,7 @@ return {
 			["name"] = [==[INDEX_SHIFT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D12]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82136,6 +82265,7 @@ return {
 			["name"] = [==[INDEX_OFFSET]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D13]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82144,6 +82274,7 @@ return {
 			["name"] = [==[RED_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D14]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82152,6 +82283,7 @@ return {
 			["name"] = [==[RED_BIAS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D15]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82160,6 +82292,7 @@ return {
 			["name"] = [==[ZOOM_X]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D16]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82168,6 +82301,7 @@ return {
 			["name"] = [==[ZOOM_Y]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D17]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82176,6 +82310,7 @@ return {
 			["name"] = [==[GREEN_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D18]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82184,6 +82319,7 @@ return {
 			["name"] = [==[GREEN_BIAS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D19]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82192,6 +82328,7 @@ return {
 			["name"] = [==[BLUE_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82200,6 +82337,7 @@ return {
 			["name"] = [==[BLUE_BIAS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82208,6 +82346,7 @@ return {
 			["name"] = [==[ALPHA_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82216,6 +82355,7 @@ return {
 			["name"] = [==[ALPHA_BIAS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82224,6 +82364,7 @@ return {
 			["name"] = [==[DEPTH_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82232,6 +82373,7 @@ return {
 			["name"] = [==[DEPTH_BIAS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D1F]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82240,6 +82382,7 @@ return {
 			["name"] = [==[MAX_EVAL_ORDER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D30]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82248,6 +82391,7 @@ return {
 			["name"] = [==[MAX_LIGHTS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D31]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82256,6 +82400,7 @@ return {
 			["name"] = [==[MAX_CLIP_PLANES]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D32]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82264,6 +82409,7 @@ return {
 			["name"] = [==[MAX_PIXEL_MAP_TABLE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D34]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82272,6 +82418,7 @@ return {
 			["name"] = [==[MAX_ATTRIB_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D35]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82280,6 +82427,7 @@ return {
 			["name"] = [==[MAX_MODELVIEW_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D36]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82288,6 +82436,7 @@ return {
 			["name"] = [==[MAX_NAME_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D37]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82296,6 +82445,7 @@ return {
 			["name"] = [==[MAX_PROJECTION_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D38]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82304,6 +82454,7 @@ return {
 			["name"] = [==[MAX_TEXTURE_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D39]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82312,6 +82463,7 @@ return {
 			["name"] = [==[MAX_CLIENT_ATTRIB_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D3B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82320,6 +82472,7 @@ return {
 			["name"] = [==[INDEX_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D51]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82328,6 +82481,7 @@ return {
 			["name"] = [==[RED_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D52]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82336,6 +82490,7 @@ return {
 			["name"] = [==[GREEN_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D53]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82344,6 +82499,7 @@ return {
 			["name"] = [==[BLUE_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D54]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82352,6 +82508,7 @@ return {
 			["name"] = [==[ALPHA_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D55]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82360,6 +82517,7 @@ return {
 			["name"] = [==[DEPTH_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D56]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82368,6 +82526,7 @@ return {
 			["name"] = [==[STENCIL_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D57]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82376,6 +82535,7 @@ return {
 			["name"] = [==[ACCUM_RED_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D58]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82384,6 +82544,7 @@ return {
 			["name"] = [==[ACCUM_GREEN_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D59]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82392,6 +82553,7 @@ return {
 			["name"] = [==[ACCUM_BLUE_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D5A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82400,6 +82562,7 @@ return {
 			["name"] = [==[ACCUM_ALPHA_BITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D5B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82408,6 +82571,7 @@ return {
 			["name"] = [==[NAME_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D70]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82416,6 +82580,7 @@ return {
 			["name"] = [==[AUTO_NORMAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D80]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82424,6 +82589,7 @@ return {
 			["name"] = [==[MAP1_COLOR_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D90]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82432,6 +82598,7 @@ return {
 			["name"] = [==[MAP1_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D91]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82440,6 +82607,7 @@ return {
 			["name"] = [==[MAP1_NORMAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D92]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82448,6 +82616,7 @@ return {
 			["name"] = [==[MAP1_TEXTURE_COORD_1]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D93]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82456,6 +82625,7 @@ return {
 			["name"] = [==[MAP1_TEXTURE_COORD_2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D94]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82464,6 +82634,7 @@ return {
 			["name"] = [==[MAP1_TEXTURE_COORD_3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D95]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82472,6 +82643,7 @@ return {
 			["name"] = [==[MAP1_TEXTURE_COORD_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D96]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82480,6 +82652,7 @@ return {
 			["name"] = [==[MAP1_VERTEX_3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D97]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82488,6 +82661,7 @@ return {
 			["name"] = [==[MAP1_VERTEX_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0D98]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82496,6 +82670,7 @@ return {
 			["name"] = [==[MAP2_COLOR_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82504,6 +82679,7 @@ return {
 			["name"] = [==[MAP2_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82512,6 +82688,7 @@ return {
 			["name"] = [==[MAP2_NORMAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82520,6 +82697,7 @@ return {
 			["name"] = [==[MAP2_TEXTURE_COORD_1]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82528,6 +82706,7 @@ return {
 			["name"] = [==[MAP2_TEXTURE_COORD_2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB4]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82536,6 +82715,7 @@ return {
 			["name"] = [==[MAP2_TEXTURE_COORD_3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB5]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82544,6 +82724,7 @@ return {
 			["name"] = [==[MAP2_TEXTURE_COORD_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB6]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82552,6 +82733,7 @@ return {
 			["name"] = [==[MAP2_VERTEX_3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB7]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82560,6 +82742,7 @@ return {
 			["name"] = [==[MAP2_VERTEX_4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DB8]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82568,6 +82751,7 @@ return {
 			["name"] = [==[MAP1_GRID_DOMAIN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DD0]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82576,6 +82760,7 @@ return {
 			["name"] = [==[MAP1_GRID_SEGMENTS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DD1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82584,6 +82769,7 @@ return {
 			["name"] = [==[MAP2_GRID_DOMAIN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DD2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82592,6 +82778,7 @@ return {
 			["name"] = [==[MAP2_GRID_SEGMENTS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DD3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82600,6 +82787,7 @@ return {
 			["name"] = [==[FEEDBACK_BUFFER_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DF1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82608,6 +82796,7 @@ return {
 			["name"] = [==[FEEDBACK_BUFFER_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DF2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82616,6 +82805,7 @@ return {
 			["name"] = [==[SELECTION_BUFFER_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x0DF4]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82624,6 +82814,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8074]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82632,6 +82823,7 @@ return {
 			["name"] = [==[NORMAL_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8075]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82640,6 +82832,7 @@ return {
 			["name"] = [==[COLOR_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8076]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82648,6 +82841,7 @@ return {
 			["name"] = [==[INDEX_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8077]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82656,6 +82850,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8078]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82664,6 +82859,7 @@ return {
 			["name"] = [==[EDGE_FLAG_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8079]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82672,6 +82868,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x807A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82680,6 +82877,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x807B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82688,6 +82886,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x807C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82696,6 +82895,7 @@ return {
 			["name"] = [==[NORMAL_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x807E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82704,6 +82904,7 @@ return {
 			["name"] = [==[NORMAL_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x807F]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82712,6 +82913,7 @@ return {
 			["name"] = [==[COLOR_ARRAY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8081]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82720,6 +82922,7 @@ return {
 			["name"] = [==[COLOR_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8082]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82728,6 +82931,7 @@ return {
 			["name"] = [==[COLOR_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8083]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82736,6 +82940,7 @@ return {
 			["name"] = [==[INDEX_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8085]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82744,6 +82949,7 @@ return {
 			["name"] = [==[INDEX_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8086]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82752,6 +82958,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8088]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82760,6 +82967,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8089]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82768,6 +82976,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x808A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82776,6 +82985,7 @@ return {
 			["name"] = [==[EDGE_FLAG_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x808C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82784,6 +82994,7 @@ return {
 			["name"] = [==[TEXTURE_COMPONENTS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1003]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82792,6 +83003,7 @@ return {
 			["name"] = [==[TEXTURE_BORDER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1005]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82800,6 +83012,7 @@ return {
 			["name"] = [==[TEXTURE_LUMINANCE_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8060]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82808,6 +83021,7 @@ return {
 			["name"] = [==[TEXTURE_INTENSITY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8061]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82816,6 +83030,7 @@ return {
 			["name"] = [==[TEXTURE_PRIORITY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8066]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82824,6 +83039,7 @@ return {
 			["name"] = [==[TEXTURE_RESIDENT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8067]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82832,6 +83048,7 @@ return {
 			["name"] = [==[AMBIENT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1200]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82840,6 +83057,7 @@ return {
 			["name"] = [==[DIFFUSE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1201]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82848,6 +83066,7 @@ return {
 			["name"] = [==[SPECULAR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1202]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82856,6 +83075,7 @@ return {
 			["name"] = [==[POSITION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1203]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82864,6 +83084,7 @@ return {
 			["name"] = [==[SPOT_DIRECTION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1204]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82872,6 +83093,7 @@ return {
 			["name"] = [==[SPOT_EXPONENT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1205]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82880,6 +83102,7 @@ return {
 			["name"] = [==[SPOT_CUTOFF]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1206]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82888,6 +83111,7 @@ return {
 			["name"] = [==[CONSTANT_ATTENUATION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1207]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82896,6 +83120,7 @@ return {
 			["name"] = [==[LINEAR_ATTENUATION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1208]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82904,6 +83129,7 @@ return {
 			["name"] = [==[QUADRATIC_ATTENUATION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1209]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82912,6 +83138,7 @@ return {
 			["name"] = [==[COMPILE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1300]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82920,6 +83147,7 @@ return {
 			["name"] = [==[COMPILE_AND_EXECUTE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1301]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82928,6 +83156,7 @@ return {
 			["name"] = [==[2_BYTES]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1407]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82936,6 +83165,7 @@ return {
 			["name"] = [==[3_BYTES]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1408]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82944,6 +83174,7 @@ return {
 			["name"] = [==[4_BYTES]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1409]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82952,6 +83183,7 @@ return {
 			["name"] = [==[EMISSION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1600]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82960,6 +83192,7 @@ return {
 			["name"] = [==[SHININESS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1601]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82968,6 +83201,7 @@ return {
 			["name"] = [==[AMBIENT_AND_DIFFUSE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1602]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82976,6 +83210,7 @@ return {
 			["name"] = [==[COLOR_INDEXES]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1603]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82984,6 +83219,7 @@ return {
 			["name"] = [==[MODELVIEW]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1700]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -82992,6 +83228,7 @@ return {
 			["name"] = [==[PROJECTION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1701]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83000,6 +83237,7 @@ return {
 			["name"] = [==[COLOR_INDEX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1900]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83008,6 +83246,7 @@ return {
 			["name"] = [==[LUMINANCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1909]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83016,6 +83255,7 @@ return {
 			["name"] = [==[LUMINANCE_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x190A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83024,6 +83264,7 @@ return {
 			["name"] = [==[BITMAP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1A00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83032,6 +83273,7 @@ return {
 			["name"] = [==[RENDER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1C00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83040,6 +83282,7 @@ return {
 			["name"] = [==[FEEDBACK]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1C01]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83048,6 +83291,7 @@ return {
 			["name"] = [==[SELECT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1C02]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83056,6 +83300,7 @@ return {
 			["name"] = [==[FLAT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1D00]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83064,6 +83309,7 @@ return {
 			["name"] = [==[SMOOTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x1D01]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83072,6 +83318,7 @@ return {
 			["name"] = [==[S]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83080,6 +83327,7 @@ return {
 			["name"] = [==[T]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2001]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83088,6 +83336,7 @@ return {
 			["name"] = [==[R]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2002]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83096,6 +83345,7 @@ return {
 			["name"] = [==[Q]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2003]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83104,6 +83354,7 @@ return {
 			["name"] = [==[MODULATE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2100]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83112,6 +83363,7 @@ return {
 			["name"] = [==[DECAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2101]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83120,6 +83372,7 @@ return {
 			["name"] = [==[TEXTURE_ENV_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2200]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83128,6 +83381,7 @@ return {
 			["name"] = [==[TEXTURE_ENV_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2201]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83136,6 +83390,7 @@ return {
 			["name"] = [==[TEXTURE_ENV]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2300]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83144,6 +83399,7 @@ return {
 			["name"] = [==[EYE_LINEAR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2400]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83152,6 +83408,7 @@ return {
 			["name"] = [==[OBJECT_LINEAR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2401]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83160,6 +83417,7 @@ return {
 			["name"] = [==[SPHERE_MAP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2402]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83168,6 +83426,7 @@ return {
 			["name"] = [==[TEXTURE_GEN_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2500]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83176,12 +83435,14 @@ return {
 			["name"] = [==[OBJECT_PLANE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2501]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[EYE_PLANE]==],
+			["profile"] = [==[compatibility]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2502]==],
 			["extensions"] = {
@@ -83195,6 +83456,7 @@ return {
 			["name"] = [==[CLAMP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2900]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83203,6 +83465,7 @@ return {
 			["name"] = [==[ALPHA4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83211,6 +83474,7 @@ return {
 			["name"] = [==[ALPHA8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83219,6 +83483,7 @@ return {
 			["name"] = [==[ALPHA12]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83227,6 +83492,7 @@ return {
 			["name"] = [==[ALPHA16]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83235,6 +83501,7 @@ return {
 			["name"] = [==[LUMINANCE4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803F]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83243,6 +83510,7 @@ return {
 			["name"] = [==[LUMINANCE8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8040]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83251,6 +83519,7 @@ return {
 			["name"] = [==[LUMINANCE12]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8041]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83259,6 +83528,7 @@ return {
 			["name"] = [==[LUMINANCE16]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8042]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83267,6 +83537,7 @@ return {
 			["name"] = [==[LUMINANCE4_ALPHA4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8043]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83275,6 +83546,7 @@ return {
 			["name"] = [==[LUMINANCE6_ALPHA2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8044]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83283,6 +83555,7 @@ return {
 			["name"] = [==[LUMINANCE8_ALPHA8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8045]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83291,6 +83564,7 @@ return {
 			["name"] = [==[LUMINANCE12_ALPHA4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8046]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83299,6 +83573,7 @@ return {
 			["name"] = [==[LUMINANCE12_ALPHA12]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8047]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83307,6 +83582,7 @@ return {
 			["name"] = [==[LUMINANCE16_ALPHA16]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8048]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83315,6 +83591,7 @@ return {
 			["name"] = [==[INTENSITY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8049]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83323,6 +83600,7 @@ return {
 			["name"] = [==[INTENSITY4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x804A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83331,6 +83609,7 @@ return {
 			["name"] = [==[INTENSITY8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x804B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83339,6 +83618,7 @@ return {
 			["name"] = [==[INTENSITY12]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x804C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83347,6 +83627,7 @@ return {
 			["name"] = [==[INTENSITY16]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x804D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83355,6 +83636,7 @@ return {
 			["name"] = [==[V2F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A20]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83363,6 +83645,7 @@ return {
 			["name"] = [==[V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A21]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83371,6 +83654,7 @@ return {
 			["name"] = [==[C4UB_V2F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A22]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83379,6 +83663,7 @@ return {
 			["name"] = [==[C4UB_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A23]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83387,6 +83672,7 @@ return {
 			["name"] = [==[C3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A24]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83395,6 +83681,7 @@ return {
 			["name"] = [==[N3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A25]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83403,6 +83690,7 @@ return {
 			["name"] = [==[C4F_N3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A26]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83411,6 +83699,7 @@ return {
 			["name"] = [==[T2F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A27]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83419,6 +83708,7 @@ return {
 			["name"] = [==[T4F_V4F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A28]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83427,6 +83717,7 @@ return {
 			["name"] = [==[T2F_C4UB_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A29]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83435,6 +83726,7 @@ return {
 			["name"] = [==[T2F_C3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A2A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83443,6 +83735,7 @@ return {
 			["name"] = [==[T2F_N3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A2B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83451,6 +83744,7 @@ return {
 			["name"] = [==[T2F_C4F_N3F_V3F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A2C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83459,6 +83753,7 @@ return {
 			["name"] = [==[T4F_C4F_N3F_V4F]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x2A2D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83467,6 +83762,7 @@ return {
 			["name"] = [==[CLIP_PLANE0]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83475,6 +83771,7 @@ return {
 			["name"] = [==[CLIP_PLANE1]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3001]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83483,6 +83780,7 @@ return {
 			["name"] = [==[CLIP_PLANE2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3002]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83491,6 +83789,7 @@ return {
 			["name"] = [==[CLIP_PLANE3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3003]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83499,6 +83798,7 @@ return {
 			["name"] = [==[CLIP_PLANE4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3004]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83507,6 +83807,7 @@ return {
 			["name"] = [==[CLIP_PLANE5]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x3005]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83515,6 +83816,7 @@ return {
 			["name"] = [==[LIGHT0]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83523,6 +83825,7 @@ return {
 			["name"] = [==[LIGHT1]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4001]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83531,6 +83834,7 @@ return {
 			["name"] = [==[LIGHT2]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4002]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83539,6 +83843,7 @@ return {
 			["name"] = [==[LIGHT3]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4003]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83547,6 +83852,7 @@ return {
 			["name"] = [==[LIGHT4]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4004]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83555,6 +83861,7 @@ return {
 			["name"] = [==[LIGHT5]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4005]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83563,6 +83870,7 @@ return {
 			["name"] = [==[LIGHT6]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4006]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83571,6 +83879,7 @@ return {
 			["name"] = [==[LIGHT7]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x4007]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.1]==],
 		},
 		{
@@ -83805,6 +84114,7 @@ return {
 			["name"] = [==[RESCALE_NORMAL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x803A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.2]==],
 		},
 		{
@@ -83813,6 +84123,7 @@ return {
 			["name"] = [==[LIGHT_MODEL_COLOR_CONTROL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x81F8]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.2]==],
 		},
 		{
@@ -83821,6 +84132,7 @@ return {
 			["name"] = [==[SINGLE_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x81F9]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.2]==],
 		},
 		{
@@ -83829,6 +84141,7 @@ return {
 			["name"] = [==[SEPARATE_SPECULAR_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x81FA]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.2]==],
 		},
 		{
@@ -83837,6 +84150,7 @@ return {
 			["name"] = [==[ALIASED_POINT_SIZE_RANGE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x846D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.2]==],
 		},
 		{
@@ -83932,640 +84246,704 @@ return {
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_1D]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8010]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8010]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_2D]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8011]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8011]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[SEPARABLE_2D]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8012]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8012]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_BORDER_MODE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8013]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8013]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_FILTER_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8014]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8014]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_FILTER_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8015]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8015]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[REDUCE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8016]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8016]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_FORMAT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8017]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8017]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_WIDTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8018]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8018]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_HEIGHT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8019]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8019]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MAX_CONVOLUTION_WIDTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801A]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801A]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MAX_CONVOLUTION_HEIGHT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801B]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801B]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_RED_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801C]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801C]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_GREEN_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801D]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801D]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_BLUE_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801E]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801E]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_ALPHA_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x801F]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x801F]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_RED_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8020]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8020]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_GREEN_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8021]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8021]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_BLUE_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8022]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8022]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_ALPHA_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8023]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8023]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8024]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8024]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[PROXY_HISTOGRAM]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8025]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8025]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_WIDTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8026]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8026]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_FORMAT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8027]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8027]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_RED_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8028]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8028]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_GREEN_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8029]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8029]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_BLUE_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802A]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802A]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_ALPHA_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802B]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802B]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_LUMINANCE_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802C]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802C]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[HISTOGRAM_SINK]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802D]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802D]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MINMAX]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802E]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802E]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MINMAX_FORMAT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x802F]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x802F]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MINMAX_SINK]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8030]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8030]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[TABLE_TOO_LARGE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8031]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8031]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B1]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B1]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_MATRIX_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B2]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B2]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[MAX_COLOR_MATRIX_STACK_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B3]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B3]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_RED_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B4]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B4]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_GREEN_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B5]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B5]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_BLUE_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B6]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B6]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_ALPHA_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B7]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B7]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_RED_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B8]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B8]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_GREEN_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80B9]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80B9]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_BLUE_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80BA]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80BA]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_ALPHA_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80BB]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80BB]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D0]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D0]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_CONVOLUTION_COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D1]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D1]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[POST_COLOR_MATRIX_COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D2]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D2]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[PROXY_COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D3]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D3]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[PROXY_POST_CONVOLUTION_COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D4]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D4]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[PROXY_POST_COLOR_MATRIX_COLOR_TABLE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D5]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D5]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_SCALE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D6]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D6]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_BIAS]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D7]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D7]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_FORMAT]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D8]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D8]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_WIDTH]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80D9]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80D9]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_RED_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DA]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DA]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_GREEN_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DB]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DB]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_BLUE_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DC]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DC]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_ALPHA_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DD]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DD]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_LUMINANCE_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DE]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DE]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[COLOR_TABLE_INTENSITY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x80DF]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x80DF]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONSTANT_BORDER]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8151]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8151]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[REPLICATE_BORDER]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8153]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8153]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[CONVOLUTION_BORDER_COLOR]==],
 			["deprecated"] = [==[3.0]==],
+			["value"] = [==[0x8154]==],
 			["extensions"] = {
 				[==[ARB_imaging]==],
 			},
-			["value"] = [==[0x8154]==],
+			["profile"] = [==[compatibility]==],
 		},
 		{
 			["value"] = [==[0x84C0]==],
@@ -84936,6 +85314,7 @@ return {
 			["name"] = [==[CLIENT_ACTIVE_TEXTURE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E1]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84944,6 +85323,7 @@ return {
 			["name"] = [==[MAX_TEXTURE_UNITS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E2]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84952,6 +85332,7 @@ return {
 			["name"] = [==[TRANSPOSE_MODELVIEW_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E3]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84960,6 +85341,7 @@ return {
 			["name"] = [==[TRANSPOSE_PROJECTION_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E4]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84968,6 +85350,7 @@ return {
 			["name"] = [==[TRANSPOSE_TEXTURE_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E5]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84976,6 +85359,7 @@ return {
 			["name"] = [==[TRANSPOSE_COLOR_MATRIX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E6]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84984,6 +85368,7 @@ return {
 			["name"] = [==[MULTISAMPLE_BIT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x20000000]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -84992,6 +85377,7 @@ return {
 			["name"] = [==[NORMAL_MAP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8511]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85000,6 +85386,7 @@ return {
 			["name"] = [==[REFLECTION_MAP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8512]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85008,6 +85395,7 @@ return {
 			["name"] = [==[COMPRESSED_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E9]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85016,6 +85404,7 @@ return {
 			["name"] = [==[COMPRESSED_LUMINANCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84EA]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85024,6 +85413,7 @@ return {
 			["name"] = [==[COMPRESSED_LUMINANCE_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84EB]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85032,6 +85422,7 @@ return {
 			["name"] = [==[COMPRESSED_INTENSITY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84EC]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85040,6 +85431,7 @@ return {
 			["name"] = [==[COMBINE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8570]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85048,6 +85440,7 @@ return {
 			["name"] = [==[COMBINE_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8571]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85056,6 +85449,7 @@ return {
 			["name"] = [==[COMBINE_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8572]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85064,6 +85458,7 @@ return {
 			["name"] = [==[SOURCE0_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8580]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85072,6 +85467,7 @@ return {
 			["name"] = [==[SOURCE1_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8581]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85080,6 +85476,7 @@ return {
 			["name"] = [==[SOURCE2_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8582]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85088,6 +85485,7 @@ return {
 			["name"] = [==[SOURCE0_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8588]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85096,6 +85494,7 @@ return {
 			["name"] = [==[SOURCE1_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8589]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85104,6 +85503,7 @@ return {
 			["name"] = [==[SOURCE2_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x858A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85112,6 +85512,7 @@ return {
 			["name"] = [==[OPERAND0_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8590]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85120,6 +85521,7 @@ return {
 			["name"] = [==[OPERAND1_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8591]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85128,6 +85530,7 @@ return {
 			["name"] = [==[OPERAND2_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8592]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85136,6 +85539,7 @@ return {
 			["name"] = [==[OPERAND0_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8598]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85144,6 +85548,7 @@ return {
 			["name"] = [==[OPERAND1_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8599]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85152,6 +85557,7 @@ return {
 			["name"] = [==[OPERAND2_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x859A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85160,6 +85566,7 @@ return {
 			["name"] = [==[RGB_SCALE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8573]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85168,6 +85575,7 @@ return {
 			["name"] = [==[ADD_SIGNED]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8574]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85176,6 +85584,7 @@ return {
 			["name"] = [==[INTERPOLATE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8575]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85184,6 +85593,7 @@ return {
 			["name"] = [==[SUBTRACT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x84E7]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85192,6 +85602,7 @@ return {
 			["name"] = [==[CONSTANT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8576]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85200,6 +85611,7 @@ return {
 			["name"] = [==[PRIMARY_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8577]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85208,6 +85620,7 @@ return {
 			["name"] = [==[PREVIOUS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8578]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85216,6 +85629,7 @@ return {
 			["name"] = [==[DOT3_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x86AE]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85224,6 +85638,7 @@ return {
 			["name"] = [==[DOT3_RGBA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x86AF]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.3]==],
 		},
 		{
@@ -85328,6 +85743,7 @@ return {
 			["name"] = [==[POINT_SIZE_MIN]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8126]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85336,6 +85752,7 @@ return {
 			["name"] = [==[POINT_SIZE_MAX]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8127]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85344,6 +85761,7 @@ return {
 			["name"] = [==[POINT_DISTANCE_ATTENUATION]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8129]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85352,6 +85770,7 @@ return {
 			["name"] = [==[GENERATE_MIPMAP]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8191]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85360,6 +85779,7 @@ return {
 			["name"] = [==[GENERATE_MIPMAP_HINT]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8192]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85368,6 +85788,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_SOURCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8450]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85376,6 +85797,7 @@ return {
 			["name"] = [==[FOG_COORDINATE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8451]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85384,6 +85806,7 @@ return {
 			["name"] = [==[FRAGMENT_DEPTH]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8452]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85392,6 +85815,7 @@ return {
 			["name"] = [==[CURRENT_FOG_COORDINATE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8453]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85400,6 +85824,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8454]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85408,6 +85833,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8455]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85416,6 +85842,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8456]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85424,6 +85851,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8457]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85432,6 +85860,7 @@ return {
 			["name"] = [==[COLOR_SUM]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8458]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85440,6 +85869,7 @@ return {
 			["name"] = [==[CURRENT_SECONDARY_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8459]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85448,6 +85878,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY_SIZE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85456,6 +85887,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85464,6 +85896,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85472,6 +85905,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85480,6 +85914,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85488,6 +85923,7 @@ return {
 			["name"] = [==[TEXTURE_FILTER_CONTROL]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8500]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85496,6 +85932,7 @@ return {
 			["name"] = [==[DEPTH_TEXTURE_MODE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x884B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85504,6 +85941,7 @@ return {
 			["name"] = [==[COMPARE_R_TO_TEXTURE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x884E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.4]==],
 		},
 		{
@@ -85689,6 +86127,7 @@ return {
 			["name"] = [==[VERTEX_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8896]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85697,6 +86136,7 @@ return {
 			["name"] = [==[NORMAL_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8897]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85705,6 +86145,7 @@ return {
 			["name"] = [==[COLOR_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8898]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85713,6 +86154,7 @@ return {
 			["name"] = [==[INDEX_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8899]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85721,6 +86163,7 @@ return {
 			["name"] = [==[TEXTURE_COORD_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85729,6 +86172,7 @@ return {
 			["name"] = [==[EDGE_FLAG_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85737,6 +86181,7 @@ return {
 			["name"] = [==[SECONDARY_COLOR_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889C]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85745,6 +86190,7 @@ return {
 			["name"] = [==[FOG_COORDINATE_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85753,6 +86199,7 @@ return {
 			["name"] = [==[WEIGHT_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889E]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85761,6 +86208,7 @@ return {
 			["name"] = [==[FOG_COORD_SRC]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8450]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85769,6 +86217,7 @@ return {
 			["name"] = [==[FOG_COORD]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8451]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85777,6 +86226,7 @@ return {
 			["name"] = [==[CURRENT_FOG_COORD]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8453]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85785,6 +86235,7 @@ return {
 			["name"] = [==[FOG_COORD_ARRAY_TYPE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8454]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85793,6 +86244,7 @@ return {
 			["name"] = [==[FOG_COORD_ARRAY_STRIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8455]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85801,6 +86253,7 @@ return {
 			["name"] = [==[FOG_COORD_ARRAY_POINTER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8456]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85809,6 +86262,7 @@ return {
 			["name"] = [==[FOG_COORD_ARRAY]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8457]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85817,6 +86271,7 @@ return {
 			["name"] = [==[FOG_COORD_ARRAY_BUFFER_BINDING]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x889D]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85825,6 +86280,7 @@ return {
 			["name"] = [==[SRC0_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8580]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85833,6 +86289,7 @@ return {
 			["name"] = [==[SRC1_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8581]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85841,6 +86298,7 @@ return {
 			["name"] = [==[SRC2_RGB]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8582]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85849,6 +86307,7 @@ return {
 			["name"] = [==[SRC0_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8588]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -85857,6 +86316,7 @@ return {
 			["name"] = [==[SRC2_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x858A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[1.5]==],
 		},
 		{
@@ -86345,6 +86805,7 @@ return {
 			["name"] = [==[VERTEX_PROGRAM_TWO_SIDE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8643]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.0]==],
 		},
 		{
@@ -86353,6 +86814,7 @@ return {
 			["name"] = [==[POINT_SPRITE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8861]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.0]==],
 		},
 		{
@@ -86361,6 +86823,7 @@ return {
 			["name"] = [==[COORD_REPLACE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8862]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.0]==],
 		},
 		{
@@ -86369,6 +86832,7 @@ return {
 			["name"] = [==[MAX_TEXTURE_COORDS]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8871]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.0]==],
 		},
 		{
@@ -86473,6 +86937,7 @@ return {
 			["name"] = [==[CURRENT_RASTER_SECONDARY_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x845F]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86481,6 +86946,7 @@ return {
 			["name"] = [==[SLUMINANCE_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C44]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86489,6 +86955,7 @@ return {
 			["name"] = [==[SLUMINANCE8_ALPHA8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C45]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86497,6 +86964,7 @@ return {
 			["name"] = [==[SLUMINANCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C46]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86505,6 +86973,7 @@ return {
 			["name"] = [==[SLUMINANCE8]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C47]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86513,6 +86982,7 @@ return {
 			["name"] = [==[COMPRESSED_SLUMINANCE]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C4A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86521,6 +86991,7 @@ return {
 			["name"] = [==[COMPRESSED_SLUMINANCE_ALPHA]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C4B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[2.1]==],
 		},
 		{
@@ -86695,7 +87166,7 @@ return {
 			["extensions"] = {
 				[==[ARB_geometry_shader4]==],
 			},
-			["version"] = [==[3.2]==],
+			["version"] = [==[3.0]==],
 		},
 		{
 			["copy"] = false,
@@ -87281,8 +87752,9 @@ return {
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[INDEX]==],
-			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8222]==],
+			["deprecated"] = [==[3.0]==],
+			["profile"] = [==[compatibility]==],
 			["extensions"] = {
 				[==[ARB_framebuffer_object]==],
 			},
@@ -87494,7 +87966,7 @@ return {
 				[==[ARB_framebuffer_object]==],
 				[==[ARB_geometry_shader4]==],
 			},
-			["version"] = [==[3.2]==],
+			["version"] = [==[3.0]==],
 		},
 		{
 			["copy"] = false,
@@ -88196,6 +88668,7 @@ return {
 			["name"] = [==[CLAMP_VERTEX_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x891A]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[3.0]==],
 		},
 		{
@@ -88204,6 +88677,7 @@ return {
 			["name"] = [==[CLAMP_FRAGMENT_COLOR]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x891B]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[3.0]==],
 		},
 		{
@@ -88212,14 +88686,16 @@ return {
 			["name"] = [==[ALPHA_INTEGER]==],
 			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8D97]==],
+			["profile"] = [==[compatibility]==],
 			["version"] = [==[3.0]==],
 		},
 		{
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[TEXTURE_LUMINANCE_TYPE]==],
-			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C14]==],
+			["deprecated"] = [==[3.0]==],
+			["profile"] = [==[compatibility]==],
 			["extensions"] = {
 				[==[ARB_framebuffer_object]==],
 			},
@@ -88229,8 +88705,9 @@ return {
 			["removed"] = [==[3.1]==],
 			["copy"] = false,
 			["name"] = [==[TEXTURE_INTENSITY_TYPE]==],
-			["deprecated"] = [==[3.0]==],
 			["value"] = [==[0x8C15]==],
+			["deprecated"] = [==[3.0]==],
+			["profile"] = [==[compatibility]==],
 			["extensions"] = {
 				[==[ARB_framebuffer_object]==],
 			},

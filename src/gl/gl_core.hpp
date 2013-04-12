@@ -1,20 +1,29 @@
 #ifndef POINTER_CPP_GENERATED_HEADEROPENGL_HPP
 #define POINTER_CPP_GENERATED_HEADEROPENGL_HPP
 
+#if defined(__glew_h__) || defined(__GLEW_H__)
+#error Attempt to include auto-generated header after including glew.h
+#endif
 #if defined(__gl_h_) || defined(__GL_H__)
 #error Attempt to include auto-generated header after including gl.h
 #endif
 #if defined(__glext_h_) || defined(__GLEXT_H_)
 #error Attempt to include auto-generated header after including glext.h
 #endif
+#if defined(__gltypes_h_)
+#error Attempt to include auto-generated header after gltypes.h
+#endif
 #if defined(__gl_ATI_h_)
 #error Attempt to include auto-generated header after including glATI.h
 #endif
 
+#define __glew_h__
+#define __GLEW_H__
 #define __gl_h_
 #define __GL_H__
 #define __glext_h_
 #define __GLEXT_H_
+#define __gltypes_h_
 #define __gl_ATI_h_
 
 #ifndef APIENTRY
@@ -194,6 +203,7 @@ namespace gl
 		extern LoadTest var_ARB_framebuffer_object;
 		extern LoadTest var_EXT_texture_compression_s3tc;
 		extern LoadTest var_ARB_texture_rectangle;
+		extern LoadTest var_ARB_debug_output;
 		
 	} //namespace exts
 	enum
@@ -288,6 +298,29 @@ namespace gl
 		TEXTURE_BINDING_RECTANGLE_ARB    = 0x84F6,
 		PROXY_TEXTURE_RECTANGLE_ARB      = 0x84F7,
 		MAX_RECTANGLE_TEXTURE_SIZE_ARB   = 0x84F8,
+		
+		DEBUG_OUTPUT_SYNCHRONOUS_ARB     = 0x8242,
+		DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB = 0x8243,
+		DEBUG_CALLBACK_FUNCTION_ARB      = 0x8244,
+		DEBUG_CALLBACK_USER_PARAM_ARB    = 0x8245,
+		DEBUG_SOURCE_API_ARB             = 0x8246,
+		DEBUG_SOURCE_WINDOW_SYSTEM_ARB   = 0x8247,
+		DEBUG_SOURCE_SHADER_COMPILER_ARB = 0x8248,
+		DEBUG_SOURCE_THIRD_PARTY_ARB     = 0x8249,
+		DEBUG_SOURCE_APPLICATION_ARB     = 0x824A,
+		DEBUG_SOURCE_OTHER_ARB           = 0x824B,
+		DEBUG_TYPE_ERROR_ARB             = 0x824C,
+		DEBUG_TYPE_DEPRECATED_BEHAVIOR_ARB = 0x824D,
+		DEBUG_TYPE_UNDEFINED_BEHAVIOR_ARB = 0x824E,
+		DEBUG_TYPE_PORTABILITY_ARB       = 0x824F,
+		DEBUG_TYPE_PERFORMANCE_ARB       = 0x8250,
+		DEBUG_TYPE_OTHER_ARB             = 0x8251,
+		MAX_DEBUG_MESSAGE_LENGTH_ARB     = 0x9143,
+		MAX_DEBUG_LOGGED_MESSAGES_ARB    = 0x9144,
+		DEBUG_LOGGED_MESSAGES_ARB        = 0x9145,
+		DEBUG_SEVERITY_HIGH_ARB          = 0x9146,
+		DEBUG_SEVERITY_MEDIUM_ARB        = 0x9147,
+		DEBUG_SEVERITY_LOW_ARB           = 0x9148,
 		
 		DEPTH_BUFFER_BIT                 = 0x00000100,
 		STENCIL_BUFFER_BIT               = 0x00000400,
@@ -1254,6 +1287,11 @@ namespace gl
 	extern void (CODEGEN_FUNCPTR *FramebufferTextureLayer)(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 	
 	
+	
+	extern void (CODEGEN_FUNCPTR *DebugMessageControlARB)(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+	extern void (CODEGEN_FUNCPTR *DebugMessageInsertARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+	extern void (CODEGEN_FUNCPTR *DebugMessageCallbackARB)(GLDEBUGPROCARB callback, const GLvoid *userParam);
+	extern GLuint (CODEGEN_FUNCPTR *GetDebugMessageLogARB)(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
 	
 	extern void (CODEGEN_FUNCPTR *CullFace)(GLenum mode);
 	extern void (CODEGEN_FUNCPTR *FrontFace)(GLenum mode);

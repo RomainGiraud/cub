@@ -82,6 +82,32 @@ void cub::UI::AwesomiumCallbackFunction(awe_webview* caller,
 	}
 }
 
+void cub::UI::SetFPS(double fps)
+{
+	awe_jsvalue* arg1 = awe_jsvalue_create_double_value((int)fps);
+	//const awe_jsvalue* argsArray[1] = { arg1 };
+
+	awe_string* functionName = StringToAweString("SetFPS");
+	awe_jsarray* args = awe_jsarray_create(
+		(const awe_jsvalue**)&arg1,
+		1
+	);
+
+
+	awe_webview_call_javascript_function(
+		_view,
+		awe_string_empty(),
+		functionName,
+		args,
+		awe_string_empty()
+	);
+
+
+	awe_string_destroy(functionName);
+	awe_jsarray_destroy(args);
+	awe_jsvalue_destroy(arg1);
+}
+
 void cub::UI::Load()
 {
 	SetBaseDirectory(_game->GetContent().GetPath() + "ui");
@@ -148,31 +174,33 @@ void cub::UI::Render(double timeSec)
 {
 	Update(timeSec);
 
-	if (! awe_webview_is_dirty(_view)) return;
+	if (awe_webview_is_dirty(_view))
+	{
+		const awe_renderbuffer* render = awe_webview_render(_view);
 
-	const awe_renderbuffer* render = awe_webview_render(_view);
+		int width = awe_renderbuffer_get_width(render);
+		int height = awe_renderbuffer_get_height(render);
+		int rowspan = awe_renderbuffer_get_rowspan(render);
 
-	int width = awe_renderbuffer_get_width(render);
-	int height = awe_renderbuffer_get_height(render);
-	int rowspan = awe_renderbuffer_get_rowspan(render);
+		//const unsigned char* buffer = awe_renderbuffer_get_buffer(render);// = new unsigned char[width * height * 4];
+		unsigned char* buffer = new unsigned char[width * height * 4];
+		awe_renderbuffer_copy_to(render, buffer, rowspan, 4, true, true);
+		//for(int i = 0; i < width * height * 4; i += 4)
+		//    buffer[i + 3] = 255;
 
-	//const unsigned char* buffer = awe_renderbuffer_get_buffer(render);// = new unsigned char[width * height * 4];
-	unsigned char* buffer = new unsigned char[width * height * 4];
-	awe_renderbuffer_copy_to(render, buffer, rowspan, 4, true, true);
-	//for(int i = 0; i < width * height * 4; i += 4)
-	//    buffer[i + 3] = 255;
+		gl::BindTexture(gl::TEXTURE_2D, _texture);
+		//gl::PixelStorei(gl::UNPACK_ALIGNMENT, 1);
+		gl::TexImage2D(gl::TEXTURE_2D, 0, 4, width, height, 0, gl::RGBA, gl::UNSIGNED_BYTE, buffer);
+		gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::LINEAR);
+		gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR);
+	    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::CLAMP);
+	    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_T, gl::CLAMP);
+		gl::BindTexture(gl::TEXTURE_2D, 0);
 
-	gl::BindTexture(gl::TEXTURE_2D, _texture);
-	//gl::PixelStorei(gl::UNPACK_ALIGNMENT, 1);
-	gl::TexImage2D(gl::TEXTURE_2D, 0, 4, width, height, 0, gl::RGBA, gl::UNSIGNED_BYTE, buffer);
-	gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::LINEAR);
-	gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR);
-    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::CLAMP);
-    gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_T, gl::CLAMP);
-	gl::BindTexture(gl::TEXTURE_2D, 0);
+		_plane->SetTexture(_texture);
 
-	_plane->SetTexture(_texture);
+		delete[] buffer;
+	}
+
 	_plane->Render(timeSec);
-
-	delete[] buffer;
 }

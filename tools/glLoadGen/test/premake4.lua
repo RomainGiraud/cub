@@ -11,10 +11,12 @@ local tests =
 	{name = "ptr_c"},
 	{name = "ptr_cpp_comp"},
 	{name = "ptr_c_comp"},
-	{name = "glload_c", include = "include"},
-	{name = "glload_cpp", include = "include"},
+	{name = "func_cpp"},
+	{name = "func_cpp_comp"},
 	{name = "noload_cpp"},
 	{name = "noload_cpp_noext"},
+	{name = "noload_c"},
+	{name = "noload_c_old"},
 }
 
 local oldDir = os.getcwd()

@@ -31,11 +31,18 @@ using namespace cub;
 
 #include <freeimage/FreeImage.h>
 
+
 static void FreeImageErrorHandler(FREE_IMAGE_FORMAT fif, const char *message)
 {
     cerr << "FreeImage - error: " << FreeImage_GetFormatFromFIF(fif) << endl
          << "    " << message << endl;
 }
+
+static void APIENTRY myErrorCallback(GLenum _source, GLenum _type, GLuint _id, GLenum _severity, GLsizei _length, const char* _message, void* _userParam)
+{
+    cout << "[error] " << _message << endl;
+}
+
 
 cub::Game* cub::Game::MainGame = 0;
 
@@ -44,11 +51,13 @@ cub::Game::Game()
     MainGame = this;
 
     glfwInit();
+    glfwOpenWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
     glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, true);
-    glfwSetWindowTitle("cub");
-    //glfwSwapInterval(1); // vertical sync ?
     glfwOpenWindow(800, 600, 8, 8, 8, 8, 24, 8, GLFW_WINDOW);
+    //glfwOpenWindow(1920, 1080, 8, 8, 8, 8, 24, 8, GLFW_FULLSCREEN);
+    glfwSetWindowTitle("cub");
+    glfwSwapInterval(1); // vsync: 0 => off, 1 => on
 
     // Init GLLoader
     gl::sys::LoadFunctions();
@@ -58,6 +67,10 @@ cub::Game::Game()
     FreeImage_SetOutputMessage(FreeImageErrorHandler);
 
     DisplayGLInfo();
+
+    (void)myErrorCallback;
+    //gl::DebugMessageCallbackARB(myErrorCallback, NULL);
+    //gl::Enable(gl::DEBUG_OUTPUT_SYNCHRONOUS_ARB);
 
     // Initialize engine's parts
 #if defined(CUB_SYSTEM_WINDOWS)
@@ -82,6 +95,14 @@ cub::Game::Game()
     _cube = new Cube(this);
     _cube->SetScale(glm::vec3(1.005f));
     _line = new Line(this);
+
+
+    // FPS
+    for (int i = 0; i < _fpsSize; ++i)
+    {
+        _fpsList[i] = 0;
+    }
+
 
     // Set callbacks
     glfwSetWindowSizeCallback(WindowSizeCallback);
@@ -194,24 +215,30 @@ int cub::Game::Run()
     InitGL();
 
     double previousTime = glfwGetTime();
-    double time = 0;
+    double time = 1;
     bool running = true;
     while (running)
     {
+        double currentTime = glfwGetTime();
+        time = currentTime - previousTime; // seconds
+        previousTime = currentTime;
+
+
         running = !glfwGetKey(GLFW_KEY_ESC) &&
                     glfwGetWindowParam(GLFW_OPENED);
-        
+
 
         _input->Update();
         if (_input->IsMoving())
         {
-            _camera->Translate(_input->GetMovingVector() * (float)(time * 10));
+            _camera->Translate(_input->GetMovingVector() * (float)(time * 20));
         }
         glm::vec3 pos = _camera->GetTargetPosition();
         pos.y = 20 - glfwGetMouseWheel();
         _camera->SetTargetPosition(pos);
+        _camera->Update(time);
 
-
+        /*
         if (_input->RenderWireframe())
         {
             gl::PolygonMode(gl::FRONT_AND_BACK, gl::LINE);
@@ -220,6 +247,7 @@ int cub::Game::Run()
         {
             gl::PolygonMode(gl::FRONT_AND_BACK, gl::FILL);
         }
+        */
 
         if (_raycasting)
         {
@@ -241,6 +269,7 @@ int cub::Game::Run()
                                          _camera->GetProjectionMatrix(),
                                          viewport);
             */
+
             //Ray ray(v1, v2 - v1);
             Ray ray(_camera->GetPosition(), _camera->GetDirection());
             //_line->SetPosition(v1);
@@ -257,9 +286,6 @@ int cub::Game::Run()
             _raycasting = false;
         }
 
-        _camera->Update(time);
-        
-
         gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
         _terrain->Render(time);
@@ -273,13 +299,11 @@ int cub::Game::Run()
         _line->Render(time);
 
         // HUD
+        //cout << "fps: " << ComputeFPS(1.0f / time) << endl;
+        _ui->SetFPS(ComputeFPS(1.0f / time));
         _ui->Render(time);
 
         glfwSwapBuffers();
-
-
-        time = glfwGetTime() - previousTime; // seconds
-        previousTime = glfwGetTime();
     }
 
     glfwTerminate();
@@ -323,4 +347,16 @@ void cub::Game::Resize(int w, int h)
     _camera->SetAspectRatio(aspectRatio);
 
     _ui->Resize(w, h);
+}
+
+double cub::Game::ComputeFPS(int value)
+{
+    _fpsSum -= _fpsList[_fpsIndex];
+    _fpsSum += value;
+    _fpsList[_fpsIndex] = value;
+
+    if (++_fpsIndex == _fpsSize)
+        _fpsIndex = 0;
+
+    return ((double)_fpsSum / _fpsSize);
 }

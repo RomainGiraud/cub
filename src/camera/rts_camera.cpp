@@ -22,7 +22,7 @@ void cub::RTSCamera::Update(double time)
 {
     if (_position != _targetPosition)
     {
-        _position = glm::mix(_position, _targetPosition, time * 5);
+        _position = glm::mix(_position, _targetPosition, time * 3);
         UpdateViewMatrix();
     }
 }

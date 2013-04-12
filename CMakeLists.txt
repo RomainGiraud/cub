@@ -38,6 +38,8 @@ elseif (APPLE)
     link_directories(${CMAKE_SOURCE_DIR}/dep/libs/noise/lib-osx)
 endif()
 
+configure_file(${CMAKE_SOURCE_DIR}/config/version.h.in ${CMAKE_SOURCE_DIR}/src/global/version.h)
+
 # Source files
 file(GLOB_RECURSE src ${CMAKE_SOURCE_DIR}/src/*.cpp ${CMAKE_SOURCE_DIR}/src/*.c ${CMAKE_SOURCE_DIR}/src/*.h ${CMAKE_SOURCE_DIR}/src/*.hpp)
 

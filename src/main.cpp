@@ -2,6 +2,7 @@
 using namespace std;
 
 #include <engine/game.h>
+#include <global/version.h>
 #include <global/global.h>
 #include <global/exception.h>
 using namespace cub;
@@ -10,6 +11,7 @@ using namespace cub;
 
 int main()
 {
+    cout << "cub version: " << CUB_VERSION_STRING << endl;
     try
     {
         Game game;

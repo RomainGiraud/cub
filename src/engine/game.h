@@ -66,6 +66,13 @@ private:
 
     void InitGL();
     void Resize(int w, int h);
+    double ComputeFPS(int value);
+
+
+    static const int _fpsSize = 100;
+    int _fpsList[_fpsSize];
+    int _fpsIndex = 0;
+    int _fpsSum = 0;
 
     // Callbacks
     static void GLFWCALL WindowSizeCallback(int w, int h);

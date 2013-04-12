@@ -27,6 +27,8 @@ public:
     void Resize(int width, int height);
     void SetBaseDirectory(const std::string& baseDirectory);
 
+    void SetFPS(double fps);
+
 private:
     static UI *MainUI;
 

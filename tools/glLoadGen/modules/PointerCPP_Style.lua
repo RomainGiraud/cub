@@ -266,6 +266,7 @@ function my_style.source.WriteIncludes(hFile, basename, spec, options)
 #include <algorithm>
 #include <vector>
 #include <string.h>
+#include <stddef.h>
 ]])
 
 	local base = util.ParsePath(my_style.header.GetFilename(basename, options))
@@ -676,7 +677,7 @@ static void GetGLVersion()
 	
 	hFile:write "\n"
 	hFile:writeblock([[
-int GetMinorVersion()
+int GetMajorVersion()
 {
 	if(g_major_version == 0)
 		GetGLVersion();
@@ -686,7 +687,7 @@ int GetMinorVersion()
 	hFile:write "\n"
 
 	hFile:writeblock([[
-int GetMajorVersion()
+int GetMinorVersion()
 {
 	if(g_major_version == 0) //Yes, check the major version to get the minor one.
 		GetGLVersion();

@@ -4,15 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "glload/gl_all.hpp"
-#include "glload/gl_load.hpp"
-#include "glload/gl_load.h"
+#include "gl_test.h"
 #ifdef _WIN32
-#include "glload/wgl_all.hpp"
-#include "glload/wgl_load.hpp"
+#include "wgl_test.h"
 #else
-#include "glload/glx_all.hpp"
-#include "glload/glx_load.hpp"
+#include "glx_test.h"
 #endif
 #include <GL/freeglut.h>
 
@@ -22,28 +18,28 @@ GLuint vao;
 
 GLuint BuildShader(GLenum eShaderType, const std::string &shaderText)
 {
-	GLuint shader = gl::CreateShader(eShaderType);
+	GLuint shader = glCreateShader(eShaderType);
 	const char *strFileData = shaderText.c_str();
-	gl::ShaderSource(shader, 1, &strFileData, NULL);
+	glShaderSource(shader, 1, &strFileData, NULL);
 
-	gl::CompileShader(shader);
+	glCompileShader(shader);
 
 	GLint status;
-	gl::GetShaderiv(shader, gl::COMPILE_STATUS, &status);
-	if (status == gl::FALSE_)
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+	if (status == GL_FALSE)
 	{
 		GLint infoLogLength;
-		gl::GetShaderiv(shader, gl::INFO_LOG_LENGTH, &infoLogLength);
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
 
 		GLchar *strInfoLog = new GLchar[infoLogLength + 1];
-		gl::GetShaderInfoLog(shader, infoLogLength, NULL, strInfoLog);
+		glGetShaderInfoLog(shader, infoLogLength, NULL, strInfoLog);
 
 		const char *strShaderType = NULL;
 		switch(eShaderType)
 		{
-		case gl::VERTEX_SHADER: strShaderType = "vertex"; break;
-//		case gl::GEOMETRY_SHADER: strShaderType = "geometry"; break;
-		case gl::FRAGMENT_SHADER: strShaderType = "fragment"; break;
+		case GL_VERTEX_SHADER: strShaderType = "vertex"; break;
+//		case GL_GEOMETRY_SHADER: strShaderType = "geometry"; break;
+		case GL_FRAGMENT_SHADER: strShaderType = "fragment"; break;
 		}
 
 		fprintf(stderr, "Compile failure in %s shader:\n%s\n", strShaderType, strInfoLog);
@@ -58,19 +54,16 @@ GLuint BuildShader(GLenum eShaderType, const std::string &shaderText)
 
 void init()
 {
-	gl::GenVertexArrays(1, &vao);
-	gl::BindVertexArray(vao);
-
 	const float vertexPositions[] = {
 		0.75f, 0.75f, 0.0f, 1.0f,
 		0.75f, -0.75f, 0.0f, 1.0f,
 		-0.75f, -0.75f, 0.0f, 1.0f,
 	};
 
-	gl::GenBuffers(1, &positionBufferObject);
-	gl::BindBuffer(gl::ARRAY_BUFFER, positionBufferObject);
-	gl::BufferData(gl::ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, gl::STATIC_DRAW);
-	gl::BindBuffer(gl::ARRAY_BUFFER, 0);
+	glGenBuffers(1, &positionBufferObject);
+	glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	const std::string vertexShader(
 		"#version 330\n"
@@ -90,23 +83,23 @@ void init()
 		"}\n"
 		);
 
-	GLuint vertShader = BuildShader(gl::VERTEX_SHADER, vertexShader);
-	GLuint fragShader = BuildShader(gl::FRAGMENT_SHADER, fragmentShader);
+	GLuint vertShader = BuildShader(GL_VERTEX_SHADER, vertexShader);
+	GLuint fragShader = BuildShader(GL_FRAGMENT_SHADER, fragmentShader);
 
-	program = gl::CreateProgram();
-	gl::AttachShader(program, vertShader);
-	gl::AttachShader(program, fragShader);	
-	gl::LinkProgram(program);
+	program = glCreateProgram();
+	glAttachShader(program, vertShader);
+	glAttachShader(program, fragShader);	
+	glLinkProgram(program);
 
 	GLint status;
-	gl::GetProgramiv (program, gl::LINK_STATUS, &status);
-	if (status == gl::FALSE_)
+	glGetProgramiv (program, GL_LINK_STATUS, &status);
+	if (status == GL_FALSE)
 	{
 		GLint infoLogLength;
-		gl::GetProgramiv(program, gl::INFO_LOG_LENGTH, &infoLogLength);
+		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
 
 		GLchar *strInfoLog = new GLchar[infoLogLength + 1];
-		gl::GetProgramInfoLog(program, infoLogLength, NULL, strInfoLog);
+		glGetProgramInfoLog(program, infoLogLength, NULL, strInfoLog);
 		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
 		delete[] strInfoLog;
 
@@ -119,28 +112,28 @@ void init()
 //If you need continuous updates of the screen, call glutPostRedisplay() at the end of the function.
 void display()
 {
-	gl::ClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	gl::Clear(gl::COLOR_BUFFER_BIT);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-	gl::UseProgram(program);
+	glUseProgram(program);
 
-	gl::BindBuffer(gl::ARRAY_BUFFER, positionBufferObject);
-	gl::EnableVertexAttribArray(0);
-	gl::VertexAttribPointer(0, 4, gl::FLOAT, gl::FALSE_, 0, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
-	gl::DrawArrays(gl::TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 
-	gl::DisableVertexAttribArray(0);
-	gl::UseProgram(0);
+	glDisableVertexAttribArray(0);
+	glUseProgram(0);
 
 	glutSwapBuffers();
 }
 
 //Called whenever the window is resized. The new window size is given, in pixels.
-//This is an opportunity to call gl::Viewport or gl::Scissor to keep up with the change in size.
+//This is an opportunity to call glViewport or GL_Scissor to keep up with the change in size.
 void reshape (int w, int h)
 {
-	gl::Viewport(0, 0, (GLsizei) w, (GLsizei) h);
+	glViewport(0, 0, (GLsizei) w, (GLsizei) h);
 }
 
 //Called whenever a key on the keyboard was pressed.
@@ -167,38 +160,24 @@ int main(int argc, char** argv)
 	unsigned int displayMode = GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH | GLUT_STENCIL;
 
 	glutInitDisplayMode(displayMode);
-	glutInitContextVersion (3, 3);
-	glutInitContextProfile(GLUT_CORE_PROFILE);
+	glutInitContextVersion (2, 1);
 	glutInitWindowSize (width, height); 
 	glutInitWindowPosition (300, 200);
 	glutCreateWindow (argv[0]);
 
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 
-/*
-	glload::LoadTest didLoad = glload::LoadFunctions();
-	if(didLoad)
-		printf("OpenGL: %i\n", didLoad.GetNumMissing());
-	else
-		printf("OpenGL Failed to Load!\n");
-*/
-	int numFailed = ogl_LoadFunctions();
-	if(numFailed)
-		printf("OpenGL: %i\n", numFailed - 1);
-	else
-		printf("OpenGL Failed to Load!\n");
+	ogl_CheckExtensions();
+#ifdef _WIN32
+	wgl_CheckExtensions(wglGetCurrentDC());
+#endif
 
+	if(ogl_ext_EXT_texture_compression_s3tc)
+		printf("Yay!\n");
+	else
+		printf("Fooey.\n");
 	init();
 
-#ifdef _WIN32
-	HDC hdc = wglGetCurrentDC();
-	glload::LoadTest load = glload::LoadFunctions(hdc);
-	if(load)
-		printf("WGL: %i\n", load.GetNumMissing());
-	else
-		printf("WGL Failed to Loaded!\n");
-#else
-#endif
 
 	glutDisplayFunc(display); 
 	glutReshapeFunc(reshape);

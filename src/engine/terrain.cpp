@@ -58,26 +58,22 @@ bool cub::Terrain::Raycast(const Ray& ray, vector<glm::vec3>& result) const
 void cub::Terrain::Load()
 {
     module::Perlin myModule;
-	utils::NoiseMap heightMap;
+    myModule.SetOctaveCount(6);
+    myModule.SetFrequency(0.5);
+    myModule.SetPersistence(0.5);
 
-	//myModule.SetSeed(XXX);
+    utils::NoiseMap heightMap;
+    utils::NoiseMapBuilderPlane heightMapBuilder;
+    heightMapBuilder.SetSourceModule(myModule);
+    heightMapBuilder.SetDestNoiseMap(heightMap);
+    heightMapBuilder.SetDestSize(Chunk::GetXLength(), Chunk::GetZLength());
 
-    //module::Billow baseFlatTerrain;
-    //module::ScaleBias flatTerrain;
-    //flatTerrain.SetSourceModule (0, baseFlatTerrain);
-    //flatTerrain.SetScale (0.125);
-    //flatTerrain.SetBias (-0.75);
-
-	utils::NoiseMapBuilderPlane heightMapBuilder;
-	heightMapBuilder.SetSourceModule(myModule);
-	heightMapBuilder.SetDestNoiseMap(heightMap);
-	heightMapBuilder.SetDestSize(Chunk::GetXLength(), Chunk::GetZLength());
-
+    int size = 1;
 	for (int x = 0; x < 5; ++x)
 	{
 		for (int z = 0; z < 5; ++z)
 		{
-			heightMapBuilder.SetBounds(x * 5.0, (x+1) * 5.0, z * 5.0, (z+1) * 5.0);
+			heightMapBuilder.SetBounds(x * size, (x+1) * size, z * size, (z+1) * size);
 			heightMapBuilder.Build();
 
 			Chunk *ch = new Chunk(_game);
